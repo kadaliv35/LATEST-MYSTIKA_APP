@@ -1,0 +1,69 @@
+@import './assets/styles/maincss';
+// @import './assets/fonts/OptimusPrinceps.ttf';
+// @import './assets/fonts/OptimusPrincepsSemiBold.ttf';
+
+@font-face {
+  font-family: OptimusPrinceps;
+  src: url(./assets/fonts/OptimusPrinceps.ttf) format("opentype");
+}
+
+// loading indicator
+.loading-indicator:before {
+  content: '';
+  background: #000000cc;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.loading-indicator:after {
+  content: 'Loading';
+  // content: url(../assets/Sute-Anime.gif);
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 100%;
+  top: 24%;
+  left: 0;
+  z-index: 1001;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.carousel {
+  height: 200px;
+  position: relative;
+  width: 100%;
+}
+
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
+}
+
+.carousel-item-prev {
+  position: absolute;
+  left: 0;
+}
+
+.carousel-item-next {
+  position: absolute;
+  right: 0;
+}
+
+.grey_out {
+  background: grey !important;
+}
