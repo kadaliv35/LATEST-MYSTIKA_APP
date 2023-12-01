@@ -33,13 +33,15 @@
     border: 0px solid #000;
     outline: none !important;
     position: absolute;
-    right: 42px;
-    top: 60px;
+    right: 62px;
+    top: 80px;
 
     & img {
         width: 50px;
     }
 }
+
+// s
 
 .img_btn {
     background-image: url(../../assets/images/sign_in_btn_bg.svg);
@@ -76,8 +78,29 @@
     // width: 156px;
 }
 
+.img_btn_brown_sm {
+    background-image: url(../../assets/images/btn_brown.svg);
+    text-align: center;
+    padding-bottom: 14px;
+    font-family: OptimusPrinceps;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: white;
+    width: 94.6px;
+    border: 0px solid #000;
+    height: 63px;
+    margin-bottom: -15px;
+    // width: 156px;
+}
+
 .img_btn_home {
     background-image: url(../../assets/images/sign_in_btn_bg.svg);
+    background-repeat: no-repeat;
     text-align: center;
     padding-top: 4px;
     font-family: OptimusPrinceps;
@@ -93,6 +116,25 @@
     height: 75px;
 }
 
+.img_btn_home_sm {
+    background-image: url(../../assets/images/sign_in_btn_bg.svg);
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-bottom: 14px;
+    font-family: OptimusPrinceps;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    font-size: 14px;
+    background-size: contain;
+    font-weight: bold;
+    color: #120803;
+    width: 94.6px;
+    border: 0px solid #000;
+    height: 63px;
+    margin-bottom: -15px;
+}
+
 .img_btn_trans {
     background-image: url(../images/btn_trns.svg);
     background-repeat: no-repeat;
@@ -100,26 +142,27 @@
     cursor: pointer;
     background-color: transparent;
     outline: none;
-    width: 182px;
-    height: 42px;
+    width: 240px;
+    height: 52px;
     background-size: contain;
     font-size: 14px;
     // background-size: contain;
     font-weight: 400;
     border: 0px solid #000;
     color: white;
+    margin-left: 10px;
     // width: 100%;
 
-    &:hover {
-        background-image: url(../images/btn_trns_hover.svg);
-        color: $white;
-        width: 182px;
-        height: 48px;
-        -webkit-transition: right .4s, -webkit-transform 30s .2s linear;
-        transition: right .4s, -webkit-transform 30s .2s linear;
-        transition: right .4s, transform 30s .2s linear;
-        transition: right .4s, transform 30s .2s linear, -webkit-transform 30s .2s linear;
-    }
+    // &:hover {
+    //     background-image: url(../images/btn_trns_hover.svg);
+    //     color: $white;
+    //     width: 240px;
+    //     height: 60px;
+    //     -webkit-transition: right .4s, -webkit-transform 30s .2s linear;
+    //     transition: right .4s, -webkit-transform 30s .2s linear;
+    //     transition: right .4s, transform 30s .2s linear;
+    //     transition: right .4s, transform 30s .2s linear, -webkit-transform 30s .2s linear;
+    // }
 }
 
 .img_btn_social {

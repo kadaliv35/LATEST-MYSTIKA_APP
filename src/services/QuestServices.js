@@ -1,17 +1,24 @@
 import axios from 'axios';
 import { BASE_URL } from '../commonUtils/Base';
-import { TREASURE_QUEST_SERVICES_URL ,DAILY_QUEST_SERVICES_URL } from '../commonUtils/ApiConstants';
+import { TREASURE_QUEST_SERVICES_URL, DAILY_QUEST_SERVICES_URL, TRAVELL_SERVICE_URL } from '../commonUtils/ApiConstants';
 
 class QuestServices {
     getAllTreasureQuest(charId) {
-        return axios.get(BASE_URL +TREASURE_QUEST_SERVICES_URL.getAllQuest+'/'+charId);        
+        return axios.get(BASE_URL + TREASURE_QUEST_SERVICES_URL.getAllQuest + '/' + charId);
     }
-    updatedTChestStatus(tChestId) {
-        return axios.post(BASE_URL+TREASURE_QUEST_SERVICES_URL.updatedTChestStatus + '/'+tChestId)
+
+    updatedTChestStatus(userId, tChestId) {
+        return axios.get(BASE_URL + TREASURE_QUEST_SERVICES_URL.updatedTChestStatus + '/' + userId + '/' + tChestId)
     }
+
     claimDailyQuestRewards(userId) {
-        return axios.post(BASE_URL+DAILY_QUEST_SERVICES_URL.claimDailyQuestRewards+ '/'+userId )
+        return axios.post(BASE_URL + DAILY_QUEST_SERVICES_URL.claimQuesttonerRead + '/' + userId)
     }
+
+    saveCurrentPlace(charId, placeId) {
+        return axios.get(BASE_URL + TRAVELL_SERVICE_URL.travelHere + '/' + charId + '/' + placeId)
+    }
+
     // claimReward(userCharId ,achivementId) {
     //     return axios.post(BASE_URL +ACHIVEMENT_SERVICES_URL.claimReward +'/'+userCharId +'/'+achivementId) 
     // }

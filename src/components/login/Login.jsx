@@ -131,7 +131,7 @@ class Login extends Component {
         });
         this.setState({ characterList: this.state.characterList });
       }
-    })
+    }).catch((err) => console.error(err))
 
   }
 
@@ -148,7 +148,7 @@ class Login extends Component {
         if (res) {
           this.setState({ resetPass: true });
         }
-      });
+      }).catch((err) => console.error(err))
     }
   }
 
@@ -164,7 +164,7 @@ class Login extends Component {
         newPassword: this.state.newPassword,
       };
       LoginService.resetPassword(obj).then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           this.setState({
             isRegister: false,
             forgetpass: false,
@@ -175,7 +175,7 @@ class Login extends Component {
             useremail: "",
           });
         }
-      });
+      }).catch((err) => console.error(err))
     }
   }
 
@@ -199,7 +199,7 @@ class Login extends Component {
         selectedCharacterId: this.state.slectedCharacterId
       };
       LoginService.userRegister(obj).then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           toast("Verification Sent To your Mail Id");
           this.setState(
             {
@@ -218,7 +218,7 @@ class Login extends Component {
             () => { }
           );
         }
-      });
+      }).catch((err) => console.error(err))
     } else {
       toast.error("Please Enter All Input Fields");
     }
@@ -260,7 +260,7 @@ class Login extends Component {
           { console.log('+++++++++++++++++++++++++++++++sra') }
           <ErrorDisplaypop />
         }
-      });
+      }).catch((err) => console.error(err))
     }
   }
 
@@ -337,7 +337,7 @@ class Login extends Component {
 
   render() {
     return (
-      <body>
+      <div>
         <div className="logo-head d-flex">
           <div>
             <Modal isOpen={this.state.isDailyUpdates} size="md">
@@ -562,7 +562,7 @@ class Login extends Component {
           <div className="login">
             <div className="header">Sign In</div>
             <button type="button" className="close_btn">
-              <img src={close}></img>
+              {/* <img src={close}></img> */}
             </button>
             <h5 className="text-center">
               Turn your goals into a Role-Playing game
@@ -645,7 +645,7 @@ class Login extends Component {
           <div className="login">
             <div className="header">Register Form</div>
             <button type="button" className="close_btn">
-              <img src={close}></img>
+              {/* <img src={close}></img> */}
             </button>
             <h5 className="text-center">
               Behold the world of scholastic adventure.
@@ -883,7 +883,7 @@ class Login extends Component {
             </div>
           </div>
         )}
-      </body>
+      </div>
     );
   }
 }

@@ -1,0 +1,122 @@
+.leadermodel {
+    background-color: black;
+    .modal {
+        overflow: hidden !important;
+        border: 0px solid black;
+    
+        &-dialog {
+            max-width: 60% !important;
+            height: 100vh;
+            margin: 1.75rem auto;
+        }
+    
+        &-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 83% !important;
+            margin: 0px auto !important;
+            height: 85vh !important;
+            pointer-events: auto;
+            background-color: transparent !important;
+            background-image: url(../images/ldboardFrame.png) !important;
+            background-size: cover !important;
+            background-clip: padding-box;
+            border: 0px solid rgba(0, 0, 0, 0.2);
+            border-radius: 0.3rem;
+            outline: 0;
+        }
+    
+        &-header {
+            display: block !important;
+            align-items: center !important;
+            justify-content: space-between;
+            padding: 1rem 1rem;
+            text-align: center;
+            font-size: 18px !important;
+            color: #fff;
+            font-weight: 600 !important;
+            letter-spacing: 1px;
+            margin-top: 6% !important;
+            border-bottom: 0px solid #dee2e6 !important;
+            font-family: OptimusPrinceps !important;
+        }
+    
+        & .close_btn {
+            background-color: transparent;
+            border: 0px solid #000;
+            outline: none !important;
+            position: absolute;
+            right: 1.1%;
+            top: 62px;
+        }
+    
+        &-body {
+            color: #fff;
+            font-family: OptimusPrinceps !important;
+            width: 97%;
+            margin: 0px auto;
+            margin-top: 3%;
+    
+            &-scroll {
+                overflow-y: auto;
+            }
+        }
+    
+        &-footer {
+            border: 0px solid black;
+            border-top: 0px solid black;
+        }
+    }
+}
+
+
+.lboard {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    margin-bottom: 2rem;
+
+    &-headings {
+        text-align: left;
+        margin-left: 4rem;
+        margin-top: 2rem;
+    }
+
+    &-divs {
+        list-style: none;
+        width: 100%;
+
+        &-head {
+            display: flex;
+            flex-direction: row;
+            width: 95%;
+            justify-content: space-between;
+
+            & h6 {
+                text-align: left;
+                min-width: 22%;
+                max-width: 22%;
+            }
+        }
+
+        &-sub {
+            display: flex;
+            flex-direction: row;
+            max-width: 95%;
+            padding: 1.5% 2.5%;
+            margin: 1% 0;
+            border-radius: 10px;
+            justify-content: space-between;
+            background-image: url('../images/ldrame.png');
+
+            & span {
+                text-align: left;
+                min-width: 22%;
+                max-width: 22%;
+            }
+        }
+    }
+
+}

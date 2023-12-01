@@ -361,22 +361,6 @@ input[type=checkbox]+label:active:before {
     -moz-box-shadow: 0px 0px 2px 2px rgba(250, 81, 81, 0.69);
 }
 
-
-::-webkit-scrollbar {
-    width: 8px;
-    height: 6px;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-    // border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-}
-
 textarea {
     // resize: vertical;
     width: 100% !important;
@@ -773,25 +757,33 @@ body {
     }
 }
 
+
+
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
 }
+
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: url('../images/scroll.png') no-repeat !important;
+    background: url('../images/journal.png') no-repeat !important;
     // box-shadow: inset 0 0 5px grey; 
     // border-radius: 10px;
-    background-size: contain !important;
+    background-size: cover !important;
     height: 100%;
+    min-height: 100%;
+    max-height: 100%;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    // background: green; 
-    border-radius: 10px;
-
+    // background: green;
+    // border-radius: 5px;
+    // height: 10px !important;
+    // max-height: 10px !important;
+    // width: 5px !important;
+    // max-width: 5px !important;
 }
 
 
@@ -869,32 +861,27 @@ body {
             text-align: left;
             margin-left: 4px;
             margin-top: 6px;
-            width: 100% ;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
 
             & li {
                 text-decoration: none;
                 list-style-type: none;
-                background: rgb(0, 0, 0);
-                // background: -moz-linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(53, 48, 40) 65%, rgb(31, 29, 22) 113%);
-                // background: -webkit-linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(53, 48, 40) 65%, rgb(31, 29, 22) 113%);
-                // background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(53, 48, 40) 65%, rgb(31, 29, 22) 113%);
-                // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#1f1d16",GradientType=1);
+                background: -moz-linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(53, 48, 40) 65%, rgb(31, 29, 22) 113%);
+                background: -webkit-linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(53, 48, 40) 65%, rgb(31, 29, 22) 113%);
+                background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(53, 48, 40) 65%, rgb(31, 29, 22) 113%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#1f1d16", GradientType=1);
                 border: 1px solid #564e46;
-                // background-size: cover;
-                width: 30%;
-                height: 180px;
-                // margin: 1px;
+                background-size: cover;
+                width: 80%;
+                height: 90px;
                 border-radius: 5px;
-                display: inline-block;
                 text-align: center;
                 display: grid;
                 place-items: center;
                 position: relative;
-                background-image: url('../images/dailyQuestBack.png');
                 background-size: cover;
 
                 & h5 {
@@ -905,15 +892,17 @@ body {
                     margin-bottom: 0;
                     font-family: OptimusPrinceps;
                     margin-top: 3px;
+                    margin-left: 10px;
                 }
 
                 & img {
-                    width: 100px;
+                    width: 30px;
                 }
 
                 &:last-child {
                     margin-left: 0px !important;
                 }
+
                 & .num {
                     position: absolute;
                     top: 0;
@@ -923,9 +912,11 @@ body {
                     background-size: cover;
                     background-image: url('../images/crystal_blue.png');
                 }
+
                 & .title {
                     font-size: 11px;
                 }
+
                 & .footer {
                     position: absolute;
                     bottom: -5px;
@@ -933,13 +924,37 @@ body {
                     right: 0;
                 }
             }
+
+            & .grey_out {
+                background-size: cover;
+                position: relative;
+                object-fit: cover;
+                filter: blur(1px);
+                width: 80%;
+                height: 90px;
+
+                &::after {
+                    content: "";
+                    height: 40px;
+                    width: 100%;
+                    background-image: url('../images/Gtick.png');
+                    object-fit: contain;
+                    background-repeat: no-repeat;
+                    z-index: 999;
+                    position: absolute;
+                    top: 30px;
+                    left: 30px;
+                }
+            }
         }
+
         & .frameImg {
             height: 50px;
             width: 50px;
         }
     }
 }
+
 
 .blur_bg {
     filter: blur(8px);
@@ -964,9 +979,6 @@ body {
     }
 }
 
-::-webkit-scrollbar {
-    width: 20px;
-}
 
 .char {
     width: 100%;

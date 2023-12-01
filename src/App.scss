@@ -7,6 +7,39 @@
   src: url(./assets/fonts/OptimusPrinceps.ttf) format("opentype");
 }
 
+// PaymentForm.css
+.payment-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-element {
+  display: block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.payment-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.payment-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
 // loading indicator
 .loading-indicator:before {
   content: '';
@@ -64,6 +97,19 @@
   right: 0;
 }
 
-.grey_out {
-  background: grey !important;
+
+.bg_yellow {
+  background-color: yellow !important;
+}
+
+.success_cont {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  & h3 {
+    color: darkorange !important;
+  }
+
 }

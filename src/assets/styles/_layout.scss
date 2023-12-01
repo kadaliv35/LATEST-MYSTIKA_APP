@@ -10,6 +10,27 @@
     }
 }
 
+.unblur {
+
+}
+
+.blur {
+    filter: blur(3px);
+}
+
+// .blur::after {
+//     content: "";
+//     background-color: rgba(0,0,0,0.4);
+//     height: 100px;
+//     width: 100px;
+//     z-index: 999;
+//     object-fit: contain;
+// }
+
+audio {
+    display: none;
+}
+
 .lifeBar {
     background-image: url('../images/lifeBar.png');
     height: 43px;
@@ -23,16 +44,70 @@
         top: 20px;
         left: 30px;
     }
+
+
+    &-purchase {
+        color: darkgoldenrod;
+        font-weight: 700;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100px;
+
+        &-price {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            & span {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                & .coins {
+                    height: 30px;
+                    height: 30px;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    width: 20px;
+                    max-width: 20px;
+                }
+            }
+
+        }
+
+        & .life_img {
+            height: 50px;
+            max-height: 50px;
+            width: 50px;
+            max-width: 50px;
+            cursor: pointer;
+            margin: 0 !important;
+        }
+
+
+
+    }
 }
 
+.moment_img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+
 .joyBar {
+    // background-image: url('../images/leftJoyBar.png'), url('../images/rightJoyBar.png')
     background-image: url('../images/joyBar.png');
     height: 43px;
     width: 250px;
     background-size: cover;
     position: relative;
     overflow: hidden;
-
+    
     & .bars {
         position: absolute;
         top: 20px;
@@ -40,14 +115,86 @@
     }
 }
 
-.joyBarLg {
+.joyBarSm {
+    background-image: url('../images/leftJoyBar.png'), url('../images/rightJoyBar.png');
+    height: 40px;
+    width: 100%;
+    margin: 10px 0px;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    
+    & .bars {
+        position: absolute;
+        top: 23px;
+        left: 30px;
+    }
+    
+}
+
+.joyBarxSm {
+    // background-image: url('../images/leftJoyBar.png'), url('../images/rightJoyBar.png');
     background-image: url('../images/joyBar.png');
+    height: 40px;
+    // min-height: 80px;
+    width: 180px;
+    object-fit: contain;
+    margin: 10px 0px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    // overflow: hidden;
+
+    & .bars {
+        position: absolute;
+        top: 14px;
+        left: 20px;
+    }
+
+}
+.lifeBarSm {
+    // background-image: url('../images/leftJoyBar.png'), url('../images/rightJoyBar.png');
+    background-image: url('../images/lifeBar.png');
+    height: 40px;
+    // min-height: 80px;
+    width: 180px;
+    object-fit: contain;
+    margin: 10px 0px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    // overflow: hidden;
+
+    & .bars {
+        position: absolute;
+        top: 14px;
+        left: 20px;
+    }
+
+}
+
+
+.daysDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    // max-width: 350px;
+    margin: 0 25px;
+
+    & p {
+        color: #fff;
+    }
+}
+
+.joyBarLg {
+    background-image: url('../images/leftJoyBar.png'), url('../images/rightJoyBar.png');
     height: 53px;
     width: 320px;
     background-size: cover;
     position: relative;
     overflow: hidden;
-    
+
     & .bars {
         position: absolute;
         top: 25px;
@@ -100,9 +247,18 @@
             width: 18%;
             padding-left: 2%;
 
+            &-inventory {
+                display: flex;
+                flex-direction: column;
+                height: 100px;
+                justify-content: center;
+                align-items: center;
+            }
+
             & ul {
                 width: 100%;
                 padding: 0;
+                // display: flex;
 
                 & li {
                     padding-top: 5px;
@@ -110,8 +266,14 @@
                     text-decoration: none;
                     list-style-type: none;
 
+                    & .logo {
+                        width: 60px;
+                        height: 60px;
+                    }
+
                     & img {
-                        width: 55px;
+                        width: 30px;
+                        height: 30px;
                         float: left;
                     }
 
@@ -186,12 +348,14 @@
                     & .coin_box {
                         & img {
                             width: 40%;
+                            margin-left: 35%;
                         }
 
                         & h5 {
                             font-size: 15px;
                             display: block;
                             font-weight: 500;
+                            margin-left: 35%;
                         }
                     }
 
@@ -208,7 +372,6 @@
 
                     &:last-child {
                         width: 15%;
-
                     }
                 }
             }
@@ -218,29 +381,75 @@
     &-leftP {
         float: left;
         width: 25%;
-        padding: 2%;
+        padding: 2.8%;
         padding-top: 0px;
         padding-top: 0%;
+        position: relative;
+        height: 58vh;
 
         & .rect {
             background-image: url(../../assets/images/rect_frm_new.svg);
             background-repeat: no-repeat;
             background-size: contain;
             width: 96.5%;
-            height: 72vh;
+            height: 58vh;
 
             & ul {
                 padding: 0;
                 margin: 0px auto;
                 text-align: center;
                 padding-top: 10px;
+                position: relative;
+
+                & .close_btn {
+                    background-color: transparent;
+                    border: 0px solid #000;
+                    outline: none !important;
+                    position: absolute;
+                    right: 15px;
+                    top: 15px;
+
+                    & img {
+                        width: 50px;
+                    }
+                }
 
                 & li {
-                    list-style-type: non;
+                    list-style-type: none;
                     text-decoration: none;
                     display: block;
                     cursor: pointer;
                     margin-top: 2px;
+                    font-size: 12px;
+                    color: #fff;
+                }
+
+                & .credits {
+                    font-size: 12px;
+                    height: 80%;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
+                    margin-top: 1rem;
+
+                    & img {
+                        height: 30px;
+                        width: 30px;
+                    }
+
+                    & li {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        padding-left: 20px;
+                        align-items: center;
+                    }
+
+                }
+
+                & .logout_btn {
+                    // margin-top: 30px;
                 }
             }
 
@@ -248,47 +457,70 @@
                 text-align: center;
                 padding-left: 7%;
                 padding-right: 8%;
+                // position: absolute;
+                // bottom: 20px;
             }
         }
     }
 
     &-middleP {
         float: left;
-        width: 56%;
-        // padding:2%;
+        width: 60%;
+        padding-left: 4%;
         padding-top: 0px;
 
         & .rect_large {
             background-image: url(../../assets/images/map_bg.png);
             background-repeat: no-repeat;
             background-size: contain;
-            width: 100%;
-            overflow-y: scroll;
-            height: 63vh;
+            width: 90%;
+            // overflow-y: scroll;
+            height: 58vh;
+
+            &-spans {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-gap: 10px;
+                width: 100%;
+                max-width: 100%;
+                height: 100%;
+                padding: 10px;
+                padding-left: 30px;
+
+                & .span {
+                    height: 100px;
+                    width: 100px;
+                    display: grid;
+                    place-items: center;
+                }
+
+                & button {
+                    z-index: 999;
+                }
+            }
 
             & .map {
                 &-user_location {
-                    position: absolute;
-                    left: 32%;
-                    bottom: 10%;
                     color: #fff;
                     font-family: OptimusPrinceps;
+                    display: grid;
+                    place-items: center;
 
                     & img {
-                        width: 30%;
+                        width: 80%;
                     }
                 }
 
                 &-queen_location {
-                    // position: absolute;
-                    // right: 15%;
-                    // bottom: 24%;
-                    position: relative;
-                    right: -88%;
-                    bottom: -39%;
+                    position: absolute;
+                    right: 17%;
+                    bottom: 7%;
+                    // position: relative;
+                    // right: -88%;
+                    // bottom: -39%;
 
                     & img {
-                        width: 12%;
+                        width: 42%;
                     }
                 }
 
@@ -296,11 +528,11 @@
                     position: absolute;
                     background-image: url(../images/Notice_slate.svg);
                     background-repeat: no-repeat;
-                    right: 22%;
-                    bottom: 29%;
+                    right: 23.5%;
+                    bottom: 0;
                     width: 166px;
                     height: 189px;
-                    padding: 4%;
+                    padding: 2%;
                     text-align: center;
                     background-size: contain;
 
@@ -309,7 +541,7 @@
                         font-family: OptimusPrinceps;
                         text-align: center;
                         font-size: 14px;
-                        padding-top: 10px;
+                        padding-top: 30px;
                     }
 
                 }
@@ -321,7 +553,7 @@
             background-repeat: no-repeat;
             background-size: contain;
             width: 99%;
-            height: 63vh;
+            height: 58vh;
             font-family: OptimusPrinceps !important;
             padding: 3%;
             padding-left: 5%;
@@ -336,7 +568,8 @@
             & .pages {
                 display: flex;
                 flex-direction: row;
-                justify-content: space-around;
+                justify-content: space-evenly;
+                margin-left: -5%;
 
                 & .innerPages {
                     background-color: #ffffff09;
@@ -383,6 +616,7 @@
                     }
                 }
 
+
                 &-queen_location {
                     position: absolute;
                     right: 15%;
@@ -420,6 +654,7 @@
 
                 text-align: center;
                 margin: 0px auto;
+                margin-left: -5%;
 
                 & img {
                     width: 17%;
@@ -473,10 +708,12 @@
             & .goals {
                 display: flex;
                 flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
 
                 &-left {
                     & img {
-                        width: 34%;
+                        width: 24%;
                     }
 
                     & h5 {
@@ -503,15 +740,19 @@
 
 
                 &-middle {
+
                     & img {
                         height: 230px;
                         text-align: center;
+                        margin-left: 30px;
+                        margin-top: 40px;
                     }
 
                     & label {
                         color: white;
-                        text-align: center;
-                        margin: 0px 0px 0px 30px;
+                        text-align: end;
+                        // margin: 0px 0px 0px 30px;
+                        margin-left: 50px;
                     }
 
                     & h5 {
@@ -531,8 +772,10 @@
                         background-image: url(../images/card_bg.png);
                         background-repeat: no-repeat;
                         background-size: contain;
-                        height: 47vh;
-                        padding: 15px;
+                        height: 50vh;
+                        width: 240px;
+                        padding: 2px;
+                        margin-left: 20px;
 
                         & label {
                             font-size: 12px;
@@ -559,11 +802,12 @@
                                     font-family: OptimusPrinceps !important;
                                     color: $white !important;
                                     background: url(../images/goals_form.png) !important;
+                                    background-repeat: no-repeat !important;
                                     background-size: contain !important;
                                     // border-radius: 8.01499px;
                                     font-size: 13px !important;
-                                    width: 100%;
-                                    height: 1.9rem;
+                                    width: 100% !important;
+                                    height: 3rem;
                                     background-color: transparent !important;
                                     border: 0px solid #fff !important;
                                     // width: 100%;
@@ -583,7 +827,7 @@
                                     background-size: cover !important;
                                     // border-radius: 8.01499px;
                                     font-size: 13px !important;
-                                    height: 14vh;
+                                    height: 10vh;
                                     width: 100% !important;
                                     background-color: transparent !important;
                                     border: 0px solid #fff !important;
@@ -665,6 +909,7 @@
     height: 290px;
 }
 
+
 .ach {
     width: 100%;
     font-family: OptimusPrinceps;
@@ -698,7 +943,7 @@
 }
 
 .achiev {
-    margin-top: 5%;
+    // margin-top: 5%;
     width: 100%;
     font-family: OptimusPrinceps;
     padding-top: 30px;
@@ -734,7 +979,7 @@
         position: relative;
 
         & img {
-            width: 70px;
+            width: 50px;
             vertical-align: middle;
             /* text-align: center; */
             position: absolute;
@@ -752,14 +997,21 @@
             background-repeat: no-repeat;
             background-size: 100%, 100%;
             text-align: center;
-            height: 300px;
+            height: 320px;
             width: 440px;
             text-align: center;
             padding-top: 5px;
 
+
             & .bar {
-                display: grid;
-                place-items: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 20px;
+
+                & p {
+                    margin-left: 10px;
+                }
             }
 
             & h5 {
@@ -770,12 +1022,41 @@
                 letter-spacing: 1px;
             }
 
-            & label {
+
+            & .label {
                 font-size: 13px;
                 color: white;
                 margin-bottom: 0px;
                 line-height: 1;
                 letter-spacing: 1px;
+                margin: 10px 0;
+            }
+
+            & .rewards {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                & div {
+
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    gap: 20px;
+                    height: 70px;
+                    width: 70%;
+                    align-items: center;
+                }
+
+                & span {
+                    display: flex;
+                    flex-direction: column;
+
+                    & img {
+                        height: 50px;
+                        width: 50px;
+                    }
+                }
             }
 
             & .progres {
@@ -837,8 +1118,8 @@
 
 .activeBtn {
     background-image: url(../images/btn_trns_hover.svg);
-    width: 182px;
-    height: 48px;
+    width: 240px;
+    height: 60px;
 }
 
 .treasureImg {
@@ -873,4 +1154,65 @@
 
 .hailHero {
     font-size: 10px;
+}
+
+.final_reward {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 80px;
+
+    &-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 80%;
+    }
+}
+
+.Terms {
+    max-height: 50vh;
+    overflow: scroll;
+}
+
+.reward {
+    &-title {
+        margin-top: 1rem;
+    }
+
+    &-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        &-sub {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            & .rewardImg {
+                height: 100px;
+                width: 100px;
+            }
+
+            & span {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+
+                & img {
+                    height: 30px;
+                    width: 30px;
+                    margin-right: 5px;
+                }
+
+                & b {
+                    font-size: 20gpx;
+                }
+            }
+        }
+    }
 }

@@ -16,6 +16,14 @@ import decks from "../../assets/images/decks.png";
 import GoalServices from "../../services/GoalServices";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import lordGult from '../../assets/images/LordGult.png'
+import Modals from '../../commonUtils/Modals'
+import coins from '../../assets/images/coins.png'
+import crystal from '../../assets/images/crystals.png'
+import velocity from '../../assets/images/velocity.png'
+import speed from '../../assets/images/speed.png'
+import intelligence from '../../assets/images/intelligence.png'
+import queen from '../../assets/images/queen.png'
+
 
 class Goals extends Component {
   constructor(props) {
@@ -43,6 +51,8 @@ class Goals extends Component {
       goalCompleteByUser: false,
       isbuyGoalCard: false,
       isBuyDeck: false,
+      cardsPopup: false,
+      decksPopup: false
     };
     this.closePop = this.closePop.bind(this);
     this.navGoalsFlag = this.navGoalsFlag.bind(this);
@@ -69,17 +79,17 @@ class Goals extends Component {
         console.log("res", res);
         this.setState({ goalCompleteByUser: true, errorData: res.data });
       }
-    });
+    }).catch((err) => console.error(err))
   }
 
   buyGoalCard() {
     let obj = {
       deckId: this.state.allDeckList[0].deckId,
-      Category: "speed",
+      Category: this.state.cardType,
     };
     GoalServices.buyGoalCard(obj).then((res) => {
       this.setState({ isbuyGoalCard: true, errorData: res.data });
-    });
+    }).catch((err) => console.error(err))
   }
   buyNewDeck() {
     let obj = {
@@ -89,7 +99,7 @@ class Goals extends Component {
     };
     GoalServices.buyNewDeck(obj).then((res) => {
       this.setState({ isBuyDeck: true });
-    });
+    }).catch((err) => console.error(err))
   }
   contineTimer() {
     this.setState({ isStopTime: false, isStartTime: true }, () => {
@@ -162,8 +172,8 @@ class Goals extends Component {
             }
           );
         }
-      });
-    });
+      }).catch((err) => console.error(err))
+    })
   }
 
   pauseTimer() {
@@ -330,7 +340,7 @@ class Goals extends Component {
           );
         }
       );
-    });
+    }).catch((err) => console.error(err))
   }
 
   deckSelection = (item) => {
@@ -348,6 +358,18 @@ class Goals extends Component {
     else {
       return "Speed"
     }
+  }
+
+  openCards = () => {
+    this.setState({ cardsPopup: !this.state.cardsPopup })
+  }
+
+  openDecks = () => {
+    this.setState({ decksPopup: !this.state.decksPopup })
+  }
+
+  selectCard = (type) => {
+    this.setState({ cardType: type })
   }
 
   render() {
@@ -368,7 +390,7 @@ class Goals extends Component {
                   <button
                     type="button"
                     className="img_btn_home btn-w125 btn-h64"
-                    onClick={() => this.buyGoalCard()}
+                    onClick={() => this.openCards()}
                   >
                     Buy a card
                   </button>
@@ -376,7 +398,7 @@ class Goals extends Component {
                     <button
                       type="button"
                       className="img_btn_home btn-w125 btn-h64"
-                      onClick={() => this.buyNewDeck()}
+                      onClick={() => this.openDecks()}
                     >
                       Buy a deck
                     </button>
@@ -427,88 +449,196 @@ class Goals extends Component {
               )} */}
 
               {/* {this.state.goalCompleteByUser &&( */}
+              <Modals
+                open={this.state.cardsPopup}
+                header={
+                  <div>
+                    <h5>GET A GOAL CARD</h5>
+                    <button
+                      type="button"
+                      className="close_btn"
+                      onClick={() => this.openCards()}
+                    >
+                      <img src={close}></img>
+                    </button>
+                  </div>
+                }
+                body={
+                  <div className="text-center">
+                    <span>CONTINUE A NEW TASK WITH THIS MAGIC CARD PICK THE CARD YOU WANT TO PLAY WITH 100 <img src={coins} /> </span>
+                    <div className="d-flex justify-content-around mt-5">
+                      <div>
+                        <img src={speed} onClick={() => this.selectCard("speed")} />
+                        <h5>Speed</h5>
+                      </div>
+                      <div>
+                        <img src={velocity} onClick={() => this.selectCard("velocity")} />
+                        <h5>Velocity</h5>
+                      </div>
+                      <div>
+                        <img src={intelligence} onClick={() => this.selectCard("intelligence")} />
+                        <h5>Intelligence</h5>
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-start mt-4">
+                      <img src={queen} />
+                      <button
+                        type="button"
+                        className="img_btn_home ml-5"
+                        onClick={this.buyGoalCard}
+                      >
+                        Indeed
+                      </button>
+                    </div>
+                  </div>
+                }
+                footer={
+                  <div className="text-center">
+                  </div>
+                }
+              />
+              <Modals
+                open={this.state.decksPopup}
+                header={
+                  <div>
+                    <h5>GET A GOAL DECK</h5>
+                    <button
+                      type="button"
+                      className="close_btn"
+                      onClick={() => this.openDecks()}
+                    >
+                      <img src={close}></img>
+                    </button>
+                  </div>
+                }
+                body={
+                  <div className="text-center">
+                    <span>TAKE YOUR GOALS To THE NEXT LEVEL WITH A BRAND NEW GOAL DECK
+                      <br />
+                      DO YOU WANT TO PURCHASE THE DECK FOR 30 <img src={crystal} className="h-25" /> </span>
+                    <div>
+                      <img src={decks} className="h-25 w-25" />
+                    </div>
 
-              <Modal isOpen={this.state.goalCompleteByUser}>
-                <div className="modal-header">Goal</div>
-                <button
-                  type="button"
-                  className="close_btn"
-                  onClick={() => this.closeGoalComplete()}
-                >
-                  <img src={close}></img>
-                </button>
-                <div className="modal-body frame text-center">
-                  {/* <h4 className="">
+                    <div className="d-flex justify-content-start mt-4">
+                      <img src={queen} />
+                      <button
+                        type="button"
+                        className="img_btn_home"
+                        onClick={this.buyNewDeck}
+                      >
+                        Indeed
+                      </button>
+                    </div>
+                  </div>
+                }
+                footer={
+                  <div></div>
+                }
+              />
+
+              <Modals
+                open={this.state.goalCompleteByUser}
+                header={
+                  <div>
+                    <h5 className="text-white">Goal</h5>
+                    <button
+                      type="button"
+                      className="close_btn"
+                      onClick={() => this.closeGoalComplete()}
+                    >
+                      <img src={close}></img>
+                    </button>
+                  </div>
+                }
+                body={
+                  <div className="frame text-center">
+                    {/* <h4 className="">
           
             </h4> */}
-                  <p>Goal Completed Successfully</p>
+                    <p>Goal Completed Successfully</p>
 
-                  <button
-                    type="button"
-                    className="img_btn_home"
-                    onClick={this.closeGoalComplete}
-                  >
-                    Ok
-                  </button>
-                </div>
-              </Modal>
-              <Modal isOpen={this.state.isbuyGoalCard}>
-                <div className="modal-header">Goal Card</div>
-                <button
-                  type="button"
-                  className="close_btn"
-                  onClick={() => this.closeGoalComplete()}
-                >
-                  <img src={close}></img>
-                </button>
-                <div className="modal-body frame text-center">
-                  {/* <h4 className="">
+                    <button
+                      type="button"
+                      className="img_btn_home"
+                      onClick={this.closeGoalComplete}
+                    >
+                      Ok
+                    </button>
+                  </div>
+                }
+              />
+              <Modals
+                open={this.state.isbuyGoalCard}
+                header={
+                  <div>
+                    <h5 className="text-white">Goal Card</h5>
+                    <button
+                      type="button"
+                      className="close_btn"
+                      onClick={() => this.closeGoalComplete()}
+                    >
+                      <img src={close}></img>
+                    </button>
+                  </div>
+                }
+                body={
+                  <div className="frame text-center">
+                    {/* <h4 className="">
           
             </h4> */}
-                  <p></p>
+                    <p></p>
 
-                  <button
-                    type="button"
-                    className="img_btn_home"
-                    onClick={this.closeGoalComplete}
-                  >
-                    Ok
-                  </button>
-                </div>
-              </Modal>
+
+                    <button
+                      type="button"
+                      className="img_btn_home"
+                      onClick={this.closeGoalComplete}
+                    >
+                      Ok
+                    </button>
+                  </div>
+                }
+              />
               {/* )} */}
 
-              <Modal isOpen={this.state.isBuyDeck}>
-                <div className="modal-header">Deck</div>
-                <button
-                  type="button"
-                  className="close_btn"
-                  onClick={() => this.closeGoalComplete()}
-                >
-                  <img src={close}></img>
-                </button>
-                <div className="modal-body frame text-center">
-                  {/* <h4 className="">
+              <Modals open={this.state.isBuyDeck}
+                header={
+                  <div>
+                    <h5 className="modal-header">Deck</h5>
+                    <button
+                      type="button"
+                      className="close_btn"
+                      onClick={() => this.closeGoalComplete()}
+                    >
+                      <img src={close}></img>
+                    </button>
+                  </div>
+                }
+                body={
+                  <div className="frame text-center">
+                    {/* <h4 className="">
           
             </h4> */}
-                  <p></p>
+                    <p></p>
 
-                  <button
-                    type="button"
-                    className="img_btn_home"
-                    onClick={this.closeGoalComplete}
-                  >
-                    Ok
-                  </button>
-                </div>
-              </Modal>
+                    <button
+                      type="button"
+                      className="img_btn_home"
+                      onClick={this.closeGoalComplete}
+                    >
+                      Ok
+                    </button>
+                  </div>
+                }
+              />
               {/* )} */}
 
               {this.state.listGoalsFlag && this.state.deckList.length > 0 && (
-                <div className="col-7">
+                <div className="col-8">
                   <div className="row">
                     <div className="col-5 p-l-0 goals-middle">
-                      <img id="lordGult" src={lordGult} />
+                      <img id="lordGult" src={lordGult} alt="lrd og guilt" />
                       <label>Lord of Gult</label>
                     </div>
                     <div className="col-7 goals-right p-r-0 p-l-5">
@@ -557,56 +687,82 @@ class Goals extends Component {
                                 }}
                               ></textarea>
                             </div>
-                            <div className="text-center">
-                              {(!this.state.isStartTime &&
-                                this.state.isStopTime) ||
-                                (this.state.isStartTime &&
-                                  !this.state.isStopTime) ||
-                                (!this.state.isStartTime &&
-                                  !this.state.isStopTime && (
+                            <div className="d-flex flex-row justify-content-around align-items-center">
+                              <div className="">
+                                <div className="text-center">
+                                  {(!this.state.isStartTime &&
+                                    this.state.isStopTime) ||
+                                    (this.state.isStartTime &&
+                                      !this.state.isStopTime) ||
+                                    (!this.state.isStartTime &&
+                                      !this.state.isStopTime && (
+                                        <button
+                                          type="button"
+                                          className="img_btn_home btn-w85 btn-h44 mt-2"
+                                          onClick={() => {
+                                            this.beginTimer(currentIndex);
+                                          }}
+                                        >
+                                          Begin
+                                        </button>
+                                      ))}
+                                </div>
+                                <div className="text-center">
+                                  {this.state.isStartTime && (
                                     <button
                                       type="button"
                                       className="img_btn_home btn-w85 btn-h44 mt-2"
                                       onClick={() => {
-                                        this.beginTimer(currentIndex);
+                                        this.pauseTimer();
                                       }}
                                     >
-                                      Begin
+                                      pause
                                     </button>
-                                  ))}
-                              <span className={`"imageGrp" ${this.currentCards()}`}>
-                                <p>{this.currentCards()}</p>
-                              </span>
-                            </div>
-                            <div className="text-center">
-                              {this.state.isStartTime && (
-                                <button
-                                  type="button"
-                                  className="img_btn_home btn-w85 btn-h44 mt-2"
-                                  onClick={() => {
-                                    this.pauseTimer();
-                                  }}
-                                >
-                                  pause
-                                </button>
-                              )}
-                              {this.state.isStopTime && (
-                                <button
-                                  type="button"
-                                  className="img_btn_home btn-w85 btn-h44 mt-2"
-                                  onClick={() => {
-                                    this.contineTimer();
-                                  }}
-                                >
-                                  continue
-                                </button>
-                              )}
-                            </div>
-                            {isTimerRunning && (
-                              <div className="text-center">
-                                {min}:{sec < 10 ? "0" + sec : sec}
+                                  )}
+                                  {this.state.isStopTime && (
+                                    <button
+                                      type="button"
+                                      className="img_btn_home btn-w85 btn-h44 mt-2"
+                                      onClick={() => {
+                                        this.contineTimer();
+                                      }}
+                                    >
+                                      continue
+                                    </button>
+                                  )}
+                                </div>
+                                <div className="text-center arrow">
+                                  <h5 className="text-white fs-12 mb-1 mt-1">
+                                    {currentIndex === 0
+                                      ? currentIndex + 1
+                                      : currentIndex + 1}{" "}
+                                    /{this.state.deckList.length} Cards
+                                  </h5>
+                                  <img
+                                    className="cursor m-r-2"
+                                    src={left}
+                                    alt="left"
+                                    onClick={() => this.navGoalsFlag(currentIndex)}
+                                  ></img>
+                                  <img
+                                    className="cursor"
+                                    src={right}
+                                    alt="right"
+                                    onClick={() => this.formGoals(currentIndex)}
+                                  ></img>
+                                </div>
                               </div>
-                            )}
+                              <div className="d-flex flex-column justify-content-center align-items-center">
+                                {isTimerRunning && (
+                                  <div className="text-center">
+                                    {min}:{sec < 10 ? "0" + sec : sec}
+                                  </div>
+                                )}
+                                <span className={`"imageGrp" ${this.currentCards()}`}>
+                                  <p className="cardName">{this.currentCards()}</p>
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       )}
@@ -625,24 +781,6 @@ class Goals extends Component {
                           </label>
                         </div>
                       )}
-                      <div className="text-center arrow">
-                        <h5 className="text-white fs-12 mb-1 mt-1">
-                          {currentIndex === 0
-                            ? currentIndex + 1
-                            : currentIndex + 1}{" "}
-                          /{this.state.deckList.length} Cards
-                        </h5>
-                        <img
-                          className="cursor m-r-2"
-                          src={left}
-                          onClick={() => this.navGoalsFlag(currentIndex)}
-                        ></img>
-                        <img
-                          className="cursor"
-                          src={right}
-                          onClick={() => this.formGoals(currentIndex)}
-                        ></img>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -703,7 +841,7 @@ class Goals extends Component {
             {/* <h1 className='text-red'>Goals</h1> */}
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }

@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PrivateRoute from "../../commonUtils/PrivateRoute";
-import Home from "../../components/home/DailyLogin";
 import Landingpage from "../../components/landingpage.jsx/Landingpage";
-import Header from "../header/Header";
 import HowToPlay from "../../components/howtoplay/HowToPlay";
 import LearningTraven from "../../components/learningtraven/LearningTraven";
 import RoadMaps from "../../components/roadmaps/RoadMaps";
@@ -16,9 +13,6 @@ import coins from "../../assets/images/coins_new.svg";
 import crystal from "../../assets/images/crystal.svg";
 import crystals from "../../assets/images/crystals.png";
 import logo from "../../assets/images/logo.svg";
-import progress from "../../assets/images/progress_small.svg";
-import progressLg from "../../assets/images/progress_lg.png";
-import progressRed from "../../assets/images/progress_red.svg";
 import queen from "../../assets/images/queen.svg";
 import insta from "../../assets/images/instgram.svg";
 import fb from "../../assets/images/facebook.svg";
@@ -26,42 +20,30 @@ import twitter from "../../assets/images/t.svg";
 import Pintrest from "../../assets/images/P.svg";
 import crown from "../../assets/images/crown.svg";
 import cup from "../../assets/images/gold_cup.svg";
-import achievements from "../../assets/images/achievements.png";
-import coinsFrm from "../../assets/images/coins_frame.png";
-import crystalFrm from "../../assets/images/crystal_frame.png";
-import sunFrm from "../../assets/images/sun_coin_frame.png";
-import sunCoin from "../../assets/images/sun_coin.png";
-import star from "../../assets/images/star_coin.png";
-import queenCoin from "../../assets/images/queen_coin.png";
-import groupCoin from "../../assets/images/group_coins.png";
-import crystalCoin from "../../assets/images/crystal_coin.png";
-import compassCoin from "../../assets/images/compass_coin.png";
-import liquidCoin from "../../assets/images/liquid_coin.png";
-import bagCoin from "../../assets/images/bag_coin.png";
-import magicCoin from "../../assets/images/magic_coin.png";
-import gostCoin from "../../assets/images/gost_coin.png";
-import letterCoin from "../../assets/images/letter_coin.png";
 import AchivementServices from "../../services/AchivementServices";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import close from "../../assets/images/close_ic.svg";
-import diamond from "../../assets/images/diamonds.png";
-import golden from "../../assets/images/golden-tick.svg";
 import QuestServices from "../../services/QuestServices";
 import TreasureQuest from "../../components/Quest/TreasureQuest";
 import DailyQuest from "../../components/Quest/DailyQuest";
 import Login from "../../components/login/Login";
-import HailHero from "../../components/howtoplay/HailHero";
-import DailyLogin from "../../components/home/DailyLogin";
-import Charecter from '../../components/charecter/Charecter'
+import Charecter from "../../components/charecter/Charecter";
 import ProgressBar from "@ramonak/react-progress-bar";
 import Modals from "../../commonUtils/Modals";
 import Carousel from "react-bootstrap/Carousel";
-import Popups from './PopupModel.json';
-import treasure from '../../assets/images/treasure.png'
-import bag from '../../assets/images/bag.png'
-import crystalTreasure from '../../assets/images/crystalTreasure.png'
+import Popups from "./PopupModel.json";
 import Store from "./Store";
 import Bars from "../../commonUtils/Bars";
+import Achievements from "./Achievements";
+import creadituser from "../../assets/images/creditsuser.png";
+import vector from "../../assets/images/Vector.png";
+import TermsC from "../../assets/images/terms&c.png";
+import themeMusic from "../../assets/images/audio.mp3";
+import LeaderBoards from "./LeaderBoards";
+import warrior from "../../assets/images/char_warrior.png";
+import archangel from "../../assets/images/char_archangel.png";
+import assassin from "../../assets/images/char_assassin.png";
+import lifebuy from "../../assets/images/red.png";
+import dsblifebuy from "../../assets/images/gray.png";
 
 class Layout extends Component {
   constructor(props) {
@@ -93,7 +75,16 @@ class Layout extends Component {
       needHelp: false,
       isOpenDailyLogin: false,
       heroPage: "MAP",
-      storePopup: false
+      storePopup: false,
+      leaderPopup: false,
+      mapLeads: false,
+      ldType: "daily",
+      settingsOpen: false,
+      termsConditions: false,
+      audioPlay: false,
+      lifeBuy: false,
+      userRankOrder: 0,
+      openCredits: false,
     };
     this.navigateRoute = this.navigateRoute.bind(this);
     this.goToAchievements = this.goToAchievements.bind(this);
@@ -103,18 +94,31 @@ class Layout extends Component {
     this.getToTresureQuest = this.getToTresureQuest.bind(this);
     this.gotoDailyQuest = this.gotoDailyQuest.bind(this);
     this.claimTreasureQuest = this.claimTreasureQuest.bind(this);
+    this.achievementsChest = this.achievementsChest.bind(this);
+    this.getAllAchivement = this.getAllAchivement.bind(this);
   }
   componentWillMount() {
     const data = JSON.parse(sessionStorage.getItem("dailyLogin"));
     const rewards = JSON.parse(sessionStorage.getItem("totalDailyLogin"));
+    const audio = sessionStorage.getItem("audioPlay");
     const userAchivements = rewards.achivementStats;
     const enableAchivements = rewards.achivements;
-    this.state.treasureChest.push(rewards?.treasureChest)
-    const userRank = rewards?.userCharacterList[0]?.chCurrentRank?.rankname
+    this.state.treasureChest.push(rewards?.treasureChest);
+    const userRank = rewards?.userCharacterList[0]?.chCurrentRank?.rankname;
+
     const url = new URL(window.location.href);
-    const endPath = url.pathname.split('/').pop();
+    const endPath = url.pathname.split("/").pop();
     // alert(endPath)
-    this.navigationButtons(endPath)
+    console.log({ data, rewards });
+    this.navigationButtons(endPath);
+    let i = rewards?.userCharacterList?.findIndex((x) => x.active === true);
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    // console.log(user["sub"])
+    let username = user["sub"];
+    this.setState({ userName: username });
+
+    // alert(audio)
+    let rankOrder = rewards?.userCharacterList[i].chCurrentRank?.rankOrder;
     this.setState(
       {
         userData: data,
@@ -124,36 +128,70 @@ class Layout extends Component {
         treasureChest: this.state.treasureChest,
         toDayQuest: rewards?.todaysQuests,
         rankname: userRank,
-        chAttributes: data?.chAttributes
+        chAttributes: data?.chAttributes,
+        xpPoints: rewards?.userCharacterList[i].xpPoints,
+        xpPointsTotal: rewards?.userCharacterList[i].finalXpPoints,
+        userCharacterList: rewards?.userCharacterList,
+        userId: rewards.userId,
+        audioPlay: audio,
+        usedPortionCount:
+          rewards?.userCharacterList[i].userHealthPortionUtilityCount,
       },
       () => {
-        console.log({ data })
+        console.log({ data, rewards });
         console.log("userId", rewards.userId);
+        console.log(rewards?.userCharacterList[i], "RankOrder", { rankOrder });
+        this.getPortionCoins(rankOrder);
         this.setState(
           {
             min: this.state.treasureChest[0]?.duration,
             sec: 0,
           },
           () => {
+            this.state.userCharacterList
+              .filter((item) => item.active === true)
+              .map((item) => {
+                return this.setState({
+                  charRole: item.charecterId.characterName,
+                  userRankOrder: item.chCurrentRank.rankOrder,
+                });
+              });
             this.continueTime();
+            this.getHealthDetails();
           }
         );
       }
     );
   }
 
-  claimTreasureQuest(TcId) {
-    this.setState({ isOpenTreQuest: false })
-    alert(TcId)
-    QuestServices.updatedTChestStatus(TcId).then((res) => {
-      console.log("res", res);
-    });
+  getHealthDetails() {
+    if (
+      this.state.rewardsData.rewards.coinsCount > 100 &&
+      this.state.usedPortionCount < this.state.maxPotionCount
+    ) {
+      this.setState({ lifeBuy: true });
+    }
   }
+
+  claimTreasureQuest(TcId) {
+    this.setState({ isOpenTreQuest: false });
+    // alert(TcId)
+    QuestServices.updatedTChestStatus(this.state.userId, TcId)
+      .then((res) => {
+        console.log("res", res);
+      })
+      .catch((err) => console.error(err));
+  }
+
+  achievementsChest(TcId) {}
+
   claimDailyQuestRewards() {
-    this.hideDQpop()
-    QuestServices.claimDailyQuestRewards().then((res) => {
-      console.log({ res })
-    });
+    this.hideDQpop();
+    QuestServices.claimDailyQuestRewards()
+      .then((res) => {
+        console.log({ res });
+      })
+      .catch((err) => console.error(err));
   }
 
   getToTresureQuest() {
@@ -168,8 +206,8 @@ class Layout extends Component {
   }
 
   openDailyLogin = () => {
-    this.props.history.push("/dailylogin")
-  }
+    this.props.history.push("/dailylogin");
+  };
 
   continueTime() {
     this.timerInterval = setInterval(() => {
@@ -179,32 +217,32 @@ class Layout extends Component {
           clearInterval(this.timerInterval);
           this.setState({ timeUp: true });
         } else {
-          this.setState({ min: min - 1, sec: 59 }, () => { });
+          this.setState({ min: min - 1, sec: 59 }, () => {});
         }
       } else {
-        this.setState({ sec: sec - 1 }, () => { });
+        this.setState({ sec: sec - 1 }, () => {});
       }
     }, 1000);
   }
 
   navigationButtons(path) {
-    let route = ""
+    let route = "";
     if (path === "howtoplay") {
-      route = "PLAY"
+      route = "PLAY";
     } else if (path === "learningtraven") {
-      route = "LEARNING"
+      route = "LEARNING";
     } else if (path === "roadmaps") {
-      route = "ROADMAP"
+      route = "ROADMAP";
     } else if (path === "goals") {
-      route = "GOALS"
+      route = "GOALS";
     } else if (path === "charecter") {
-      route = "CHARECTER"
+      route = "CHARECTER";
     } else if (path === "contactus") {
-      route = "CONTACTUS"
+      route = "CONTACTUS";
     } else if (path === "landingpage") {
-      route = "MAP"
+      route = "MAP";
     }
-    this.setState({ buttonName: route })
+    this.setState({ buttonName: route });
   }
 
   navigateRoute(value) {
@@ -222,9 +260,9 @@ class Layout extends Component {
     } else if (value === "CONTACTUS") {
       this.props.history.push("/contactus");
     } else if (value === "") {
-      this.props.history.push("/")
+      this.props.history.push("/");
     } else if (value === "MAP") {
-      this.props.history.push("/landingpage")
+      this.props.history.push("/landingpage");
     }
     window.location.reload();
   }
@@ -243,53 +281,102 @@ class Layout extends Component {
     });
   }
   closeAchievements = () => {
-    this.setState({ openAchivementPop: false })
-  }
+    this.setState({ openAchivementPop: false });
+  };
   getAllAchivement() {
-    AchivementServices.getAlLAchivements().then((res) => {
-      this.setState({ allAchivemets: res.data }, () => {
-        this.state.allAchivemets.forEach((ele) => {
-          ele.enable = false;
-          if (this.state.enableAchivements.length > 0) {
-            this.state.enableAchivements.forEach((item) => {
-              if (ele.achivementId === item.enableAchivements) {
-                ele.enable = true;
-              }
-            });
-          }
-        });
-      });
-    });
+    AchivementServices.getAlLAchivements()
+      .then((res) => {
+        console.log(res.data, "Achievements");
+        this.setState({ allAchivemets: res.data }, () => {});
+      })
+      .catch((err) => console.error(err));
   }
 
   claimReward(achivementId) {
     AchivementServices.claimReward(
       this.state.userData.userCharacterId,
       achivementId
-    ).then((res) => { });
+    )
+      .then((res) => {})
+      .catch((err) => console.error(err));
+  }
+
+  getPortionCoins(rankOrder) {
+    AchivementServices.getPortionCoins(rankOrder)
+      .then((res) => {
+        console.log({ res });
+        this.setState({ maxPotionCount: res.data.utilityLimit });
+      })
+      .catch((err) => console.error({ err }));
   }
 
   openQuest() {
-    this.setState({ isOpenDailyQuest: true })
+    this.setState({ isOpenDailyQuest: true });
   }
 
   navigateScreens = (name) => {
-    this.navigateRoute(name)
-  }
+    this.navigateRoute(name);
+  };
 
   openTutorial = () => {
-    this.setState({ needHelp: !this.state.needHelp })
+    this.setState({ needHelp: !this.state.needHelp });
     if (this.state.heroPage === "PLAY") {
     }
-  }
+  };
 
   openStore = () => {
     // alert(this.state.storePopup)
-    this.setState({ storePopup: !this.state.storePopup })
+    this.setState({ storePopup: !this.state.storePopup });
+  };
+
+  openLeaderboards = (type) => {
+    this.setState({ leaderPopup: !this.state.leaderPopup }, () => {
+      if (type === "close") {
+        this.setState({ mapLeads: false });
+      }
+    });
+  };
+
+  openLeadMap = () => {
+    this.setState({ mapLeads: true });
+  };
+
+  ldBoards = (type) => {
+    this.setState({ ldType: type });
+  };
+
+  settingsFunction() {
+    this.setState({ settingsOpen: !this.state.settingsOpen });
+  }
+
+  openTermsCond() {
+    this.setState({ termsConditions: !this.state.termsConditions });
+  }
+
+  playMusic() {
+    this.setState({ audioPlay: !this.state.audioPlay }, () => {
+      // alert(this.state.audioPlay)
+      sessionStorage.setItem("audioPlay", this.state.audioPlay);
+    });
+  }
+
+  increaseHealt() {
+    if (
+      this.state.maxPotionCount > this.state.usedPortionCount &&
+      this.state.rewardsData.rewards.coinsCount > 100
+    ) {
+      AchivementServices.buyPotionCoins(this.state.userData.userCharacterId)
+        .then((res) => {
+          console.log({ res });
+        })
+        .catch((err) => console.error({ err }));
+    } else {
+      alert("Please make sure you have enough gold coins");
+    }
   }
 
   render() {
-    const { buttonName } = this.state
+    const { buttonName } = this.state;
     return (
       <Router>
         <div className="w-100">
@@ -300,706 +387,125 @@ class Layout extends Component {
                   <div className="text-white header-left">
                     <ul>
                       <li>
-                        <img src={sProfile}></img>
+                        <img
+                          className="logo"
+                          src={
+                            this.state.charRole === "Warrior"
+                              ? warrior
+                              : this.state.charRole === "Assassin"
+                              ? assassin
+                              : archangel
+                          }
+                          alt="player-charector"
+                        ></img>
                         <div className="content">
                           <span>
-                            Hi <img src={hand}></img>
+                            Hi <img src={hand} alt="hand"></img>
                           </span>{" "}
-                          <label>{this.state.userData.userName} !</label>
+                          <label>{this.state.userName} !</label>
                         </div>
                       </li>
-                      <li>
-                        <img src={coin}></img>
-                        <div className="content">
-                          <span>Coins</span>{" "}
-                          <label className="fs-18">
-                            {this.state.rewardsData.rewards.coinsCount}
-                          </label>
-                        </div>
-                      </li>
-                      <li>
-                        <img src={crystals}></img>
-                        <div className="content">
-                          <span>Crystals</span>{" "}
-                          <label className="fs-18">
-                            {this.state.rewardsData.rewards.crystalsCount}
-                          </label>
-                        </div>
+                      <li className="header-left-inventory">
+                        <li>
+                          <img src={coin} alt="coin"></img>
+                          <div className="content">
+                            <span>Coins</span>{" "}
+                            <label className="fs-18">
+                              {this.state.rewardsData.rewards.coinsCount}
+                            </label>
+                          </div>
+                        </li>
+                        <li>
+                          <img src={crystals} alt="crystal"></img>
+                          <div className="content">
+                            <span>Crystals</span>{" "}
+                            <label className="fs-18">
+                              {this.state.rewardsData.rewards.crystalsCount}
+                            </label>
+                          </div>
+                        </li>
                       </li>
                     </ul>
                   </div>
-                  <div>
-                    <Modal isOpen={this.state.openAchivementPop}>
-                      <div className="modal-header text-black-sec font-bold">Achievements</div>
-                      <button
-                        type="button"
-                        className="close_btn"
-                        onClick={() => this.closeAchievements()}
-                      >
-                        <img src={close}></img>
-                      </button>
-                      <div className="modal-body frame text-center modal-body-scroll">
-                        <div className="ach">
-                          <div className="achiev-head">
-                            <div className="achiev-head-left">
-                              <img src={achievements}></img>
-                            </div>
-                            <div className="achiev-head-right">
-                              <p>Track your epic progress and earn rewards for <br></br>your brave accomplishments here.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={sunCoin}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Master Leaner</h5>
-                              <label>Earn 10000 XP</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={30} />
-                                </div>
-                                <label className="text-white fs-13">30/10000 XP</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={star}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Zen Adventurer</h5>
-                              <label>Reach level 50 with a Character</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={2} />
-                                </div>
-                                <label className="text-white fs-13">2/50</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={queenCoin}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Exuberant hustler</h5>
-                              <label>Reach Exemplar rank with all characters</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={1} />
-                                </div>
-                                <label className="text-white fs-13">1/3</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={groupCoin}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Treasure hunter</h5>
-                              <label>Earn 5000 coins</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={8} />
-                                </div>
-                                <label className="text-white fs-13">8/50000</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={crystalCoin}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Gem collector</h5>
-                              <label>Earn 500 coins</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={8} />
-                                </div>
-                                <label className="text-white fs-13">8/500</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={compassCoin}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Legendary explorer</h5>
-                              <label>Explore all areas in the map</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={3 / 9} />
-                                </div>
-                                <label className="text-white fs-13">3/9</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={bagCoin}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Travel Marvel</h5>
-                              <label>Travel to all the areas in the map</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={2} />
-                                </div>
-                                <label className="text-white fs-13">2/9</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-
-
-
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={liquidCoin}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Master of Elements</h5>
-                              <label>Win 100 elements battles</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={3} />
-                                </div>
-                                <label className="text-white fs-13">8/50</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-
-
-
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={magicCoin}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Flawless Goal-seeker</h5>
-                              <label>Complete 100 goal cards</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={3} />
-                                </div>
-                                <label className="text-white fs-13">8/100</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-
-
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={magicCoin}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Fierce Claw</h5>
-                              <label>Defeat 100 enemies</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={3} />
-                                </div>
-                                <label className="text-white fs-13">5/100</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-
-
-                        <div className="achiev">
-                          <div className="achiev-left">
-                            <img src={magicCoin}></img>
-                          </div>
-                          <div className="achiev-right">
-                            <div className="frame">
-                              <h5>Epic Quester</h5>
-                              <label>Complete 50 daily quests</label>
-                              <div className="progres text-center pl-5 pr-5">
-                                <div className="bar">
-                                  <Bars size={"lg"} completed={3} />
-                                </div>
-                                <label className="text-white fs-13">5/50</label>
-                              </div>
-                              <ul>
-                                <li>
-                                  <img src={coinsFrm}></img>
-                                  <label>20</label>
-                                </li>
-                                <li>
-                                  <img src={crystalFrm}></img>
-                                  <label>10</label>
-                                </li>
-                                <li>
-                                  <img src={sunFrm}></img>
-                                  <label>10</label>
-                                </li>
-                              </ul>
-                              <button
-                                type="button"
-                                className="img_btn_home"
-                              >
-                                Claim
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-
-
-
-                        {/* <h4 className="">
-          
-            </h4> */}
-
-                        <div className="col text-center">
-                          <div className="day-list">
-                            {/* <ul>
-                              {this.state.allAchivemets.map((item, index) => {
-                                return (
-                                  <li
-                                    className={!item.enable ? "grey_out" : ""}
-                                  >
-                                    <h5>({item.achivementName})</h5>
-                                    <h5>({item.achivementDescription})</h5>
-                                    {item.parameter === "COINS" ? (
-                                      <span>
-                                        {this.state.userAchivements.earnedCoins}
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "CRYSTALS" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .earnedCrystals
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "EXPLORED_AREAS" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .maxNoOfExploreAllAreasInMap
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "LEVEL" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .maxNoOfExploreAllAreasInMap
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "RANK" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .maxRankForExuberantHustlerl
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "TRAVELD_AREAS" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .maxNoOfTravelAllAreasInMap
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "ELEMENT_BATTLES" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .noOfElementWins
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "ENEMIES" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .noOfDefetedEnemies
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "HEALTH_POTIONS" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .noOfHealtheProtionsUsed
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "DAILY_QUESTS" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .noOfDailyQuestsCompleted
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "TREASURE_CHEST" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .noOfTimesTreasureChestOpened
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "LOGIN_HOURS" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .firstLoggedInTime
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    {item.parameter === "GOALS" ? (
-                                      <span>
-                                        {
-                                          this.state.userAchivements
-                                            .noOfCompletedGoalCrads
-                                        }
-                                        /{item.maxValue}
-                                      </span>
-                                    ) : (
-                                      ""
-                                    )}
-                                    <button
-                                      type="button"
-                                      // className="img_btn_home"
-                                      className={
-                                        item.enable
-                                          ? "img_btn"
-                                          : "img_btn_brown btn-w125 btn-h64"
-                                      }
-                                      onClick={() =>
-                                        this.claimReward(item.achivementId)
-                                      }
-                                    >
-                                      submit
-                                    </button>
-                                  </li>
-                                );
-                              })}
-                            </ul> */}
-                          </div>
-                        </div>
-
-                        {/* <button
-                  className="btn btn-bdr active fs-12"
-                  onClick={this.hideCharcterpop}
-                >
-                  Cancel
-                </button> */}
-                      </div>
-
-                      {/* <h4 className="">
-                        
-                          </h4> */}
-
-                      {/* <button
-                              type="button"
-                              className="img_btn_home"
-                            >
-                              submit
-                            </button> */}
-                    </Modal>
-                  </div>
+                  <Achievements
+                    data={this.state.allAchivemets}
+                    open={this.state.openAchivementPop}
+                    close={() => this.closeAchievements()}
+                  />
                   <div className="text-white header-right">
                     <div className="logo">
-                      <img src={logo}></img>
+                      <img src={logo} alt="logo"></img>
                     </div>
                     <ul className="mb-0">
                       <li className="progress-relative hdr_top">
                         <h5 className="fs-14 mb-0">Life Bar</h5>
                         <div className="lifeBar">
-                          <ProgressBar completed={this.state.chAttributes.currentLife} isLabelVisible={false} height="10px" bgColor="#BD2908" width="190px" className="bars" animateOnRender={true} />
+                          <ProgressBar
+                            completed={
+                              this.state.chAttributes?.currentLife
+                                ? this.state.chAttributes?.currentLife
+                                : 0
+                            }
+                            maxCompleted={this.state.chAttributes?.maxLife}
+                            isLabelVisible={false}
+                            height="10px"
+                            bgColor="#BD2908"
+                            width="190px"
+                            className="bars"
+                            animateOnRender={true}
+                          />
                         </div>
-                        {/* <img src={progressRed} className="w-progress progressRed"></img> */}
-                        <h5 className="fs-14 mt-2">{this.state.chAttributes.currentLife + "/" + this.state.chAttributes.maxLife}</h5>
+                        <h5 className="fs-14 mt-2">
+                          {parseInt(this.state.chAttributes?.currentLife) +
+                            "/" +
+                            this.state.chAttributes?.maxLife}
+                        </h5>
+                        <div className="lifeBar-purchase">
+                          <div className="lifeBar-purchase-points"></div>
+                          <img
+                            src={
+                              this.state.rewardsData.rewards.coinsCount > 100 &&
+                              this.state.usedPortionCount <
+                                this.state.maxPotionCount
+                                ? lifebuy
+                                : dsblifebuy
+                            }
+                            onClick={() => {
+                              this.increaseHealt();
+                            }}
+                            alt="lifebuy"
+                            className="life_img"
+                          />
+                          <div className="lifeBar-purchase-price">
+                            {this.state.usedPortionCount}/
+                            {this.state.maxPotionCount}
+                            <span>
+                              <img src={coin} alt="coin" className="coins" />
+                              <b>100</b>
+                            </span>
+                          </div>
+                        </div>
                       </li>
                       <li className="text-center">
-                        <img src={sProfile} className="prof"></img>
-                        <button type="button" className="img_btn_home" onClick={() => this.openDailyLogin()}>
+                        <img
+                          className="prof"
+                          src={
+                            this.state.charRole === "Warrior"
+                              ? warrior
+                              : this.state.charRole === "Assassin"
+                              ? assassin
+                              : archangel
+                          }
+                          alt="player-charector"
+                        ></img>
+                        <button
+                          type="button"
+                          className="img_btn_home"
+                          onClick={() => this.openDailyLogin()}
+                        >
                           Daily Login
                         </button>
                         <span className="dropdown">
-                          {/* <button className="ml-2 img_btn_brown dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Daily Quest
-                    </button> */}
                           <button
                             type="button"
                             className="img_btn_brown"
@@ -1007,11 +513,6 @@ class Layout extends Component {
                           >
                             Daily Quest
                           </button>
-                          {/* <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a className="dropdown-item" href="#">Action</a>
-                        <a className="dropdown-item" href="#">Another action</a>
-                        <a className="dropdown-item" href="#">Something else here</a>
-                    </div> */}
                         </span>
                         {/* <button type="button" className="img_btn_brown ml-2" >Daily Login</button> */}
                       </li>
@@ -1020,13 +521,16 @@ class Layout extends Component {
                         {/* <div className="joyBar">
                           <ProgressBar completed={50} isLabelVisible={false} height="10px" bgColor="#7FC31C" width="190px" className="bars" animateOnRender={true} />
                         </div> */}
-                        <Bars completed={50} />
+                        <Bars
+                          completed={this.state.xpPoints}
+                          maxCompleted={200}
+                        />
                         {/* <img src={progress} className="w-progress"></img> */}
-                        <h5 className="fs-14 mt-2">0/200</h5>
-                        <h5 className="fs-14">Class: Warrior</h5>
-                        <h5 className="fs-14">
-                          Rank: {this.state.rankname}
+                        <h5 className="fs-14 mt-2">
+                          {this.state.xpPoints}/{this.state.xpPointsTotal}
                         </h5>
+                        <h5 className="fs-14">Class: Warrior</h5>
+                        <h5 className="fs-14">Rank: {this.state.rankname}</h5>
                       </li>
                       <li className="">
                         <div className="coin_box text-left">
@@ -1045,10 +549,11 @@ class Layout extends Component {
                           </h5>
                         </div>
                         <div className="coin_box text-left">
-                          <img src={crystal}
+                          <img
+                            src={crystal}
                             alt={crystal}
                             onClick={() => {
-                              this.openStore()
+                              this.openStore();
                             }}
                           ></img>
                           <h5 className="fs-14 mb-0 w-progress pl-3">Store</h5>
@@ -1056,38 +561,54 @@ class Layout extends Component {
                       </li>
                     </ul>
                   </div>
+                  {this.state.audioPlay && (
+                    <audio loop autoPlay controls>
+                      <source src={themeMusic} type="audio/mpeg"></source>
+                    </audio>
+                  )}
                 </div>
                 <div className="main-leftP">
                   <div className="rect">
-                    <ul>
-                      <li>
-                        <button
-                          className={`img_btn_trans ${this.state.buttonName === "MAP" ? 'activeBtn' : ''}`}
-                          type="button"
-                          onClick={() => this.navigateScreens("MAP")}
-                        >
-                          Map
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className={`img_btn_trans ${this.state.buttonName === "PLAY" ? 'activeBtn' : ''}`}
-                          type="button"
-                          onClick={() => this.navigateScreens("PLAY")}
-                        >
-                          How To Play
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className={`img_btn_trans ${this.state.buttonName === "LEARNING" ? 'activeBtn' : ''}`}
-                          type="button"
-                          onClick={() => this.navigateScreens("LEARNING")}
-                        >
-                          Learning Tavern
-                        </button>
-                      </li>
-                      {/* <li>
+                    {this.state.settingsOpen === false ? (
+                      <ul>
+                        <li>
+                          <button
+                            className={`img_btn_trans ${
+                              this.state.buttonName === "MAP" ? "activeBtn" : ""
+                            }`}
+                            type="button"
+                            onClick={() => this.navigateScreens("MAP")}
+                          >
+                            Map
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className={`img_btn_trans ${
+                              this.state.buttonName === "PLAY"
+                                ? "activeBtn"
+                                : ""
+                            }`}
+                            type="button"
+                            onClick={() => this.navigateScreens("PLAY")}
+                          >
+                            How To Play
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className={`img_btn_trans ${
+                              this.state.buttonName === "LEARNING"
+                                ? "activeBtn"
+                                : ""
+                            }`}
+                            type="button"
+                            onClick={() => this.navigateScreens("LEARNING")}
+                          >
+                            Learning Tavern
+                          </button>
+                        </li>
+                        {/* <li>
                         <button
                           className={`img_btn_trans ${this.state.buttonName === "" ? 'activeBtn' : ''}`}
                           type="button"
@@ -1096,62 +617,159 @@ class Layout extends Component {
                           Roadmaps
                         </button>
                       </li> */}
-                      <li>
+                        <li>
+                          <button
+                            className={`img_btn_trans ${
+                              this.state.buttonName === "GOALS"
+                                ? "activeBtn"
+                                : ""
+                            }`}
+                            type="button"
+                            onClick={() => this.navigateScreens("GOALS")}
+                          >
+                            Goals
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className={`img_btn_trans ${
+                              this.state.buttonName === "CHARECTER"
+                                ? "activeBtn"
+                                : ""
+                            }`}
+                            type="button"
+                            onClick={() => this.navigateScreens("CHARECTER")}
+                          >
+                            Character
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className={`img_btn_trans ${
+                              this.state.buttonName === "CONTACTUS"
+                                ? "activeBtn"
+                                : ""
+                            }`}
+                            type="button"
+                            onClick={() => this.settingsFunction()}
+                          >
+                            Settings
+                          </button>
+                        </li>
+                      </ul>
+                    ) : (
+                      <ul>
                         <button
-                          className={`img_btn_trans ${this.state.buttonName === "GOALS" ? 'activeBtn' : ''}`}
                           type="button"
-                          onClick={() => this.navigateScreens("GOALS")}
+                          className="close_btn"
+                          onClick={() => this.settingsFunction()}
                         >
-                          Goals
+                          <img src={close} alt={close}></img>
                         </button>
-                      </li>
-                      <li>
-                        <button
-                          className={`img_btn_trans ${this.state.buttonName === "CHARECTER" ? 'activeBtn' : ''}`}
-                          type="button"
-                          onClick={() => this.navigateScreens("CHARECTER")}
+                        <li>
+                          <button
+                            onClick={() => this.playMusic()}
+                            className={
+                              this.state.audioPlay
+                                ? "img_btn_home_sm"
+                                : "img_btn_brown_sm"
+                            }
+                          >
+                            {this.state.audioPlay ? "Music On" : "Music Off"}
+                          </button>
+                        </li>
+                        <li
+                          onClick={() =>
+                            this.setState({
+                              openCredits: !this.state.openCredits,
+                            })
+                          }
                         >
-                          Character
+                          {" "}
+                          <img src={vector} alt="vector" /> Credits
+                        </li>
+                        {
+                          <div className="credits">
+                            <li>
+                              <img src={creadituser} alt="creditsuser" />
+                              ANIRUDH (GAME DESIGNER){" "}
+                            </li>
+                            <li>
+                              <img src={creadituser} alt="creditsuser" />
+                              SURYAKRANTHI (ARCHITECT){" "}
+                            </li>
+                            <li>
+                              <img src={creadituser} alt="creditsuser" />
+                              RAMESH BONTA (ARCHITECT){" "}
+                            </li>
+                            <li>
+                              <img src={creadituser} alt="creditsuser" />
+                              KADALI (WEB-DEVELOPER){" "}
+                            </li>
+                            <li>
+                              <img src={creadituser} alt="creditsuser" />
+                              VINOD (MOBILE-DEVELOPER){" "}
+                            </li>
+                            <li>
+                              <img src={creadituser} alt="creditsuser" />
+                              MANIDEEP (BACKEND){" "}
+                            </li>
+                            <li onClick={() => this.openTermsCond()}>
+                              {" "}
+                              <img src={TermsC} alt="termsC" /> TERMS AND
+                              CONDITIONS
+                            </li>
+                          </div>
+                        }
+                        <li className="logout_btn">
+                          <button
+                            className={`img_btn_trans ${
+                              this.state.buttonName === "LOGOUT"
+                                ? "activeBtn"
+                                : ""
+                            }`}
+                            type="button"
+                            onClick={() => this.navigateScreens("")}
+                          >
+                            Logout
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                    {!this.state.settingsOpen && (
+                      <div className="social">
+                        <button type="button" className="img_btn_social">
+                          <a target="_blank" href="https://www.instagram.com/mystika.greaterquests/" rel="noreferrer">
+                            <img src={insta} alt="insta"></img>
+                          </a>
                         </button>
-                      </li>
-                      <li>
-                        <button
-                          className={`img_btn_trans ${this.state.buttonName === "CONTACTUS" ? 'activeBtn' : ''}`}
-                          type="button"
-                          onClick={() => this.navigateScreens("CONTACTUS")}
-                        >
-                          Contact Us
+                        <button type="button" className="img_btn_social">
+                          <a target="_blank" href="https://www.facebook.com/MystikaGreaterQuests?mibextid=ZbWKwL" rel="noreferrer">
+                            <img src={fb} alt="fb"></img>
+                          </a>
                         </button>
-                      </li>
-                      <li>
-                        <button
-                          className={`img_btn_trans ${this.state.buttonName === "LOGOUT" ? 'activeBtn' : ''}`}
-                          type="button"
-                          onClick={() => this.navigateScreens("")}
-                        >
-                          Logout
+                        <button type="button" className="img_btn_social">
+                          <a target="_blank" href="https://twitter.com/i/flow/login?redirect_after_login=%2Fmystlka" rel="noreferrer">
+                            <img src={twitter} alt="teitter"></img>
+                          </a>
                         </button>
-                      </li>
-                    </ul>
-                    <div className="social">
-                      <button type="button" className="img_btn_social">
-                        <img src={insta}></img>
-                      </button>
-                      <button type="button" className="img_btn_social">
-                        <img src={fb}></img>
-                      </button>
-                      <button type="button" className="img_btn_social">
-                        <img src={twitter}></img>
-                      </button>
-                      <button type="button" className="img_btn_social">
-                        <img src={Pintrest}></img>
-                      </button>
-                    </div>
+                        <button type="button" className="img_btn_social">
+                          <a target="_blank" href="https://in.pinterest.com/mystika_creativity/" rel="noreferrer">
+                            <img src={Pintrest} alt="pintrest"></img>
+                          </a>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="main-rightP text-center">
                   <div className=" prf">
-                    <img className="" onClick={() => this.openTutorial()} src={queen} alt={queen}></img>
+                    <img
+                      className=""
+                      onClick={() => this.openTutorial()}
+                      src={queen}
+                      alt={queen}
+                    ></img>
                   </div>
                   <div className="sqr_frame mt-4 cursor">
                     <img
@@ -1163,13 +781,23 @@ class Layout extends Component {
                   </div>
                   <h5 className="mt-2">Achievements</h5>
                   <div className="sqr_frame mt-4 cursor">
-                    <img className="" src={crown} alt={crown}></img>
+                    <img
+                      className=""
+                      src={crown}
+                      alt={crown}
+                      onClick={() => this.openLeaderboards()}
+                    ></img>
                   </div>
                   <h5 className="mt-2">Leaderboards</h5>
                 </div>
               </div>
             </div>
           </div>
+          <LeaderBoards
+            openPop={this.state.leaderPopup}
+            mapLeads={this.state.mapLeads}
+            closePop={() => this.openLeaderboards("close")}
+          />
           <div className="mainbody">
             <div style={this.state.styles.contentMargin}>
               <Switch>
@@ -1190,7 +818,6 @@ class Layout extends Component {
                 <Route path="/contactus" exact={true} component={ContactUs} />
                 <Route path="/" exact={true} component={Login} />
               </Switch>
-
             </div>
           </div>
           {this.state.isOpenTreQuest && (
@@ -1205,19 +832,162 @@ class Layout extends Component {
               hidePop={this.openTutorial}
             />
           )} */}
-          <Store openModel={this.state.storePopup} openStore={() => this.openStore()} />
+          <Store
+            openModel={this.state.storePopup}
+            openStore={() => this.openStore()}
+          />
+          <Modals
+            open={this.state.termsConditions}
+            header={
+              <div>
+                <h5>TERMS & CONDITIONS</h5>
+
+                <button
+                  type="button"
+                  className="close_btn"
+                  onClick={() => this.openTermsCond()}
+                >
+                  <img src={close} alt={close}></img>
+                </button>
+              </div>
+            }
+            body={
+              <div className="modal-body frame text-center Terms">
+                <p>
+                  Welcome to the gamified website/App that turns your personal,
+                  academic, and career goals into an RPG game (Mystika). These
+                  terms and conditions (the "Terms") apply to your use of the
+                  Website/App and the services offered through it. By using the
+                  Website, you agree to be bound by these Terms. If you do not
+                  agree to these Terms, please do not use the Website.
+                </p>
+                <br />
+                <h5>Account Information:</h5>
+                <br />
+                <p>
+                  You must create an account to participate in the game aspect
+                  of the Website. When you create an account, you may be asked
+                  to provide certain information, including a player name, which
+                  will be used to identify you within the Website. Your real
+                  name will not be revealed or displayed on the Website.
+                </p>
+                <br />
+                <h5>Gameplay and Rewards:</h5>
+                <br />
+                <p>
+                  The Website allows you to set personal or academic goals and
+                  track your progress toward those goals through an RPG game.
+                  You can unlock achievements, earn coins and crystals, and
+                  compare your progress with other players through leaderboards.
+                  These rewards are intended to provide motivation and
+                  recognition for your progress toward your goals.
+                </p>
+                <br />
+                <h5>User Conduct:</h5>
+                <br />
+                <p>
+                  You agree to use the Website only for lawful purposes and in a
+                  manner that does not infringe the rights of or restrict or
+                  inhibit the use and enjoyment of the Website by any third
+                  party. Prohibited conduct includes, but is not limited to,
+                  using the Website to transmit or post harmful, threatening,
+                  defamatory, obscene, or otherwise illegal material.
+                </p>
+                <br />
+                <h5>Intellectual Property:</h5>
+                <br />
+                <p>
+                  The Website/App and its contents, including but not limited to
+                  text, graphics, logos, icons, images, and software, are the
+                  property of the Website or its licensors and are protected by
+                  copyright and other intellectual property laws. You may not
+                  reproduce, distribute, modify, or create derivative works from
+                  the Website without the prior written consent of the Website.
+                </p>
+                <br />
+                <h5>Warranties and Limitations of Liability:</h5>
+                <br />
+                <p>
+                  The Website is provided "as is" without any representation or
+                  warranty, express or implied. The Website makes no
+                  representations or warranties in relation to the accuracy or
+                  completeness of the information found on the Website. To the
+                  maximum extent permitted by applicable law, the Website will
+                  not be liable for any indirect or consequential loss or damage
+                  whatsoever arising from or in connection with the use of the
+                  Website.
+                </p>
+                <br />
+                <h5>Modifications to the Terms:</h5>
+                <br />
+                <p>
+                  The Website reserves the right to modify these Terms at any
+                  time. Any such changes will be posted on the Website, and your
+                  continued use of the Website after such changes have been
+                  posted will indicate your acceptance of the modified Terms.
+                </p>
+                <br />
+                <h5>Governing Law:</h5>
+                <br />
+                <p>
+                  These Terms shall be governed by and construed in accordance
+                  with the laws of the jurisdiction in which the Website is
+                  based.
+                </p>
+                <br />
+                <h5>Contact Information:</h5>
+                <br />
+                <p>
+                  If you have any questions or concerns regarding these Terms,
+                  please contact us at [insert contact information].
+                </p>
+                <br />
+                <h5>Real-Life Achievements:</h5>
+                <br />
+                <p>
+                  Please note that there is no way for the Website to verify
+                  your real-life achievements. It is expected that you be honest
+                  in tracking your progress toward your goals through the
+                  Website. The virtual rewards that you or any other player
+                  receives are based solely on the activities that are reported
+                  to have been completed in the game world of Mystika. The
+                  Website does not guarantee real-life success, but it can serve
+                  as a helpful tool to assist you in accomplishing your personal
+                  or academic goals.
+                </p>
+                <br />
+                <h5>Target Audience:</h5>
+                <br />
+                <p>
+                  The Website is primarily targeted toward high school students,
+                  but adults may also make use of it.
+                </p>
+                <br />
+                <h5>Map Activities:</h5>
+                <br />
+                <p>
+                  The map activities in the game world of Mystika are not
+                  directly linked to real-life activities. However, it is highly
+                  recommended that you engage in real-life tasks and activities
+                  while participating in the game.
+                </p>
+              </div>
+            }
+          />
           <Modals
             open={this.state.needHelp}
             header={
               <div>
                 {Popups?.map((item, index) => {
                   const learning =
-                    buttonName === "LEARNING" ? item.LEARNING :
-                      buttonName === "MAP" ? item.MAP :
-                        buttonName === "CHARECTER" ? item.CHARECTER : item.PLAY
-                  return (
-                    <h5 key={index}>{learning.head}</h5>
-                  )
+                    buttonName === "LEARNING"
+                      ? item.LEARNING
+                      : buttonName === "MAP"
+                      ? item.MAP
+                      : buttonName === "CHARECTER"
+                      ? item.CHARECTER
+                      : item.PLAY;
+                  return <h5 key={index}>{learning.head}</h5>;
                 })}
                 <button
                   type="button"
@@ -1232,22 +1002,32 @@ class Layout extends Component {
               <div className="modal-body frame text-center hailHero">
                 {Popups?.map((item, index) => {
                   const learning =
-                    buttonName === "LEARNING" ? item.LEARNING :
-                      buttonName === "MAP" ? item.MAP :
-                        buttonName === "CHARECTER" ? item.CHARECTER : item.PLAY
+                    buttonName === "LEARNING"
+                      ? item.LEARNING
+                      : buttonName === "MAP"
+                      ? item.MAP
+                      : buttonName === "CHARECTER"
+                      ? item.CHARECTER
+                      : item.PLAY;
                   return (
                     <div key={index}>
-                      <h4 className="text-green" >{learning?.body.heading}</h4>
+                      <h4 className="text-green">{learning?.body.heading}</h4>
                       <Carousel>
                         <Carousel.Item>
-                          <span className="text-light">{learning?.body.text}</span>
+                          <span className="text-light">
+                            {learning?.body.text}
+                          </span>
                         </Carousel.Item>
                         <Carousel.Item>
-                          <span className="text-light">{learning?.body.text2}</span>
+                          <span className="text-light">
+                            {learning?.body.text2}
+                          </span>
                         </Carousel.Item>
                         <Carousel.Item>
-                          <span className="text-light">{learning?.body.text3}</span>
-                          {learning?.body?.text4 ? learning.body.text4 : ''}
+                          <span className="text-light">
+                            {learning?.body.text3}
+                          </span>
+                          {learning?.body?.text4 ? learning.body.text4 : ""}
                         </Carousel.Item>
                       </Carousel>
                       <button
@@ -1258,7 +1038,7 @@ class Layout extends Component {
                         Delighted
                       </button>
                     </div>
-                  )
+                  );
                 })}
               </div>
             }

@@ -771,45 +771,58 @@ $cval: 5px;
     &.imageGrp {}
 
     & .Velocity {
-      position: absolute;
-      bottom: 10px;
-      right: 0;
+      // position: absolute;
+      // bottom: -40px;
+      // right: 0;
       content: " ";
       display: block;
-      max-height: 25px;
-      max-width: 25px;
+      max-height: 30px;
+      max-width: 30px;
+      text-align: center;
       background-image: url('../images/velocity.png');
       background-repeat: no-repeat;
       background-size: cover;
+
+
     }
 
     & .Speed {
-      position: absolute;
-      bottom: 10px;
-      right: 0;
+      // position: absolute;
+      // bottom: -40px;
+      // right: 0;
       content: " ";
       display: block;
-      height: 25px;
-      width: 25px;
+      text-align: center;
+      height: 30px;
+      width: 30px;
       background-image: url('../images/speed.png');
       background-repeat: no-repeat;
       background-size: cover;
+
+
     }
 
     & .Intelligence {
-      position: absolute;
-      bottom: 10px;
-      right: 0;
+      // position: absolute;
+      // bottom: -40px;
+      // right: 0;
       content: " ";
-      display: block;
-      height: 25px;
-      width: 25px;
+      height: 30px;
+      text-align: center;
+      width: 30px;
       background-image: url('../images/intelligence.png');
       background-repeat: no-repeat;
       background-size: cover;
+
+
     }
 
   }
+}
+
+.cardName {
+  font-size: 15px !important;
+  text-align: center;
 }
 
 // Float

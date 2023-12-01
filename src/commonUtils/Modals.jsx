@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-
+import './modals.scss'
 
 const Modals = ({ open, header, body, footer, size }) => {
     return (

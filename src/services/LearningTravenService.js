@@ -15,6 +15,10 @@ class LearningTravenService {
     return axios.get(BASE_URL + LEARNING_TRAVEN_URL.getAllBlogs);
   }
 
+  getAllBlogCategories() {
+    return axios.get(BASE_URL +LEARNING_TRAVEN_URL.getBlogCategories);
+  }
+
   getBlogDetailsById(id) {
     return axios.get(BASE_URL + LEARNING_TRAVEN_URL.getBlogDetails + "/" + id);
   }
