@@ -29,6 +29,7 @@ import crystal from '../../assets/images/diamonds.png';
 
 import DailyLogin from "../home/DailyLogin";
 import ErrorDisplaypop from "../ErrorDisplay/ErrorDisplaypop";
+import Input from "../../commonUtils/Input";
 
 class Login extends Component {
   constructor(props) {
@@ -81,15 +82,15 @@ class Login extends Component {
   }
 
   gotoRegister() {
-    console.log('000000000')
+    console.log('000000000');
     this.setState({ isRegister: true }, () => {
       this.getMasterCharacters();
     });
   }
   gotoCharcterList() {
-    const isValid = this.validationForm()
+    const isValid = this.validationForm();
     if (isValid) {
-      this.setState({ charecterSelection: true })
+      this.setState({ charecterSelection: true });
     }
   }
 
@@ -98,23 +99,23 @@ class Login extends Component {
     let isValid = true;
     const emailReg = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
     if (this.state.registerUserName.length < 5) {
-      isValid = false
-      alert("Username must be more than 5 charectors length")
+      isValid = false;
+      alert("Username must be more than 5 charectors length");
     }
     if (this.state.registerUserPassword.length < 6 && this.state.registerUserPassword !== this.state.registerUserConfiPassword) {
-      isValid = false
-      alert("Passwords are not matching")
+      isValid = false;
+      alert("Passwords are not matching");
     }
     if (emailReg.test(this.state.registerUserEmail) === false) {
-      isValid = false
-      alert("Email is mandatory")
+      isValid = false;
+      alert("Email is mandatory");
     }
     if (this.state.termsCheck === false) {
-      isValid = false
-      alert("Please accept the terms & conditions")
+      isValid = false;
+      alert("Please accept the terms & conditions");
     }
-    return isValid
-  }
+    return isValid;
+  };
 
   getMasterCharacters() {
     LoginService.getMasterCharacters().then((res) => {
@@ -126,12 +127,12 @@ class Login extends Component {
             value: ele.characterName,
             label: ele.characterName,
           };
-          console.log("obj char", obj)
+          console.log("obj char", obj);
           this.state.characterList.push(obj);
         });
         this.setState({ characterList: this.state.characterList });
       }
-    }).catch((err) => console.error(err))
+    }).catch((err) => console.error(err));
 
   }
 
@@ -148,7 +149,7 @@ class Login extends Component {
         if (res) {
           this.setState({ resetPass: true });
         }
-      }).catch((err) => console.error(err))
+      }).catch((err) => console.error(err));
     }
   }
 
@@ -175,7 +176,7 @@ class Login extends Component {
             useremail: "",
           });
         }
-      }).catch((err) => console.error(err))
+      }).catch((err) => console.error(err));
     }
   }
 
@@ -218,21 +219,21 @@ class Login extends Component {
             () => { }
           );
         }
-      }).catch((err) => console.error(err))
+      }).catch((err) => console.error(err));
     } else {
       toast.error("Please Enter All Input Fields");
     }
   }
   loginUser() {
     if (this.state.userName && this.state.userPassword) {
-      { console.log('+++++++++++++++++++++++++++++++sra11111') }
+      { console.log('+++++++++++++++++++++++++++++++sra11111'); }
       let obj = {
         userName: this.state.userName,
         password: this.state.userPassword,
       };
       LoginService.loginUser(obj).then((res) => {
-        { console.log('+++++++++++++++++++++++++++++++sra222222') }
-        console.log('res', res)
+        { console.log('+++++++++++++++++++++++++++++++sra222222'); }
+        console.log('res', res);
         if (res) {
           if (res.data.jwttoken && res.status == 200) {
             this.setState(
@@ -247,27 +248,27 @@ class Login extends Component {
                 if (token) {
                   this.props.history.push("/dailylogin");
                 }
-                sessionStorage.setItem("buttonName", "MAP")
+                sessionStorage.setItem("buttonName", "MAP");
               }
             );
           } else {
             this.setState({ userErrorpop: true }, () => {
 
               // <ErrorDisplaypop res={ res} />
-            })
+            });
           }
         } else {
-          { console.log('+++++++++++++++++++++++++++++++sra') }
-          <ErrorDisplaypop />
+          { console.log('+++++++++++++++++++++++++++++++sra'); }
+          <ErrorDisplaypop />;
         }
-      }).catch((err) => console.error(err))
+      }).catch((err) => console.error(err));
     }
   }
 
   selectChar = (e) => {
-    this.setState({ slectedCharacterId: e.target.value })
+    this.setState({ slectedCharacterId: e.target.value });
 
-  }
+  };
 
   confirmLogin() {
     this.setState({ isDailyUpdates: false }, () => {
@@ -291,49 +292,49 @@ class Login extends Component {
         isValidEmail: false
       });
     }
-  }
+  };
 
 
   handleConfirmPassword = (e) => {
     e.preventDefault();
     if (this.state.registerUserPassword === this.state.registerUserConfiPassword) {
-      this.setState({ isConfirmPassword: true })
+      this.setState({ isConfirmPassword: true });
     }
     else {
-      this.setState({ isConfirmPassword: false })
+      this.setState({ isConfirmPassword: false });
     }
-  }
+  };
 
   hideCharcterpop = () => {
     this.setState({ charecterSelection: false }, () => {
 
-    })
-  }
+    });
+  };
 
   selectHero = (type, id) => {
-    this.setState({ heroType: type, slectedCharacterId: id })
-  }
+    this.setState({ heroType: type, slectedCharacterId: id });
+  };
 
   proceedHero = () => {
     // alert(this.state.heroType)
-    this.setState({ heroProceed: !this.state.heroProceed })
-  }
+    this.setState({ heroProceed: !this.state.heroProceed });
+  };
   proceedBack = () => {
-    this.setState({ heroProceed: !this.state.heroProceed, heroType: '' })
-  }
+    this.setState({ heroProceed: !this.state.heroProceed, heroType: '' });
+  };
 
   heroSrc = () => {
-    let heroType = this.state.heroType
+    let heroType = this.state.heroType;
     if (heroType === 'warrior') {
-      return warrior
+      return warrior;
     } else if (heroType === 'archangel') {
-      return archangel
+      return archangel;
     } else if (heroType === 'assassin') {
-      return assassin
+      return assassin;
     } else {
-      return
+      return;
     }
-  }
+  };
 
   render() {
     return (
@@ -365,7 +366,7 @@ class Login extends Component {
               </ModalFooter>
             </Modal>
           </div>
-          <img src={logo} className="text-center"></img>
+          <img  src={logo} className="text-center"></img>
         </div>
 
         <div>
@@ -405,92 +406,37 @@ class Login extends Component {
               className="close_btn"
               onClick={() => this.hideCharcterpop()}
             >
-              <img src={close}></img>
+              <img  src={close}></img>
             </button>
             <div className="modal-body  frame text-center">
               <div className="char">
                 <h3 className="text-success mt-3">CHOOSE YOUR HERO</h3>
-                <h6 className="font-weight-light">Role-play with one of these iconic legends. You can always unlock new character and switch.</h6>
+                <h6 className="font-weight-light fs-20 mt-5">Role-play with one of these iconic legends. You can always unlock new character and switch.</h6>
                 {this.state.heroProceed ?
                   <div>
                     <div className="profile">
-                      <img src={this.heroSrc()} />
+                      <img  src={this.heroSrc()} />
                     </div>
                   </div> :
                   <div className="d-flex flex-row align-items-center justify-content-center">
                     {/* A rchangel Modal */}
                     <div className="pl-4 pt-3 pr-4 pb-0">
                       <div className="profile">
-                        <img src={archangel} onClick={() => this.selectHero('archangel', 2)}></img>
-                        {/* <h5>Archangel</h5> */}
+                        <img  src={archangel} onClick={() => this.selectHero('archangel', 2)}></img>
                       </div>
-                      {/* <p>Do you wish to switch to Archangel for 500 <img className="crystal" src={crystal}></img>?</p>
-                    <p>Special Abilities: She can explore any area faster. Heals quickly. Strong against Lord of Procrastination.</p> */}
-                      {/* <div className="contex">
-                      <div className="contex-left text-left pt-2 pl-3">
-                        <h5 className="fs-14 text-white">Character Stats:</h5>
-                        <h5 className="fs-12 text-white">Power - 20</h5>
-                        <h5 className="fs-12 text-white">Speed - 15</h5>
-                        <h5 className="fs-12 text-white">Intelligence - 10</h5>
-                      </div>
-                      <div className="contex-right text-left pt-2">
-                        <h5 className="fs-14 text-white">Character Attributes:</h5>
-                        <h5 className="fs-12 text-white">Life - 20</h5>
-                        <h5 className="fs-12 text-white">Attack - 15</h5>
-                        <h5 className="fs-12 text-white">Defence - 10</h5>
-                        <h5 className="fs-12 text-white">Life Regeneration - 10</h5>
-                      </div>
-                    </div> */}
                     </div>
 
-                    {/* Warrior Modal */}
                     <div className="pl-4 pt-3 pr-4 pb-0">
                       <div className="profile">
-                        <img src={warrior} onClick={() => this.selectHero('warrior', 1)}></img>
-                        {/* <h5>Warrior</h5> */}
+                        <img  src={warrior} onClick={() => this.selectHero('warrior', 1)}></img>
                       </div>
-                      {/* <p>Do you wish to switch to Warrior for 500 <img className="crystal" src={crystal}></img>?</p>
-                    <p>Special Abilities Warrior can explore any area faster. Heals quickly. Strong against Lord of Fear  .</p> */}
-                      {/* <div className="contex">
-                      <div className="contex-left text-left pt-2 pl-3">
-                        <h5 className="fs-14 text-white">Character Stats:</h5>
-                        <h5 className="fs-12 text-white">Power - 20</h5>
-                        <h5 className="fs-12 text-white">Speed - 15</h5>
-                        <h5 className="fs-12 text-white">Intelligence - 10</h5>
-                      </div>
-                      <div className="contex-right text-left pt-2">
-                        <h5 className="fs-14 text-white">Character Attributes:</h5>
-                        <h5 className="fs-12 text-white">Life - 20</h5>
-                        <h5 className="fs-12 text-white">Attack - 15</h5>
-                        <h5 className="fs-12 text-white">Defence - 10</h5>
-                        <h5 className="fs-12 text-white">Life Regeneration - 10</h5>
-                      </div>
-                    </div> */}
                     </div>
 
-                    {/* Assassin Modal */}
                     <div className="pl-4 pt-3 pr-4 pb-0">
                       <div className="profile">
-                        <img src={assassin} onClick={() => this.selectHero('assassin', 3)}></img>
+                        <img  src={assassin} onClick={() => this.selectHero('assassin', 3)}></img>
                         {/* <h5>Assassin</h5> */}
                       </div>
-                      {/* <p>Do you wish to switch to Assassin for 500 <img className="crystal" src={crystal}></img>?</p>
-                    <p>Special Abilities She can explore any area faster. Heals quickly. Strong against Lord of Anxiety  .</p> */}
-                      {/* <div className="contex">
-                      <div className="contex-left text-left pt-2 pl-3">
-                        <h5 className="fs-14 text-white">Character Stats:</h5>
-                        <h5 className="fs-12 text-white">Power - 20</h5>
-                        <h5 className="fs-12 text-white">Speed - 15</h5>
-                        <h5 className="fs-12 text-white">Intelligence - 10</h5>
-                      </div>
-                      <div className="contex-right text-left pt-2">
-                        <h5 className="fs-14 text-white">Character Attributes:</h5>
-                        <h5 className="fs-12 text-white">Life - 20</h5>
-                        <h5 className="fs-12 text-white">Attack - 15</h5>
-                        <h5 className="fs-12 text-white">Defence - 10</h5>
-                        <h5 className="fs-12 text-white">Life Regeneration - 10</h5>
-                      </div>
-                    </div> */}
                     </div>
                   </div>}
 
@@ -562,62 +508,39 @@ class Login extends Component {
           <div className="login">
             <div className="header">Sign In</div>
             <button type="button" className="close_btn">
-              {/* <img src={close}></img> */}
+              {/* <img  src={close}></img> */}
             </button>
-            <h5 className="text-center">
-              Turn your goals into a Role-Playing game
-            </h5>
-            <div className="row">
-              <div className="col-6 p-r-1">
-                <div className="form-group mb-0">
-                  <div className="labl">Player Name</div>
-                  <input
-                    type="text"
-                    className="form-control-name form-control"
-                    value={this.state.userName}
-                    onChange={(e) => {
-                      this.setState({ userName: e.target.value });
-                    }}
-                  ></input>
+            <div className="body">
+              <h5 className="text-center mt-5 pt-5">
+                Turn your goals into a Role-Playing game
+              </h5>
+              <div className="">
+                <div className="d-flex justify-content-around align-items-center">
+                  <Input name="player Name" type="text" update={(value) => this.setState({ userName: value })} />
+                  <Input name="password" type="password" update={(value) => this.setState({ userPassword: value })} />
                 </div>
-              </div>
-              <div className="col-6 p-l-1">
-                <div className="form-group mb-0">
-                  <div className="labl">Password</div>
-                  <input
-                    type="password"
-                    className="form-control-name form-control"
-                    value={this.state.userPassword}
-                    onChange={(e) => {
-                      this.setState({ userPassword: e.target.value });
-
-                    }}
-                  ></input>
+                <div className="d-flex justify-content-around align-items-center">
+                  <div className="check-marked">
+                    <img  src={checked} alt="check"></img>
+                    <span> Remember Me</span>
+                  </div>
+                  <button
+                    className="btn-transparent"
+                    type="button"
+                    onClick={() => this.forgetPassword()}
+                  >
+                    Forgot Password ?
+                  </button>
                 </div>
-              </div>
-              <div className="col-6 p-r-1 pt-0">
-                <div className="check-marked">
-                  <img src={checked}></img>
-                  <span> Remember Me</span>
+                <div className="col-12 text-center">
+                  <button
+                    className="img_btn"
+                    type="button"
+                    onClick={() => this.loginUser()}
+                  >
+                    Sign In
+                  </button>
                 </div>
-              </div>
-              <div className="col-6 p-l-1 pt-0 text-right">
-                <button
-                  className="btn-transparent"
-                  type="button"
-                  onClick={() => this.forgetPassword()}
-                >
-                  Forgot Password ?
-                </button>
-              </div>
-              <div className="col-12 text-center">
-                <button
-                  type="button"
-                  className="img_btn"
-                  onClick={() => this.loginUser()}
-                >
-                  Sign In
-                </button>
               </div>
             </div>
           </div>
@@ -626,14 +549,14 @@ class Login extends Component {
           <div className="row">
             <div className="container login-list text-center">
               <button
-                className="btn-transparent mt-2"
+                className="btn-transparent mt-2 fs-20"
                 type="button"
                 onClick={() => this.gotoRegister()}
               >
                 Not Register Yet ? <span className="text-green"> Register</span>
               </button>
               <div className="text-center">
-                <img className="mb-2" src={or}></img>
+                <img  className="mb-2" src={or}></img>
               </div>
             </div>
           </div>
@@ -645,89 +568,41 @@ class Login extends Component {
           <div className="login">
             <div className="header">Register Form</div>
             <button type="button" className="close_btn">
-              {/* <img src={close}></img> */}
+              {/* <img  src={close}></img> */}
             </button>
-            <h5 className="text-center">
-              Behold the world of scholastic adventure.
-            </h5>
-            <div className="row">
-              <div className="col-6 p-r-1">
-                <div className="form-group mb-0">
-                  <div className="labl">Player Name</div>
-                  <input
-                    type="text"
-                    className="form-control-name form-control"
-                    value={this.state.registerUserName}
-                    onChange={(e) => {
-                      this.setState({ registerUserName: e.target.value });
-                    }}
-                  ></input>
+            <div className="body">
+              <h5 className="text-center mt-5 mb-2  pt-3">
+                Behold the world of scholastic adventure.
+              </h5>
+              <div className="">
+                <div className="d-flex justify-content-center align-items-center">
+                  <Input name="player Name" type="text" update={(value) => this.setState({ registerUserName: value })} />
+                  <Input name="Email" type="text" update={(value) => this.setState({ registerUserEmail: value })} />
                 </div>
-              </div>
-              <div className="col-6 p-r-1">
-                <div className="form-group mb-0">
-                  <div className="labl">Email</div>
-                  <input
-                    type="text"
-                    className="form-control-name form-control"
-                    value={this.state.registerUserEmail}
-                    onChange={(e) => {
-                      this.setState({ registerUserEmail: e.target.value }, () => {
-                        this.handleEmail(e)
-                      });
-                    }}
-                  ></input>
+                <div className="d-flex justify-content-center align-items-center">
+                  <Input name="Password" type="password" update={(value) => this.setState({ registerUserPassword: value })} />
+                  <Input name="Confirm Password" type="password" update={(value) => this.setState({ registerUserConfiPassword: value })} />
                 </div>
-              </div>
-              <div className="col-6 p-r-0">
-                <div className="form-group mb-0">
-                  <div className="labl">Password</div>
-                  <input
-                    type="password"
-                    className="form-control-name form-control"
-                    value={this.state.registerUserPassword}
-                    onChange={(e) => {
-                      this.setState({ registerUserPassword: e.target.value },);
-                    }}
-                  ></input>
+                <div className="d-flex justify-content-center align-items-center flex-column">
+                  <div>
+                    <input type="checkbox" onChange={() => this.setState({ termsCheck: !this.state.termsCheck })}></input>
+                    <span className="text-white fs-8"> {" "}I AGREE WITH TERMS AND CONDITIONS</span>
+                  </div>
+                  <div>
+                    <input type="checkbox"></input>
+                    <span className="text-white fs-8"> {" "}SIGNUP FOR NEWSLETTER AND UPDATES</span>
+                  </div>
                 </div>
-              </div>
-              <div className="col-6 p-r-0">
-                <div className="form-group mb-0">
-                  <div className="labl">Confirm Password</div>
-                  <input
-                    type="password"
-                    className="form-control-name form-control"
-                    value={this.state.registerUserConfiPassword}
-                    onChange={(e) => {
-                      this.setState({
-                        registerUserConfiPassword: e.target.value,
-                      }, () => {
-                        this.handleConfirmPassword(e)
-                      });
-                    }}
-                  ></input>
+                <div className="col-12 text-center">
+                  <button
+                    type="button"
+                    // className="img_btn"
+                    className={(this.state.isConfirmPassword && this.state.isValidEmail) ? "img_btn" : "img_btn_brown btn-w125 btn-h64"}
+                    onClick={() => this.gotoCharcterList()}
+                  >
+                    Register
+                  </button>
                 </div>
-              </div>
-              <div className="col-12">
-                <div>
-                  <input type="checkbox" onChange={() => this.setState({ termsCheck: !this.state.termsCheck })}></input>
-                  <span className="text-white fs-6"> {" "}I AGREE WITH TERMS AND CONDITIONS</span>
-                </div>
-                <div>
-                  <input type="checkbox"></input>
-                  <span className="text-white fs-6"> {" "}SIGNUP FOR NEWSLETTER AND UPDATES</span>
-                </div>
-              </div>
-              <div className="col-12 text-center">
-                <button
-                  type="button"
-                  // className="img_btn"
-                  className={(this.state.isConfirmPassword && this.state.isValidEmail) ? "img_btn" : "img_btn_brown btn-w125 btn-h64"}
-                  onClick={() => this.gotoCharcterList()}
-                >
-                  Register
-                </button>
               </div>
             </div>
           </div>
@@ -736,7 +611,7 @@ class Login extends Component {
         {this.state.isRegister && !this.state.forgetpass && (
           <div className="container login-list text-center">
             <button
-              className="btn-transparent  mt-2"
+              className="btn-transparent fs-20  mt-2"
               type="button"
               onClick={() => this.gotoLogin()}
             >
@@ -744,7 +619,7 @@ class Login extends Component {
               <span className="text-green"> log in</span>
             </button>
             <div className="text-center">
-              <img className="mb-2" src={or}></img>
+              <img  className="mb-2" src={or}></img>
             </div>
           </div>
         )}
@@ -755,17 +630,17 @@ class Login extends Component {
               <ul>
                 <li>
                   <button className="btn-transparent" type="button">
-                    <img src={apple}></img>
+                    <img  src={apple}></img>
                   </button>
                 </li>
                 <li>
                   <button className="btn-transparent" type="button">
-                    <img src={google}></img>
+                    <img  src={google}></img>
                   </button>
                 </li>
                 <li>
                   <button className="btn-transparent" type="button">
-                    <img src={facebbok}></img>
+                    <img  src={facebbok}></img>
                   </button>
                 </li>
               </ul>
@@ -780,43 +655,38 @@ class Login extends Component {
           !this.state.resetPass && (
             <div className="login">
               <div className="header">Forgot Password</div>
-              <button type="button" className="close_btn">
-                <img src={close}></img>
+              <button type="button" className="close_btn" onClick={() => this.gotoLogin()}>
+                <img  src={close} alt="close" className="cursor-pointer"></img>
               </button>
-              <h5 className="text-center mb-1 fs-16">
-                Enter your email address
-              </h5>
-              <div className="row justify-content-md-center">
-                <div className="col-6 p-r-2">
-                  <div className="form-group mb-0">
-                    <div className="labl">Email</div>
-                    <input
-                      type="text"
-                      className="form-control-name form-control"
-                      value={this.state.useremail}
-                      onChange={(e) => {
-                        this.setState({ useremail: e.target.value });
-                      }}
-                    ></input>
+              <div className="body">
+
+                <h5 className="text-center mt-5 pt-3 mb-1 fs-16">
+                  Enter your email address
+                </h5>
+                <div className="d-flex justify-content-center flex-column align-items-center">
+                      <Input name="Email" type="text" update={(value) => this.setState({ useremail: value })} />
+                  <div className="col-6 p-r-2">
+                    <div className="form-group mb-3">
+                    </div>
                   </div>
-                </div>
-                <div className="col-12 text-center mt-1 mb-0">
-                  <h5 className="fs-12 text-white">
-                    lost the key ? the scout will send you a new one <br></br>{" "}
-                    forgot username ?
-                  </h5>
-                </div>
-                <div className="col-12 text-center">
-                  <img className="w-40" src={key}></img>
-                </div>
-                <div className="col-12 text-center">
-                  <button
-                    type="button"
-                    className="img_btn"
-                    onClick={() => this.sentVerficationCode()}
-                  >
-                    Continue
-                  </button>
+                  <div className="col-12 text-center mt-1 mb-0">
+                    <h5 className="fs-16 text-white">
+                      lost the key ? the scout will send you a new one <br></br>{" "}
+                      forgot username ?
+                    </h5>
+                  </div>
+                  <div className="col-12 text-center">
+                    <img  className="key-img" src={key} alt="key"></img>
+                  </div>
+                  <div className="col-12 text-center">
+                    <button
+                      type="button"
+                      className="img_btn"
+                      onClick={() => this.sentVerficationCode()}
+                    >
+                      Continue
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -828,7 +698,7 @@ class Login extends Component {
           <div className="login">
             <div className="header">Reset Password</div>
             <button type="button" className="close_btn">
-              <img src={close}></img>
+              <img  src={close}></img>
             </button>
             {/* <h5 className="text-center">Turn your goals into a Role-Playing game</h5> */}
             <div className="row justify-content-md-center">

@@ -118,11 +118,11 @@ audio {
 .joyBarSm {
     background-image: url('../images/leftJoyBar.png'), url('../images/rightJoyBar.png');
     height: 40px;
-    width: 100%;
-    margin: 10px 0px;
+    width: 40%;
+    margin: 20px;
     background-size: cover;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     
     & .bars {
         position: absolute;
@@ -178,8 +178,7 @@ audio {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 90%;
-    // max-width: 350px;
+    width: 50%;
     margin: 0 25px;
 
     & p {

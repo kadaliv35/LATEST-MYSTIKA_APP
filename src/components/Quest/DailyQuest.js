@@ -38,7 +38,7 @@ function DailyQuest({
               className="close_btn"
               onClick={hideDQpop}
             >
-              <img src={close}></img>
+              <img  src={close} alt='close'></img>
             </button>
           </div>
         }
@@ -50,17 +50,17 @@ function DailyQuest({
             </h5>
             <div className="col text-center">
               <div className="day-list">
-                <ul>
+                <ul className='ml-5'>
                   {toDayQuest && toDayQuest.map((item, index) => {
                     return (
-                      <li key={index}>
+                      <li key={index} className='w-100 h-100'>
                         {[item.quest].map((ele, ind) => {
                           return (
                             <span key={ind}>
                               <p className='num'>{index}</p>
                               <span className='title'>{ele.questDescription}</span>
                               <br />
-                              <img src={ele.image} />
+                              <img  src={ele.image}  />
                               <p className='footer text-green'>Pending</p>
                             </span>
                           )
@@ -70,9 +70,9 @@ function DailyQuest({
                   })}
                 </ul>
                 <span>
-                  <img className='frameImg' src={coinFrame} />
-                  <img className='frameImg' src={crystalFrame} />
-                  <img className='frameImg' src={joyFrame} />
+                  <img  className='frameImg'  src={coinFrame} />
+                  <img  className='frameImg'  src={crystalFrame} />
+                  <img  className='frameImg'  src={joyFrame} />
                 </span>
               </div>
             </div>

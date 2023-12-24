@@ -37,7 +37,7 @@ class DailyLogin extends Component {
         selectedDay: dayDetails.dayNo,
         userCharId: this.state.characterRewardList?.userCharacterId,
       },
-      () => {}
+      () => { }
     );
   }
   getBounty(userName) {
@@ -140,7 +140,7 @@ class DailyLogin extends Component {
         for (let i = 1; i <= streakBountydayLimit; i++) {
           i > 5
             ? (i === 1 || i % 3 === 1 || i === streakBountydayLimit) &&
-              daysDiv.push(<p key={i}>Day {i}</p>)
+            daysDiv.push(<p key={i}>Day {i}</p>)
             : daysDiv.push(<p key={i}>Day {i}</p>);
         }
       }
@@ -149,26 +149,21 @@ class DailyLogin extends Component {
       <div className="logo-head-text">
         <label className="mb-0 mt-2">hi {this.state.userName} !</label>
         <h5 className="mb-0">Daily Login Bounty </h5>
-        <div className="login pad-l-6 pad-r-6">
+        <div className="login-big">
           <div className="header text-white">Apprentice</div>
           <button type="button" onClick={this.navToHome} className="close_btn">
             <img src={close} alt={close}></img>
           </button>
-          <div className="ht_scroll m-n20">
-            <div className="row p-l-1 p-r-1">
-              <div className="col-8">
-                <h5 className="text-left mb-0 fs-12">Streak</h5>
-                <h5 className="text-left mb-0 fs-12">Bounty</h5>
-              </div>
-              <div className="col-4 text-right p-r-0 coin_box-m">
-                <img
-                  src={coinbox}
-                  alt={coinbox}
-                  className="cursor img-fluid w-40 m-r-2"
-                ></img>
-              </div>
+          <div className="body">
+            <div className="d-flex mt-3 justify-content-around align-items-start w-75">
+              <h5 className="fs-15">Streak <br /> Bounty </h5>
+              <img
+                src={coinbox}
+                alt={coinbox}
+                className="cursor img-fluid w-10"
+              ></img>
             </div>
-            <div className="p-l-1 p-r-1 joyBarSm">
+            <div className="joyBarSm">
               <ProgressBar
                 completed={
                   this.state.dailyRewards.length
@@ -198,22 +193,20 @@ class DailyLogin extends Component {
                           key={index}
                           onClick={() =>
                             this.dailyRewardStatus(item.dayNo) &&
-                            this.rewardCollected(item.dayNo)
+                              this.rewardCollected(item.dayNo)
                               ? ""
                               : this.getDayDetails(item)
                           }
-                          className={`${
-                            this.dailyRewardStatus(item.dayNo) &&
-                            this.rewardCollected(item.dayNo)
+                          className={`${this.dailyRewardStatus(item.dayNo) &&
+                              this.rewardCollected(item.dayNo)
                               ? "grey_out"
                               : ""
-                          } 
-                          ${
-                            !this.rewardCollected(item.dayNo) &&
-                            this.dailyRewardStatus(item.dayNo)
+                            } 
+                          ${!this.rewardCollected(item.dayNo) &&
+                              this.dailyRewardStatus(item.dayNo)
                               ? "bg_yellow"
                               : ""
-                          } "dLoginImgs"`}
+                            } "dLoginImgs"`}
                         >
                           <h5>Day {item.dayNo}</h5>
                           <div className="row">
@@ -245,25 +238,26 @@ class DailyLogin extends Component {
                 </ul>
               </div>
             )}
+            <div>
+              <h5 className="fs-14 mb-1 mt-0">Special Bounty in 14 days!</h5>
+              <h5 className="fs-14 mb-0">
+                Rank up for more rewards. Your next rank-
+                <span>{this.state.nextRank.rankname}</span>
+              </h5>
+              <button
+                type="button"
+                className={
+                  this.state.selectedDay
+                    ? "img_btn"
+                    : "img_btn_brown btn-w125 btn-h64"
+                }
+                onClick={() => this.claimReward()}
+              >
+                Claim
+              </button>
+            </div>
           </div>
         </div>
-
-        <h5 className="fs-14 mb-1 mt-0">Special Bounty in 14 days!</h5>
-        <h5 className="fs-14 mb-0">
-          Rank up for more rewards. Your next rank-
-          <span>{this.state.nextRank.rankname}</span>
-        </h5>
-        <button
-          type="button"
-          className={
-            this.state.selectedDay
-              ? "img_btn"
-              : "img_btn_brown btn-w125 btn-h64"
-          }
-          onClick={() => this.claimReward()}
-        >
-          Claim
-        </button>
       </div>
     );
   }

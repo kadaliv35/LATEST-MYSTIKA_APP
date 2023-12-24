@@ -381,7 +381,7 @@ class Goals extends Component {
           <div className="rect_large_content">
             <div className="row p-l-2">
               <div className="col-3 goals-left p-r-0">
-                <img src={goal}></img>
+                <img alt='' src={goal}></img>
                 <h5 className="text-green fs-20">Goals</h5>
                 <label className="text-white fs-14 d-block">
                   Accomplish your goals with these cards
@@ -412,7 +412,7 @@ class Goals extends Component {
                   {this.state.allDeckList.map((itmes, index) => {
                     return (
                       <span key={index}>
-                        <img
+                        <img alt=''
                           src={decks}
                           onClick={() => this.deckSelection(itmes)}
                         ></img>
@@ -420,8 +420,8 @@ class Goals extends Component {
                     );
                   })}
 
-                  {/* <span><img src={decks}></img></span>
-                  <span><img src={decks}></img></span> */}
+                  {/* <span><img alt='' src={decks}></img></span>
+                  <span><img alt='' src={decks}></img></span> */}
                 </div>
               </div>
 
@@ -440,8 +440,8 @@ class Goals extends Component {
                       </div>
                       <div className='text-center arrow'>
                         <h5 className='text-white fs-12 mb-1 mt-1'>7 /10 Cards</h5>
-                        <img className="cursor m-r-2" src={left}></img>
-                        <img className="cursor" src={right} onClick={this.navGoalsFlag}></img>
+                        <img alt='' className="cursor m-r-2" src={left}></img>
+                        <img alt='' className="cursor" src={right} onClick={this.navGoalsFlag}></img>
                       </div>
                     </div>
                   </div>
@@ -459,29 +459,29 @@ class Goals extends Component {
                       className="close_btn"
                       onClick={() => this.openCards()}
                     >
-                      <img src={close}></img>
+                      <img alt='' src={close}></img>
                     </button>
                   </div>
                 }
                 body={
                   <div className="text-center">
-                    <span>CONTINUE A NEW TASK WITH THIS MAGIC CARD PICK THE CARD YOU WANT TO PLAY WITH 100 <img src={coins} /> </span>
+                    <span>CONTINUE A NEW TASK WITH THIS MAGIC CARD PICK THE CARD YOU WANT TO PLAY WITH 100 <img alt='' src={coins} /> </span>
                     <div className="d-flex justify-content-around mt-5">
                       <div>
-                        <img src={speed} onClick={() => this.selectCard("speed")} />
+                        <img alt='' src={speed} onClick={() => this.selectCard("speed")} />
                         <h5>Speed</h5>
                       </div>
                       <div>
-                        <img src={velocity} onClick={() => this.selectCard("velocity")} />
+                        <img alt='' src={velocity} onClick={() => this.selectCard("velocity")} />
                         <h5>Velocity</h5>
                       </div>
                       <div>
-                        <img src={intelligence} onClick={() => this.selectCard("intelligence")} />
+                        <img alt='' src={intelligence} onClick={() => this.selectCard("intelligence")} />
                         <h5>Intelligence</h5>
                       </div>
                     </div>
                     <div className="d-flex justify-content-start mt-4">
-                      <img src={queen} />
+                      <img alt='' src={queen} />
                       <button
                         type="button"
                         className="img_btn_home ml-5"
@@ -507,7 +507,7 @@ class Goals extends Component {
                       className="close_btn"
                       onClick={() => this.openDecks()}
                     >
-                      <img src={close}></img>
+                      <img alt='' src={close}></img>
                     </button>
                   </div>
                 }
@@ -515,13 +515,13 @@ class Goals extends Component {
                   <div className="text-center">
                     <span>TAKE YOUR GOALS To THE NEXT LEVEL WITH A BRAND NEW GOAL DECK
                       <br />
-                      DO YOU WANT TO PURCHASE THE DECK FOR 30 <img src={crystal} className="h-25" /> </span>
+                      DO YOU WANT TO PURCHASE THE DECK FOR 30 <img alt='' src={crystal} className="h-25" /> </span>
                     <div>
-                      <img src={decks} className="h-25 w-25" />
+                      <img alt='' src={decks} className="h-25 w-25" />
                     </div>
 
                     <div className="d-flex justify-content-start mt-4">
-                      <img src={queen} />
+                      <img alt='' src={queen} />
                       <button
                         type="button"
                         className="img_btn_home"
@@ -547,7 +547,7 @@ class Goals extends Component {
                       className="close_btn"
                       onClick={() => this.closeGoalComplete()}
                     >
-                      <img src={close}></img>
+                      <img alt='' src={close}></img>
                     </button>
                   </div>
                 }
@@ -578,7 +578,7 @@ class Goals extends Component {
                       className="close_btn"
                       onClick={() => this.closeGoalComplete()}
                     >
-                      <img src={close}></img>
+                      <img alt='' src={close}></img>
                     </button>
                   </div>
                 }
@@ -611,7 +611,7 @@ class Goals extends Component {
                       className="close_btn"
                       onClick={() => this.closeGoalComplete()}
                     >
-                      <img src={close}></img>
+                      <img alt='' src={close}></img>
                     </button>
                   </div>
                 }
@@ -638,7 +638,7 @@ class Goals extends Component {
                 <div className="col-8">
                   <div className="row">
                     <div className="col-5 p-l-0 goals-middle">
-                      <img id="lordGult" src={lordGult} alt="lrd og guilt" />
+                      <img alt='' id="lordGult" src={lordGult} alt="lrd og guilt" />
                       <label>Lord of Gult</label>
                     </div>
                     <div className="col-7 goals-right p-r-0 p-l-5">
@@ -738,13 +738,13 @@ class Goals extends Component {
                                       : currentIndex + 1}{" "}
                                     /{this.state.deckList.length} Cards
                                   </h5>
-                                  <img
+                                  <img alt=''
                                     className="cursor m-r-2"
                                     src={left}
                                     alt="left"
                                     onClick={() => this.navGoalsFlag(currentIndex)}
                                   ></img>
-                                  <img
+                                  <img alt=''
                                     className="cursor"
                                     src={right}
                                     alt="right"
@@ -796,11 +796,11 @@ class Goals extends Component {
                  {console.log('lllllllllllllll')}
                   <div className='row'>
                     <div className="col-5 p-l-0 goals-middle">
-                      <img className="img_pro" src={goalsPF}></img>
+                      <img alt='' className="img_pro" src={goalsPF}></img>
                       <h5>Lord od Guilt</h5>
                       <div className="">
                         <h5 className='text-white fs-10 mb-1 mt-1 text-right'>100 / 150</h5>
-                        <img className='prog_bar' src={Progress}></img>
+                        <img alt='' className='prog_bar' src={Progress}></img>
                       </div>
                     </div>
                     <div className='col-7 goals-right p-r-0 p-l-5'>
@@ -825,8 +825,8 @@ class Goals extends Component {
                       </div>
                       <div className='text-center arrow'>
                         <h5 className='text-white fs-12 mb-1 mt-1'>{ind+1} /{ele.goalCards.lengthh}  Cards</h5>
-                        <img className="cursor m-r-2" src={left}></img>
-                        <img className="cursor" src={right} onClick={this.formGoals}></img>
+                        <img alt='' className="cursor m-r-2" src={left}></img>
+                        <img alt='' className="cursor" src={right} onClick={this.formGoals}></img>
                       </div>
                     </div>
                   </div>

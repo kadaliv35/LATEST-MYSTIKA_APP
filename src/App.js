@@ -10,10 +10,10 @@ import WelcomeBackScreen from "./components/login/WelcomeBackScreen";
 import { Elements } from "@stripe/react-stripe-js";
 import "@stripe/stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import SuccessPage from './shared/layout/SuccessPage'
+import SuccessPage from './shared/layout/SuccessPage';
 const App = () => {
 
-  const stripePromise = loadStripe('pk_test_51Nl8GySHVh0kvU8q8BMqkbihq86Dq2k30zAUnJJ7Qb0TanEh51HxJZByWyVudbKNK16Z9iO4GRWsSTY9eWIEVxtA00rYzVnQZZ')
+  const stripePromise = loadStripe('pk_test_51Nl8GySHVh0kvU8q8BMqkbihq86Dq2k30zAUnJJ7Qb0TanEh51HxJZByWyVudbKNK16Z9iO4GRWsSTY9eWIEVxtA00rYzVnQZZ');
 
   return (
     <Elements stripe={stripePromise}>

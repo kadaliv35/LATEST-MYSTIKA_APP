@@ -20,13 +20,13 @@ function TreasureQuest
       <Modals open={true}
         header={
           <div>
-            <h5 className="text-white">Treasure Quest</h5>
+            <h5 className="text-white mt-3">Treasure Quest</h5>
             <button
               type="button"
               className="close_btn"
               onClick={hideTQpop}
             >
-              <img src={close}></img>
+              <img  src={close} alt='close'></img>
             </button>
           </div>
         }
@@ -41,12 +41,12 @@ function TreasureQuest
                 {treasureChest && treasureChest.map((item, index) => {
                   return (
                     <span key={index}>
-                      <img src={coins} className='chestImg' />
+                      <img  src={coins} className='chestImg mb-5' alt='chest' />
                       <br />
-                      <span><img className='treasureImg' src={coin} /> {"10 coins"}</span>
-                      <span><img className='treasureImg' src={crystal} /> {"10 crystals"}</span>
-                      <div className='treasureBtm'>
-                        <img src={queen} />
+                      <span><img  className='treasureImg' src={coin} alt='coin' /> {"10 coins"}</span>
+                      <span><img  className='treasureImg' src={crystal} alt='crystal' /> {"10 crystals"}</span>
+                      <div className='treasureBtm mt-5'>
+                        <img  src={queen} alt='queen' />
                         <button
                           type="button"
                           // className="img_btn_home"

@@ -852,19 +852,24 @@ body {
 
 .day {
     &-list {
-        width: 100%;
+        width: 80%;
+        margin: 0 10%;
+        display: grid;
+        place-items: center;
 
         & ul {
             margin: 0;
             padding: 0;
             text-decoration: none;
             text-align: left;
-            margin-left: 4px;
             margin-top: 6px;
-            width: 100%;
+            width: 90%;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            place-items: center;
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
+            height: 200px;
+            overflow-y: scroll;
 
             & li {
                 text-decoration: none;
@@ -875,7 +880,7 @@ body {
                 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#1f1d16", GradientType=1);
                 border: 1px solid #564e46;
                 background-size: cover;
-                width: 80%;
+                width: 50%;
                 height: 90px;
                 border-radius: 5px;
                 text-align: center;
@@ -930,7 +935,7 @@ body {
                 position: relative;
                 object-fit: cover;
                 filter: blur(1px);
-                width: 80%;
+                width: 50%;
                 height: 90px;
 
                 &::after {
@@ -985,17 +990,18 @@ body {
     background-image: url(../images/queen.png);
     background-repeat: no-repeat;
     background-position-x: 0%;
-    background-position-y: 99%;
-    background-size: 27%;
+    background-position-y: 100%;
+    background-size: 23%;
     height: 56.9vh;
     font-family: OptimusPrinceps;
     text-align: center;
     // margin: 0px auto;
+    z-index: 1000;
 
     // height: 278px;
     & .profile {
         & img {
-            width: 80px;
+            width: 150px;
         }
 
         & h5 {

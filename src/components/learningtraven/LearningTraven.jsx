@@ -134,18 +134,18 @@ class LearningTraven extends Component {
   }
 
   openSurveys = () => {
-    this.setState({mainPageFlag: false, surveyCateoryFlag: true}
+    this.setState({ mainPageFlag: false, surveyCateoryFlag: true }
       , () => {
         this.getBlogCategoriesList();
-      })
-  }
+      });
+  };
 
-  getBlogCategoriesList(){
+  getBlogCategoriesList() {
     LearningTravenService.getAllBlogCategories()
       .then((res) => {
-        console.log({res})
-        this.setState({surveyList: res.data})
-      })
+        console.log({ res });
+        this.setState({ surveyList: res.data });
+      });
   }
 
   navGoBack = () => {
@@ -221,7 +221,7 @@ class LearningTraven extends Component {
         listOfBlogs: true,
         blogList: this.state.planBlogList,
       },
-      () => {}
+      () => { }
     );
   }
   navFuture() {
@@ -231,7 +231,7 @@ class LearningTraven extends Component {
         listOfBlogs: true,
         blogList: this.state.futureBlogList,
       },
-      () => {}
+      () => { }
     );
   }
 
@@ -242,7 +242,7 @@ class LearningTraven extends Component {
         listOfBlogs: true,
         blogList: this.state.passionBlogList,
       },
-      () => {}
+      () => { }
     );
   }
 
@@ -325,10 +325,10 @@ class LearningTraven extends Component {
               clearInterval(this.timerInterval);
               this.setState({ isTimerRunning: false, blogRead: true });
             } else {
-              this.setState({ min: min - 1, sec: 59 }, () => {});
+              this.setState({ min: min - 1, sec: 59 }, () => { });
             }
           } else {
-            this.setState({ sec: sec - 1 }, () => {});
+            this.setState({ sec: sec - 1 }, () => { });
           }
         }, 1000);
       }
@@ -336,7 +336,7 @@ class LearningTraven extends Component {
   }
 
   handleColourList = (e) => {
-    this.setState({ course: e.target.value }, () => {});
+    this.setState({ course: e.target.value }, () => { });
   };
 
   pauseTimer() {
@@ -370,10 +370,10 @@ class LearningTraven extends Component {
                 isStartTime: true,
               });
             } else {
-              this.setState({ min: min - 1, sec: 59 }, () => {});
+              this.setState({ min: min - 1, sec: 59 }, () => { });
             }
           } else {
-            this.setState({ sec: sec - 1 }, () => {});
+            this.setState({ sec: sec - 1 }, () => { });
           }
         }, 1000);
       }
@@ -429,14 +429,14 @@ class LearningTraven extends Component {
           <div className="rect_large_content">
             {this.state.mainPageFlag && (
               <div className="door">
-                <img src={door} alt="" onClick={() => this.navMainPage()}></img>
+                <img alt='' src={door} onClick={() => this.navMainPage()}></img>
                 <h5>Learning Tavern</h5>
                 <label>
                   adventurer, quench your thirst for knowledge here.
                 </label>
                 <Carousel>
                   <Carousel.Item>
-                    {/* <img
+                    {/* <img alt=''
                     className="d-block w-100"
                     src="https://media.geeksforgeeks.org/wp-content/uploads/20210425122739/2-300x115.png"
                     alt="Image One"
@@ -447,8 +447,8 @@ class LearningTraven extends Component {
                   </Carousel.Caption> */}
                     <ul>
                       <li>
-                        <img
-                          alt=""
+                        <img alt=''
+
                           src={blog}
                           onClick={this.navTravensBlogs}
                         ></img>
@@ -456,8 +456,8 @@ class LearningTraven extends Component {
                         <label>{this.state.allBlogs.length} blogs read</label>
                       </li>
                       <li>
-                        <img
-                          alt=""
+                        <img alt=''
+
                           src={video}
                           onClick={this.navTravensVidoes}
                         ></img>
@@ -465,12 +465,12 @@ class LearningTraven extends Component {
                         <label>0 videos watched</label>
                       </li>
                       <li>
-                        <img alt="" src={survey } onClick={this.openSurveys}></img>
+                        <img alt='' src={survey} onClick={this.openSurveys}></img>
                         <h5>surveys & questionnaires</h5>
                         <label>0 surveys taken</label>
                       </li>
                       {/* <li>
-                        <img alt="" src={Ques}></img>
+                        <img alt='' alt="" src={Ques}></img>
                         <h5>questionnaires</h5>
                         <label>0 questionnaires taken</label>
                       </li> */}
@@ -479,22 +479,22 @@ class LearningTraven extends Component {
                   {/* <Carousel.Item>
                   <ul>
                     <li>
-                      <img src={blog}></img>
+                      <img alt='' src={blog}></img>
                       <h5>blogs</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={video}></img>
+                      <img alt='' src={video}></img>
                       <h5>videos</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={survey}></img>
+                      <img alt='' src={survey}></img>
                       <h5>surveys</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={Ques}></img>
+                      <img alt='' src={Ques}></img>
                       <h5>questionnaires</h5>
                       <label>10 blogs read</label>
                     </li>
@@ -505,7 +505,7 @@ class LearningTraven extends Component {
                 {/* 
               <ReactBootstrapCarousel activeIndex={this.stateindex} onSelect={this.handleSelect}>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=First slide&bg=373940"
                     alt="First slide"
@@ -516,7 +516,7 @@ class LearningTraven extends Component {
                   </ReactBootstrapCarousel.Caption>
                 </ReactBootstrapCarousel.Item>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=Second slide&bg=282c34"
                     alt="Second slide"
@@ -528,7 +528,7 @@ class LearningTraven extends Component {
                   </ReactBootstrapCarousel.Caption>
                 </ReactBootstrapCarousel.Item>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=Third slide&bg=20232a"
                     alt="Third slide"
@@ -549,22 +549,22 @@ class LearningTraven extends Component {
                   <div className="carousel-item">
                     <ul>
                       <li>
-                        <img src={blog}></img>
+                        <img alt='' src={blog}></img>
                         <h5>blogs</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={video}></img>
+                        <img alt='' src={video}></img>
                         <h5>videos</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={survey}></img>
+                        <img alt='' src={survey}></img>
                         <h5>surveys</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={Ques}></img>
+                        <img alt='' src={Ques}></img>
                         <h5>questionnaires</h5>
                         <label>10 blogs read</label>
                       </li>
@@ -573,22 +573,22 @@ class LearningTraven extends Component {
                   <div className="carousel-item active">
                     <ul>
                       <li>
-                        <img src={blog}></img>
+                        <img alt='' src={blog}></img>
                         <h5>bs</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={video}></img>
+                        <img alt='' src={video}></img>
                         <h5>videos</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={survey}></img>
+                        <img alt='' src={survey}></img>
                         <h5>surveys</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={Ques}></img>
+                        <img alt='' src={Ques}></img>
                         <h5>questionnaires</h5>
                         <label>10 blogs read</label>
                       </li>
@@ -607,22 +607,22 @@ class LearningTraven extends Component {
               </div> */}
                 {/* <ul>
                 <li>
-                  <img src={blog}></img>
+                  <img alt='' src={blog}></img>
                   <h5>blogs</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={video}></img>
+                  <img alt='' src={video}></img>
                   <h5>videos</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={survey}></img>
+                  <img alt='' src={survey}></img>
                   <h5>surveys</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={Ques}></img>
+                  <img alt='' src={Ques}></img>
                   <h5>questionnaires</h5>
                   <label>10 blogs read</label>
                 </li>
@@ -640,7 +640,7 @@ class LearningTraven extends Component {
                     className="close_btn"
                     onClick={() => this.closeBlogComplete()}
                   >
-                    <img alt="" src={close}></img>
+                    <img alt='' src={close}></img>
                   </button>
                 </div>
               }
@@ -672,7 +672,7 @@ class LearningTraven extends Component {
                     className="close_btn"
                     onClick={() => this.closeBlogRead()}
                   >
-                    <img src={close}></img>
+                    <img alt='' src={close}></img>
                   </button>
                 </div>
               }
@@ -683,30 +683,30 @@ class LearningTraven extends Component {
 
                   <div className="reward-container">
                     <div className="reward-container-sub">
-                      <img className="rewardImg" src={coinFrame} alt="coin" />
+                      <img  className="rewardImg" src={coinFrame} alt="coin" />
                       <h5>Coins</h5>
                       <span>
-                        <img src={coin} alt="" />
+                        <img alt='' src={coin} />
                         <b>10</b>
                       </span>
                     </div>
                     <div className="reward-container-sub">
-                      <img
+                      <img 
                         className="rewardImg"
                         src={crystalFrame}
                         alt="crystal"
                       />
                       <h5>Crystals</h5>
                       <span>
-                        <img src={crystal} alt="" />
+                        <img alt='' src={crystal} />
                         <b>10</b>
                       </span>
                     </div>
                     <div className="reward-container-sub">
-                      <img className="rewardImg" src={xpFrame} alt="xp" />
-                      <h5>Joy Points</h5>
+                      <img  className="rewardImg" src={xpFrame} alt="xp" />
+                      <h5>XP Points</h5>
                       <span>
-                        <img src={xp} alt="" />
+                        <img alt='' src={xp} />
                         <b>10</b>
                       </span>
                     </div>
@@ -727,8 +727,8 @@ class LearningTraven extends Component {
               <div className="door">
                 <div className="row">
                   <div className="col-7 text-center">
-                    <img src={door} onClick={() => this.navMainPage()}></img>
-                    <img src={decks} onClick={() => this.navGoBack()}></img>
+                    <img alt='' src={door} onClick={() => this.navMainPage()}></img>
+                    <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
                     <h5>Learning Tavern-Blogs</h5>
                     <label className="mb-0">
                       unravel the hidden knowledge of the ancients.
@@ -743,12 +743,12 @@ class LearningTraven extends Component {
                     >
                       SUBMIT A BLOG
                     </button>
-                    <img src={blogNotes}></img>
+                    <img alt='' src={blogNotes}></img>
                   </div>
                 </div>
                 <Carousel>
                   <Carousel.Item>
-                    {/* <img
+                    {/* <img alt=''
                     className="d-block w-100"
                     src="https://media.geeksforgeeks.org/wp-content/uploads/20210425122739/2-300x115.png"
                     alt="Image One"
@@ -759,22 +759,22 @@ class LearningTraven extends Component {
                   </Carousel.Caption> */}
                     <ul>
                       <li>
-                        <img src={blogCt1} onClick={this.navBlogs}></img>
+                        <img alt='' src={blogCt1} onClick={this.navBlogs}></img>
                         <h5 className="fs-14">STRENGTH</h5>
                         {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
-                        <img src={blogCt2} onClick={this.navPlans}></img>
+                        <img alt='' src={blogCt2} onClick={this.navPlans}></img>
                         <h5 className="fs-14">PLAN</h5>
                         {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
-                        <img src={blogCt3} onClick={this.navFuture}></img>
+                        <img alt='' src={blogCt3} onClick={this.navFuture}></img>
                         <h5 className="fs-14">FUTURE</h5>
                         {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
-                        <img src={blogCt4} onClick={this.navPassion}></img>
+                        <img alt='' src={blogCt4} onClick={this.navPassion}></img>
                         <h5 className="fs-14">PASSION</h5>
                         {/* <label>10 blogs read</label> */}
                       </li>
@@ -783,22 +783,22 @@ class LearningTraven extends Component {
                   {/* <Carousel.Item>
                   <ul>
                     <li>
-                      <img src={blog}></img>
+                      <img alt='' src={blog}></img>
                       <h5>blogs</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={video}></img>
+                      <img alt='' src={video}></img>
                       <h5>videos</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={survey}></img>
+                      <img alt='' src={survey}></img>
                       <h5>surveys</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={Ques}></img>
+                      <img alt='' src={Ques}></img>
                       <h5>questionnaires</h5>
                       <label>10 blogs read</label>
                     </li>
@@ -809,7 +809,7 @@ class LearningTraven extends Component {
                 {/* 
               <ReactBootstrapCarousel activeIndex={this.stateindex} onSelect={this.handleSelect}>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=First slide&bg=373940"
                     alt="First slide"
@@ -820,7 +820,7 @@ class LearningTraven extends Component {
                   </ReactBootstrapCarousel.Caption>
                 </ReactBootstrapCarousel.Item>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=Second slide&bg=282c34"
                     alt="Second slide"
@@ -832,7 +832,7 @@ class LearningTraven extends Component {
                   </ReactBootstrapCarousel.Caption>
                 </ReactBootstrapCarousel.Item>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=Third slide&bg=20232a"
                     alt="Third slide"
@@ -853,22 +853,22 @@ class LearningTraven extends Component {
                   <div className="carousel-item">
                     <ul>
                       <li>
-                        <img src={blog}></img>
+                        <img alt='' src={blog}></img>
                         <h5>blogs</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={video}></img>
+                        <img alt='' src={video}></img>
                         <h5>videos</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={survey}></img>
+                        <img alt='' src={survey}></img>
                         <h5>surveys</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={Ques}></img>
+                        <img alt='' src={Ques}></img>
                         <h5>questionnaires</h5>
                         <label>10 blogs read</label>
                       </li>
@@ -877,22 +877,22 @@ class LearningTraven extends Component {
                   <div className="carousel-item active">
                     <ul>
                       <li>
-                        <img src={blog}></img>
+                        <img alt='' src={blog}></img>
                         <h5>bs</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={video}></img>
+                        <img alt='' src={video}></img>
                         <h5>videos</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={survey}></img>
+                        <img alt='' src={survey}></img>
                         <h5>surveys</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={Ques}></img>
+                        <img alt='' src={Ques}></img>
                         <h5>questionnaires</h5>
                         <label>10 blogs read</label>
                       </li>
@@ -911,22 +911,22 @@ class LearningTraven extends Component {
               </div> */}
                 {/* <ul>
                 <li>
-                  <img src={blog}></img>
+                  <img alt='' src={blog}></img>
                   <h5>blogs</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={video}></img>
+                  <img alt='' src={video}></img>
                   <h5>videos</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={survey}></img>
+                  <img alt='' src={survey}></img>
                   <h5>surveys</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={Ques}></img>
+                  <img alt='' src={Ques}></img>
                   <h5>questionnaires</h5>
                   <label>10 blogs read</label>
                 </li>
@@ -937,19 +937,19 @@ class LearningTraven extends Component {
               <div className="door">
                 <div className="row">
                   <div className="col-7 text-center">
-                    <img src={door} onClick={() => this.navMainPage()}></img>
-                    <img src={decks} onClick={() => this.navGoBack()}></img>
-                    <img src={blogFire}></img>
+                    <img alt='' src={door} onClick={() => this.navMainPage()}></img>
+                    <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
+                    <img alt='' src={blogFire}></img>
                     <h5 className="text-white">Learning Tavern-Blogs</h5>
                     <label>unravel the hidden knowledge of the ancients.</label>
                   </div>
-                  
+
                   <div className="col-5 text-right"></div>
                 </div>
 
                 <Carousel>
                   <Carousel.Item>
-                    {/* <img
+                    {/* <img alt=''
                     className="d-block w-100"
                     src="https://media.geeksforgeeks.org/wp-content/uploads/20210425122739/2-300x115.png"
                     alt="Image One"
@@ -962,7 +962,7 @@ class LearningTraven extends Component {
                       {this.state.blogList.map((items, index) => {
                         return (
                           <li key={index}>
-                            <img
+                            <img alt=''
                               src={blogNt1}
                               onClick={() => {
                                 this.readBlog(items.blogId);
@@ -973,17 +973,17 @@ class LearningTraven extends Component {
                         );
                       })}
                       {/* <li>
-                        <img src={blogNt2}></img>
+                        <img alt='' src={blogNt2}></img>
                         <h5 className="fs-13">BLOG 2</h5>
                       
                       </li>
                       <li>
-                        <img src={blogNt3}></img>
+                        <img alt='' src={blogNt3}></img>
                         <h5 className="fs-13">BLOG 3</h5>
                       
                       </li>
                       <li>
-                        <img src={blogNt4}></img>
+                        <img alt='' src={blogNt4}></img>
                         <h5 className="fs-13">BLOG 4</h5>
                       
                       </li> */}
@@ -992,22 +992,22 @@ class LearningTraven extends Component {
                   {/* <Carousel.Item>
                   <ul>
                     <li>
-                      <img src={blog}></img>
+                      <img alt='' src={blog}></img>
                       <h5>blogs</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={video}></img>
+                      <img alt='' src={video}></img>
                       <h5>videos</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={survey}></img>
+                      <img alt='' src={survey}></img>
                       <h5>surveys</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={Ques}></img>
+                      <img alt='' src={Ques}></img>
                       <h5>questionnaires</h5>
                       <label>10 blogs read</label>
                     </li>
@@ -1018,7 +1018,7 @@ class LearningTraven extends Component {
                 {/* 
               <ReactBootstrapCarousel activeIndex={this.stateindex} onSelect={this.handleSelect}>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=First slide&bg=373940"
                     alt="First slide"
@@ -1029,7 +1029,7 @@ class LearningTraven extends Component {
                   </ReactBootstrapCarousel.Caption>
                 </ReactBootstrapCarousel.Item>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=Second slide&bg=282c34"
                     alt="Second slide"
@@ -1041,7 +1041,7 @@ class LearningTraven extends Component {
                   </ReactBootstrapCarousel.Caption>
                 </ReactBootstrapCarousel.Item>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=Third slide&bg=20232a"
                     alt="Third slide"
@@ -1062,22 +1062,22 @@ class LearningTraven extends Component {
                   <div className="carousel-item">
                     <ul>
                       <li>
-                        <img src={blog}></img>
+                        <img alt='' src={blog}></img>
                         <h5>blogs</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={video}></img>
+                        <img alt='' src={video}></img>
                         <h5>videos</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={survey}></img>
+                        <img alt='' src={survey}></img>
                         <h5>surveys</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={Ques}></img>
+                        <img alt='' src={Ques}></img>
                         <h5>questionnaires</h5>
                         <label>10 blogs read</label>
                       </li>
@@ -1086,22 +1086,22 @@ class LearningTraven extends Component {
                   <div className="carousel-item active">
                     <ul>
                       <li>
-                        <img src={blog}></img>
+                        <img alt='' src={blog}></img>
                         <h5>bs</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={video}></img>
+                        <img alt='' src={video}></img>
                         <h5>videos</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={survey}></img>
+                        <img alt='' src={survey}></img>
                         <h5>surveys</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={Ques}></img>
+                        <img alt='' src={Ques}></img>
                         <h5>questionnaires</h5>
                         <label>10 blogs read</label>
                       </li>
@@ -1120,22 +1120,22 @@ class LearningTraven extends Component {
               </div> */}
                 {/* <ul>
                 <li>
-                  <img src={blog}></img>
+                  <img alt='' src={blog}></img>
                   <h5>blogs</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={video}></img>
+                  <img alt='' src={video}></img>
                   <h5>videos</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={survey}></img>
+                  <img alt='' src={survey}></img>
                   <h5>surveys</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={Ques}></img>
+                  <img alt='' src={Ques}></img>
                   <h5>questionnaires</h5>
                   <label>10 blogs read</label>
                 </li>
@@ -1146,9 +1146,9 @@ class LearningTraven extends Component {
               <div className="door">
                 <div className="row">
                   <div className="col-7 text-center">
-                    <img src={door} onClick={() => this.navMainPage()}></img>
-                    <img src={decks} onClick={() => this.navGoBack()}></img>
-                    <img src={blogFire}></img>
+                    <img alt='' src={door} onClick={() => this.navMainPage()}></img>
+                    <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
+                    <img alt='' src={blogFire}></img>
                     <h5 className="text-white">Learning Tavern-Blogs</h5>
                     <label>unravel the hidden knowledge of the ancients.</label>
                   </div>
@@ -1164,7 +1164,7 @@ class LearningTraven extends Component {
                         >
                           Start Reading...
                         </button>{" "}
-                        <img src={blogBook} className="w-h-40 mt-3"></img>
+                        <img alt='' src={blogBook} className="w-h-40 mt-3"></img>
                         <span className="mt-4 text-white fs-12">
                           4 min read
                         </span>
@@ -1181,7 +1181,7 @@ class LearningTraven extends Component {
                         >
                           Pause
                         </button>{" "}
-                        <img src={blogBook} className="w-h-40 mt-3"></img>
+                        <img alt='' src={blogBook} className="w-h-40 mt-3"></img>
                         <span className="mt-4 text-white fs-12">
                           4 min read
                         </span>
@@ -1198,7 +1198,7 @@ class LearningTraven extends Component {
                         >
                           Start Reading...
                         </button>{" "}
-                        <img src={blogBook} className="w-h-40 mt-3"></img>
+                        <img alt='' src={blogBook} className="w-h-40 mt-3"></img>
                         <span className="mt-4 text-white fs-12">
                           4 min read
                         </span>
@@ -1213,7 +1213,7 @@ class LearningTraven extends Component {
                       </div>
                     )}
                     <div className="d-flex">
-                      {/* <img src={progress} className="w-80p"></img><img src={coinBox} ></img> */}
+                      {/* <img alt='' src={progress} className="w-80p"></img><img alt='' src={coinBox} ></img> */}
                       <Bars
                         completed={this.state.min * this.state.sec}
                         maxCompleted={4 * 60}
@@ -1224,7 +1224,7 @@ class LearningTraven extends Component {
                 <div className="rect_bg_medium">
                   <div className="row p-3">
                     <div className="col-3">
-                      <img className="w-100" src={blogNt1}></img>
+                      <img alt='' className="w-100" src={blogNt1}></img>
                     </div>
                     <div className="col-9">
                       <h5 className="text-green fs-20">
@@ -1242,13 +1242,13 @@ class LearningTraven extends Component {
               <div className="door">
                 <div className="row">
                   <div className="col-7 text-center">
-                    <img src={door} onClick={() => this.navMainPage()}></img>
-                    <img src={decks} onClick={() => this.navGoBack()}></img>
+                    <img alt='' src={door} onClick={() => this.navMainPage()}></img>
+                    <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
                     <h5 className="text-white">Learning Tavern-Blogs</h5>
                     <label>submit your own blog</label>
                   </div>
                   <div className="col-5 text-right">
-                    <img src={blogNotes}></img>
+                    <img alt='' src={blogNotes}></img>
                     <div className="">
                       <button
                         type="button"
@@ -1341,11 +1341,11 @@ class LearningTraven extends Component {
             {this.state.videosCateoryFlag && (
               <div className="door">
                 <div className="row">
-                <div className="col-7 text-center">
-                <img src={door} onClick={() => this.navMainPage()}></img>
-                <h5>Learning Tavern-Videos</h5>
-                </div>
-                <div className="col-5 text-right p-r-4">
+                  <div className="col-7 text-center">
+                    <img alt='' src={door} onClick={() => this.navMainPage()}></img>
+                    <h5>Learning Tavern-Videos</h5>
+                  </div>
+                  <div className="col-5 text-right p-r-4">
                     <button
                       type="button"
                       className="img_btn_home fs-13"
@@ -1353,7 +1353,7 @@ class LearningTraven extends Component {
                     >
                       SUBMIT A BLOG
                     </button>
-                    <img src={blogNotes}></img>
+                    <img alt='' src={blogNotes}></img>
                   </div>
                 </div>
                 <label>
@@ -1363,22 +1363,22 @@ class LearningTraven extends Component {
                   <Carousel.Item>
                     <ul>
                       <li>
-                        <img src={blogCt1} onClick={this.navVideos}></img>
+                        <img alt='' src={blogCt1} onClick={this.navVideos}></img>
                         <h5 className="fs-13">STRENGTH</h5>
                         {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
-                        <img src={blogCt2} onClick={this.navPlanVideos}></img>
+                        <img alt='' src={blogCt2} onClick={this.navPlanVideos}></img>
                         <h5 className="fs-13">PLAN</h5>
                         {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
-                        <img src={blogCt3} onClick={this.navFutureVedios}></img>
+                        <img alt='' src={blogCt3} onClick={this.navFutureVedios}></img>
                         <h5 className="fs-13">FUTURE</h5>
                         {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
-                        <img src={blogCt4} onClick={this.navPassionVedio}></img>
+                        <img alt='' src={blogCt4} onClick={this.navPassionVedio}></img>
                         <h5 className="fs-13">PASSION</h5>
                         {/* <label>10 blogs read</label> */}
                       </li>
@@ -1390,11 +1390,11 @@ class LearningTraven extends Component {
             {this.state.surveyCateoryFlag && (
               <div className="door">
                 <div>
-                <div className="col-7 text-center">
-                <img src={door} onClick={() => this.navMainPage()}></img>
-                <h5>Learning Tavern-Survey's</h5>
-                </div>                  
-                <div className="col-5 text-right p-r-4">
+                  <div className="col-7 text-center">
+                    <img alt='' src={door} onClick={() => this.navMainPage()}></img>
+                    <h5>Learning Tavern-Survey's</h5>
+                  </div>
+                  <div className="col-5 text-right p-r-4">
                     <button
                       type="button"
                       className="img_btn_home fs-13"
@@ -1402,31 +1402,31 @@ class LearningTraven extends Component {
                     >
                       SUBMIT A BLOG
                     </button>
-                    <img src={blogNotes}></img>
+                    <img alt='' src={blogNotes}></img>
                   </div>
                 </div>
                 <Carousel>
                   <Carousel.Item>
-                    <ul>                        
-                {this.state.surveyList.map((item, index) => {
-                  return <li>
-                    <a href={index === 0 ? 'http://www.literacynet.org/mi/assessment/' : 
-                    index === 1 ? 'https://irp.cdn-website.com/b7f3c5df0fb54b91898015cb34c63f18/files/uploaded/RESUME%20WORKSHEET.pdf' : 
-                    index === 2 ? 'https://bigfuture.collegeboard.org/college-search' : 
-                    index === 3 ? 'https://www.commonapp.org/' : 'https://www.smscholarships.com/partner/search.cfm?id=90&iframe=false'} target="_blank" rel="noreferrer">
-                      <img src={index === 0 ? blogCt1 : index === 1 ? blogCt2 : index === 2 ? blogCt3 : index === 3 ? blogCt4 : index === 4 && blogFire} alt="images" />
-                    </a>
-                    <p>{item.categoryName}</p>
-                  </li>
-                })}
-                </ul>
-                </Carousel.Item>
-              </Carousel>
+                    <ul>
+                      {this.state.surveyList.map((item, index) => {
+                        return <li>
+                          <a href={index === 0 ? 'http://www.literacynet.org/mi/assessment/' :
+                            index === 1 ? 'https://irp.cdn-website.com/b7f3c5df0fb54b91898015cb34c63f18/files/uploaded/RESUME%20WORKSHEET.pdf' :
+                              index === 2 ? 'https://bigfuture.collegeboard.org/college-search' :
+                                index === 3 ? 'https://www.commonapp.org/' : 'https://www.smscholarships.com/partner/search.cfm?id=90&iframe=false'} target="_blank" rel="noreferrer">
+                            <img src={index === 0 ? blogCt1 : index === 1 ? blogCt2 : index === 2 ? blogCt3 : index === 3 ? blogCt4 : index === 4 && blogFire} alt="images" />
+                          </a>
+                          <p>{item.categoryName}</p>
+                        </li>;
+                      })}
+                    </ul>
+                  </Carousel.Item>
+                </Carousel>
               </div>
             )}
             {this.state.listOfVideos && (
               <div className="door">
-                <img src={door} onClick={() => this.navMainPage()}></img>
+                <img alt='' src={door} onClick={() => this.navMainPage()}></img>
                 <h5>Learning Tavern-Vidoes</h5>
                 <label>
                   adventurer, quench your thirst for knowledge here.
@@ -1438,7 +1438,7 @@ class LearningTraven extends Component {
                       {this.state.vedioList.map((item, ind) => {
                         return (
                           <li key={ind}>
-                            <img
+                            <img alt=''
                               src={Video_p1}
                               onClick={() => {
                                 this.viewVideo(item.videoId);
@@ -1454,22 +1454,22 @@ class LearningTraven extends Component {
                   {/* <Carousel.Item>
                   <ul>
                     <li>
-                      <img src={blog}></img>
+                      <img alt='' src={blog}></img>
                       <h5>blogs</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={video}></img>
+                      <img alt='' src={video}></img>
                       <h5>videos</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={survey}></img>
+                      <img alt='' src={survey}></img>
                       <h5>surveys</h5>
                       <label>10 blogs read</label>
                     </li>
                     <li>
-                      <img src={Ques}></img>
+                      <img alt='' src={Ques}></img>
                       <h5>questionnaires</h5>
                       <label>10 blogs read</label>
                     </li>
@@ -1480,7 +1480,7 @@ class LearningTraven extends Component {
                 {/* 
               <ReactBootstrapCarousel activeIndex={this.stateindex} onSelect={this.handleSelect}>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=First slide&bg=373940"
                     alt="First slide"
@@ -1491,7 +1491,7 @@ class LearningTraven extends Component {
                   </ReactBootstrapCarousel.Caption>
                 </ReactBootstrapCarousel.Item>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=Second slide&bg=282c34"
                     alt="Second slide"
@@ -1503,7 +1503,7 @@ class LearningTraven extends Component {
                   </ReactBootstrapCarousel.Caption>
                 </ReactBootstrapCarousel.Item>
                 <ReactBootstrapCarousel.Item>
-                  <img
+                  <img alt=''
                     className="d-block w-100"
                     src="holder.js/800x400?text=Third slide&bg=20232a"
                     alt="Third slide"
@@ -1524,22 +1524,22 @@ class LearningTraven extends Component {
                   <div className="carousel-item">
                     <ul>
                       <li>
-                        <img src={blog}></img>
+                        <img alt='' src={blog}></img>
                         <h5>blogs</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={video}></img>
+                        <img alt='' src={video}></img>
                         <h5>videos</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={survey}></img>
+                        <img alt='' src={survey}></img>
                         <h5>surveys</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={Ques}></img>
+                        <img alt='' src={Ques}></img>
                         <h5>questionnaires</h5>
                         <label>10 blogs read</label>
                       </li>
@@ -1548,22 +1548,22 @@ class LearningTraven extends Component {
                   <div className="carousel-item active">
                     <ul>
                       <li>
-                        <img src={blog}></img>
+                        <img alt='' src={blog}></img>
                         <h5>bs</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={video}></img>
+                        <img alt='' src={video}></img>
                         <h5>videos</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={survey}></img>
+                        <img alt='' src={survey}></img>
                         <h5>surveys</h5>
                         <label>10 blogs read</label>
                       </li>
                       <li>
-                        <img src={Ques}></img>
+                        <img alt='' src={Ques}></img>
                         <h5>questionnaires</h5>
                         <label>10 blogs read</label>
                       </li>
@@ -1582,22 +1582,22 @@ class LearningTraven extends Component {
               </div> */}
                 {/* <ul>
                 <li>
-                  <img src={blog}></img>
+                  <img alt='' src={blog}></img>
                   <h5>blogs</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={video}></img>
+                  <img alt='' src={video}></img>
                   <h5>videos</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={survey}></img>
+                  <img alt='' src={survey}></img>
                   <h5>surveys</h5>
                   <label>10 blogs read</label>
                 </li>
                 <li>
-                  <img src={Ques}></img>
+                  <img alt='' src={Ques}></img>
                   <h5>questionnaires</h5>
                   <label>10 blogs read</label>
                 </li>
@@ -1606,7 +1606,7 @@ class LearningTraven extends Component {
             )}
             {this.state.viewVideo && (
               <div className="door">
-                <img src={door} onClick={() => this.navMainPage()}></img>
+                <img alt='' src={door} onClick={() => this.navMainPage()}></img>
                 <h5>Learning Tavern-Video</h5>
                 <label>read about lorem ipsum dollor</label>
                 <div>

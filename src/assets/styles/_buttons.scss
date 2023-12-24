@@ -51,31 +51,36 @@
     cursor: pointer;
     background-color: transparent;
     outline: none;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-size: 16px;
     font-weight: bold;
     color: #120803;
-    width: 151.6px;
-    border: 0px solid #000;
-    height: 81px;
-    // width: 156px;
+    width: 160px;
+    height: 80px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-color 0.3s;
 }
 
 .img_btn_brown {
     background-image: url(../../assets/images/btn_brown.svg);
     text-align: center;
     padding-top: 4px;
+    background-repeat: no-repeat;
     font-family: OptimusPrinceps;
     cursor: pointer;
     background-color: transparent;
     outline: none;
     font-size: 14px;
     font-weight: 500;
-    background-size: contain;
+    background-size: cover;
+    transition: border-color 0.3s; 
     color: white;
-    width: 144.6px;
+    width: 160px;
     border: 0px solid #000;
     height: 73px;
-    // width: 156px;
 }
 
 .img_btn_brown_sm {

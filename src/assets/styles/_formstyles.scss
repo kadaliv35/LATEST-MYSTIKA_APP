@@ -7,6 +7,66 @@
   color: white !important;
 }
 
+.key-img {
+  width: 45px;
+  height: 45px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.input-container {
+  width: 280px;
+  height: 80px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & .label {
+    background-image: url(../images/player_name_01.svg) !important;
+    background-repeat: no-repeat !important;
+    text-align: center;
+    font-size: 15px;
+    width: 80%;
+    height: 40px;
+    font-weight: bold;
+    padding-top: 15px;
+    font-family: OptimusPrinceps;
+    background-size: cover;
+    color: #120803;
+  }
+  
+  
+  & .input {
+    width: 80%;
+    font-family: 'Times New Roman', Times, serif !important;
+    color: $white !important;
+    background: url(../images/input_box_sign_in.svg) !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    font-size: 20px;
+    height: 40px;
+    background-color: transparent !important;
+    border: 0px solid #fff !important;
+    padding: 0 10px;
+    margin-top: -8px;
+    outline: none;
+    box-shadow: none;
+
+    &:active {
+      outline: none;
+      box-shadow: none;
+      border: 0px solid transparent !important;
+      border-color: transparent;
+    }
+  }
+
+}
+
+
 .form {
   &-gorup {
     & .label {

@@ -29,7 +29,7 @@ gotoLogin(){
                             Mystika
                         </div>
                         <button type="button" className="close_btn" onClick={() => this.gotoLogin()}>
-                        <img src={close}></img>
+                        <img  src={close} alt='close'></img>
                         </button>
                         <h4>Welcome to <br></br>Mystika</h4>
                         <p>Greetings honored adventurer! A cordial welcome to Mystika, 
@@ -38,7 +38,7 @@ gotoLogin(){
                             Intelligence and Speed. I am Gnalia, the Oracle and I foresee a 
                             great victory in your endeavor.
                         </p>
-                        <img src={queen}></img>
+                        <img  src={queen}></img>
                          
                 {/* <div className="col-12 d-flex mt-1 p-l-5 m-l-1 text-center">
                        <button type="button" className="img_btn m-r-2" onClick={() => this.gotoLogin()}>Verify</button> 

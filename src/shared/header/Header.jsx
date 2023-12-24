@@ -14,22 +14,22 @@ function Header() {
         <div className="text-white header-left">
           <ul>
             <li>
-              <img src={sProfile}></img>
+              <img alt='' src={sProfile}></img>
               <div className="content">
                 <span>
-                  Hi <img src={hand}></img>
+                  Hi <img alt='' src={hand}></img>
                 </span>{" "}
                 <label>John doe !</label>
               </div>
             </li>
             <li>
-              <img src={coin}></img>
+              <img alt='' src={coin}></img>
               <div className="content">
                 <span>Coins</span> <label className="fs-18">100</label>
               </div>
             </li>
             <li>
-              <img src={crystal}></img>
+              <img alt='' src={crystal}></img>
               <div className="content">
                 <span>Crystals</span> <label className="fs-18">100</label>
               </div>
@@ -38,16 +38,16 @@ function Header() {
         </div>
         <div className="text-white header-right">
           <div className="logo">
-            <img src={logo}></img>
+            <img alt='' src={logo}></img>
           </div>
           <ul className="mb-0">
             <li className="progress-relative">
-              <h5 className="fs-14 mb-0">Joy Points</h5>
-              <img src={progress} className="w-progress"></img>
+              <h5 className="fs-14 mb-0">XP Points</h5>
+              <img alt='' src={progress} className="w-progress"></img>
               <h5 className="fs-14 mt-2">150/200</h5>
             </li>
             <li className="text-center">
-              <img src={sProfile} className="prof"></img>
+              <img alt='' src={sProfile} className="prof"></img>
               <button type="button" className="img_btn_home">
                 Daily Login
               </button>
@@ -67,19 +67,19 @@ function Header() {
               {/* <button type="button" className="img_btn_brown ml-2" >Daily Login</button> */}
             </li>
             <li className="progress-relative">
-              <h5 className="fs-14 mb-0">Joy Points</h5>
-              <img src={progress} className="w-progress"></img>
+              <h5 className="fs-14 mb-0">XP Points</h5>
+              <img alt='' src={progress} className="w-progress"></img>
               <h5 className="fs-14 mt-2">150/200</h5>
               <h5 className="fs-14">Class: Warrior</h5>
               <h5 className="fs-14">Rank: Apprentice</h5>
             </li>
             <li className="">
               <div className="coin_box text-left">
-                <img src={coins}></img>
+                <img alt='' src={coins}></img>
                 <h5 className="fs-16 mb-0 w-progress pl-3">20 : 15</h5>
               </div>
               <div className="coin_box text-left">
-                <img src={crystal}></img>
+                <img alt='' src={crystal}></img>
                 <h5 className="fs-14 mb-0 w-progress pl-3">Store</h5>
               </div>
             </li>

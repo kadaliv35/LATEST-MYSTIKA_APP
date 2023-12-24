@@ -6,7 +6,6 @@ import LearningTraven from "../../components/learningtraven/LearningTraven";
 import RoadMaps from "../../components/roadmaps/RoadMaps";
 import Goals from "../../components/goals/Goals";
 import ContactUs from "../../components/contactus/ContactUs";
-import sProfile from "../../assets/images/user_1.svg";
 import hand from "../../assets/images/hand.svg";
 import coin from "../../assets/images/coin_1.svg";
 import coins from "../../assets/images/coins_new.svg";
@@ -37,7 +36,7 @@ import Achievements from "./Achievements";
 import creadituser from "../../assets/images/creditsuser.png";
 import vector from "../../assets/images/Vector.png";
 import TermsC from "../../assets/images/terms&c.png";
-import themeMusic from "../../assets/images/audio.mp3";
+// import themeMusic from "https://mystikauistuff.s3.ap-northeast-1.amazonaws.com/audio.mp3";
 import LeaderBoards from "./LeaderBoards";
 import warrior from "../../assets/images/char_warrior.png";
 import archangel from "../../assets/images/char_archangel.png";
@@ -183,7 +182,7 @@ class Layout extends Component {
       .catch((err) => console.error(err));
   }
 
-  achievementsChest(TcId) {}
+  achievementsChest(TcId) { }
 
   claimDailyQuestRewards() {
     this.hideDQpop();
@@ -217,10 +216,10 @@ class Layout extends Component {
           clearInterval(this.timerInterval);
           this.setState({ timeUp: true });
         } else {
-          this.setState({ min: min - 1, sec: 59 }, () => {});
+          this.setState({ min: min - 1, sec: 59 }, () => { });
         }
       } else {
-        this.setState({ sec: sec - 1 }, () => {});
+        this.setState({ sec: sec - 1 }, () => { });
       }
     }, 1000);
   }
@@ -287,7 +286,7 @@ class Layout extends Component {
     AchivementServices.getAlLAchivements()
       .then((res) => {
         console.log(res.data, "Achievements");
-        this.setState({ allAchivemets: res.data }, () => {});
+        this.setState({ allAchivemets: res.data }, () => { });
       })
       .catch((err) => console.error(err));
   }
@@ -297,7 +296,7 @@ class Layout extends Component {
       this.state.userData.userCharacterId,
       achivementId
     )
-      .then((res) => {})
+      .then((res) => { })
       .catch((err) => console.error(err));
   }
 
@@ -325,7 +324,6 @@ class Layout extends Component {
   };
 
   openStore = () => {
-    // alert(this.state.storePopup)
     this.setState({ storePopup: !this.state.storePopup });
   };
 
@@ -355,7 +353,6 @@ class Layout extends Component {
 
   playMusic() {
     this.setState({ audioPlay: !this.state.audioPlay }, () => {
-      // alert(this.state.audioPlay)
       sessionStorage.setItem("audioPlay", this.state.audioPlay);
     });
   }
@@ -387,27 +384,27 @@ class Layout extends Component {
                   <div className="text-white header-left">
                     <ul>
                       <li>
-                        <img
+                        <img 
                           className="logo"
                           src={
                             this.state.charRole === "Warrior"
                               ? warrior
                               : this.state.charRole === "Assassin"
-                              ? assassin
-                              : archangel
+                                ? assassin
+                                : archangel
                           }
                           alt="player-charector"
                         ></img>
                         <div className="content">
                           <span>
-                            Hi <img src={hand} alt="hand"></img>
+                            Hi <img  src={hand} alt="hand"></img>
                           </span>{" "}
                           <label>{this.state.userName} !</label>
                         </div>
                       </li>
                       <li className="header-left-inventory">
                         <li>
-                          <img src={coin} alt="coin"></img>
+                          <img  src={coin} alt="coin"></img>
                           <div className="content">
                             <span>Coins</span>{" "}
                             <label className="fs-18">
@@ -416,7 +413,7 @@ class Layout extends Component {
                           </div>
                         </li>
                         <li>
-                          <img src={crystals} alt="crystal"></img>
+                          <img  src={crystals} alt="crystal"></img>
                           <div className="content">
                             <span>Crystals</span>{" "}
                             <label className="fs-18">
@@ -434,7 +431,7 @@ class Layout extends Component {
                   />
                   <div className="text-white header-right">
                     <div className="logo">
-                      <img src={logo} alt="logo"></img>
+                      <img  src={logo} alt="logo"></img>
                     </div>
                     <ul className="mb-0">
                       <li className="progress-relative hdr_top">
@@ -465,7 +462,7 @@ class Layout extends Component {
                           <img
                             src={
                               this.state.rewardsData.rewards.coinsCount > 100 &&
-                              this.state.usedPortionCount <
+                                this.state.usedPortionCount <
                                 this.state.maxPotionCount
                                 ? lifebuy
                                 : dsblifebuy
@@ -493,8 +490,8 @@ class Layout extends Component {
                             this.state.charRole === "Warrior"
                               ? warrior
                               : this.state.charRole === "Assassin"
-                              ? assassin
-                              : archangel
+                                ? assassin
+                                : archangel
                           }
                           alt="player-charector"
                         ></img>
@@ -517,7 +514,7 @@ class Layout extends Component {
                         {/* <button type="button" className="img_btn_brown ml-2" >Daily Login</button> */}
                       </li>
                       <li className="progress-relative">
-                        <h5 className="fs-14 mb-0">Joy Points</h5>
+                        <h5 className="fs-14 mb-0">XP Points</h5>
                         {/* <div className="joyBar">
                           <ProgressBar completed={50} isLabelVisible={false} height="10px" bgColor="#7FC31C" width="190px" className="bars" animateOnRender={true} />
                         </div> */}
@@ -525,7 +522,7 @@ class Layout extends Component {
                           completed={this.state.xpPoints}
                           maxCompleted={200}
                         />
-                        {/* <img src={progress} className="w-progress"></img> */}
+                        {/* <img  src={progress} className="w-progress"></img> */}
                         <h5 className="fs-14 mt-2">
                           {this.state.xpPoints}/{this.state.xpPointsTotal}
                         </h5>
@@ -563,7 +560,7 @@ class Layout extends Component {
                   </div>
                   {this.state.audioPlay && (
                     <audio loop autoPlay controls>
-                      <source src={themeMusic} type="audio/mpeg"></source>
+                      <source src={"https://mystikauistuff.s3.ap-northeast-1.amazonaws.com/audio.mp3"} type="audio/mpeg"></source>
                     </audio>
                   )}
                 </div>
@@ -573,9 +570,8 @@ class Layout extends Component {
                       <ul>
                         <li>
                           <button
-                            className={`img_btn_trans ${
-                              this.state.buttonName === "MAP" ? "activeBtn" : ""
-                            }`}
+                            className={`img_btn_trans ${this.state.buttonName === "MAP" ? "activeBtn" : ""
+                              }`}
                             type="button"
                             onClick={() => this.navigateScreens("MAP")}
                           >
@@ -584,11 +580,10 @@ class Layout extends Component {
                         </li>
                         <li>
                           <button
-                            className={`img_btn_trans ${
-                              this.state.buttonName === "PLAY"
+                            className={`img_btn_trans ${this.state.buttonName === "PLAY"
                                 ? "activeBtn"
                                 : ""
-                            }`}
+                              }`}
                             type="button"
                             onClick={() => this.navigateScreens("PLAY")}
                           >
@@ -597,11 +592,10 @@ class Layout extends Component {
                         </li>
                         <li>
                           <button
-                            className={`img_btn_trans ${
-                              this.state.buttonName === "LEARNING"
+                            className={`img_btn_trans ${this.state.buttonName === "LEARNING"
                                 ? "activeBtn"
                                 : ""
-                            }`}
+                              }`}
                             type="button"
                             onClick={() => this.navigateScreens("LEARNING")}
                           >
@@ -619,11 +613,10 @@ class Layout extends Component {
                       </li> */}
                         <li>
                           <button
-                            className={`img_btn_trans ${
-                              this.state.buttonName === "GOALS"
+                            className={`img_btn_trans ${this.state.buttonName === "GOALS"
                                 ? "activeBtn"
                                 : ""
-                            }`}
+                              }`}
                             type="button"
                             onClick={() => this.navigateScreens("GOALS")}
                           >
@@ -632,11 +625,10 @@ class Layout extends Component {
                         </li>
                         <li>
                           <button
-                            className={`img_btn_trans ${
-                              this.state.buttonName === "CHARECTER"
+                            className={`img_btn_trans ${this.state.buttonName === "CHARECTER"
                                 ? "activeBtn"
                                 : ""
-                            }`}
+                              }`}
                             type="button"
                             onClick={() => this.navigateScreens("CHARECTER")}
                           >
@@ -645,11 +637,10 @@ class Layout extends Component {
                         </li>
                         <li>
                           <button
-                            className={`img_btn_trans ${
-                              this.state.buttonName === "CONTACTUS"
+                            className={`img_btn_trans ${this.state.buttonName === "CONTACTUS"
                                 ? "activeBtn"
                                 : ""
-                            }`}
+                              }`}
                             type="button"
                             onClick={() => this.settingsFunction()}
                           >
@@ -723,11 +714,10 @@ class Layout extends Component {
                         }
                         <li className="logout_btn">
                           <button
-                            className={`img_btn_trans ${
-                              this.state.buttonName === "LOGOUT"
+                            className={`img_btn_trans ${this.state.buttonName === "LOGOUT"
                                 ? "activeBtn"
                                 : ""
-                            }`}
+                              }`}
                             type="button"
                             onClick={() => this.navigateScreens("")}
                           >
@@ -983,10 +973,10 @@ class Layout extends Component {
                     buttonName === "LEARNING"
                       ? item.LEARNING
                       : buttonName === "MAP"
-                      ? item.MAP
-                      : buttonName === "CHARECTER"
-                      ? item.CHARECTER
-                      : item.PLAY;
+                        ? item.MAP
+                        : buttonName === "CHARECTER"
+                          ? item.CHARECTER
+                          : item.PLAY;
                   return <h5 key={index}>{learning.head}</h5>;
                 })}
                 <button
@@ -994,7 +984,7 @@ class Layout extends Component {
                   className="close_btn"
                   onClick={this.openTutorial}
                 >
-                  <img src={close} alt={close}></img>
+                  <img  src={close} alt={close}></img>
                 </button>
               </div>
             }
@@ -1005,10 +995,10 @@ class Layout extends Component {
                     buttonName === "LEARNING"
                       ? item.LEARNING
                       : buttonName === "MAP"
-                      ? item.MAP
-                      : buttonName === "CHARECTER"
-                      ? item.CHARECTER
-                      : item.PLAY;
+                        ? item.MAP
+                        : buttonName === "CHARECTER"
+                          ? item.CHARECTER
+                          : item.PLAY;
                   return (
                     <div key={index}>
                       <h4 className="text-green">{learning?.body.heading}</h4>

@@ -71,7 +71,7 @@ const LeaderBoards = ({ openPop, closePop }) => {
                             className="close_btn"
                             onClick={() => closePop()}
                         >
-                            <img src={close} alt={close}></img>
+                            <img alt='' src={close} alt={close}></img>
                         </button>
                     </div>
                 }
@@ -100,35 +100,35 @@ const LeaderBoards = ({ openPop, closePop }) => {
                                         <p>RESETS IN: 14:30</p>
                                         <div className="d-flex justify-content-around ml-5">
                                             <div className="d-flex">
-                                                <img src={Bronze} className="h-50" alt='bronze' />
+                                                <img alt='' src={Bronze} className="h-50" alt='bronze' />
                                                 <div>
                                                     <p>BRONZE</p>
                                                     <p>41-100</p>
-                                                    <p>20 <img src={crystals} alt='crystal' className="h-25 w-25" /> </p>
+                                                    <p>20 <img alt='' src={crystals} alt='crystal' className="h-25 w-25" /> </p>
                                                 </div>
                                             </div>
                                             <div className="d-flex">
-                                                <img src={Silver} className="h-50" alt='silver' />
+                                                <img alt='' src={Silver} className="h-50" alt='silver' />
                                                 <div>
                                                     <p>SILVER</p>
                                                     <p>21-40</p>
-                                                    <p>20 <img src={crystals} className="h-25 w-25" alt='crystals' /> </p>
+                                                    <p>20 <img alt='' src={crystals} className="h-25 w-25" alt='crystals' /> </p>
                                                 </div>
                                             </div>
                                             <div className="d-flex">
-                                                <img src={Gold} className="h-50" alt='gold' />
+                                                <img alt='' src={Gold} className="h-50" alt='gold' />
                                                 <div>
                                                     <p>GOLD</p>
                                                     <p>11-20</p>
-                                                    <p>20 <img src={crystals} className="h-25 w-25" alt='crystals' /> </p>
+                                                    <p>20 <img alt='' src={crystals} className="h-25 w-25" alt='crystals' /> </p>
                                                 </div>
                                             </div>
                                             <div className="d-flex">
-                                                <img src={Platinum} className="h-50" alt='platinum' />
+                                                <img alt='' src={Platinum} className="h-50" alt='platinum' />
                                                 <div>
                                                     <p>PLATINUM</p>
                                                     <p>01-10</p>
-                                                    <p>20 <img src={crystals} className="h-25 w-25" alt='crystals' /> </p>
+                                                    <p>20 <img alt='' src={crystals} className="h-25 w-25" alt='crystals' /> </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -172,14 +172,14 @@ const LeaderBoards = ({ openPop, closePop }) => {
                                 <p>YOUR SERVICE TO THE EMPORER IS DAILY NOTED.</p>
                                 <div className="d-flex justify-content-center mt-5">
                                     <div className="d-flex">
-                                        <img src={Silver} alt='silver' />
+                                        <img alt='' src={Silver} alt='silver' />
                                         <div>
                                             <p>SILVER</p>
                                             <p>RANK - #3</p>
                                         </div>
                                     </div>
                                     <div className="d-flex">
-                                        <img src={crystals} className="h-25 w-25" alt='crystals'></img>
+                                        <img alt='' src={crystals} className="h-25 w-25" alt='crystals'></img>
                                         <span>50</span>
                                     </div>
                                 </div>

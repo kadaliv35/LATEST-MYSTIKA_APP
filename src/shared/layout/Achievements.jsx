@@ -38,7 +38,7 @@ export default class Achievements extends Component {
                                 className="close_btn"
                                 onClick={() => close()}
                             >
-                                <img src={closeImg} alt='close'></img>
+                                <img alt='' src={closeImg} alt='close'></img>
                             </button>
                         </div>
                     }
@@ -47,7 +47,7 @@ export default class Achievements extends Component {
                             <div className="ach">
                                 <div className="achiev-head">
                                     <div className="achiev-head-left">
-                                        <img src={achievements} alt=''></img>
+                                        <img alt='' src={achievements} alt=''></img>
                                     </div>
                                     <div className="achiev-head-right">
                                         <p>Track your epic progress and earn rewards for <br></br>your brave accomplishments here.</p>
@@ -67,15 +67,15 @@ export default class Achievements extends Component {
                                             <div className="rewards">
                                                 <div>
                                                     {item.rewardCoins && <span>
-                                                        <img src={coins} alt={coins} />
+                                                        <img alt='' src={coins} alt={coins} />
                                                         <p>{item.rewardCoins}</p>
                                                     </span>}
                                                     {item.rewardCrystals && <span>
-                                                        <img src={crystal} alt={crystal} />
+                                                        <img alt='' src={crystal} alt={crystal} />
                                                         <p>{item.rewardCrystals}</p>
                                                     </span>}
                                                     {item.rewardXpPoints && <span>
-                                                        <img src={xpoints} alt={xpoints} />
+                                                        <img alt='' src={xpoints} alt={xpoints} />
                                                         <p>{item.rewardXpPoints}</p>
                                                     </span>}
                                                 </div>

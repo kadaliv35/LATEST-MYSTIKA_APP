@@ -35,13 +35,7 @@ const elementImages = {
   lighting: Lightning,
 };
 
-const enemiesImage = {
-  "Lord of Procrastination": Enemy1,
-  "Lord of Guilt": Enemy2,
-  "Lord of Fear": Enemy3,
-  "Lord of Anxiety": Enemy4,
-  "Lord of Anguish": Enemy5,
-};
+
 
 class Landingpage extends Component {
   constructor(props) {
@@ -359,7 +353,7 @@ class Landingpage extends Component {
                 >
                   {item.orderNumber === this.state.activePlace && (
                     <div className="map-user_location">
-                      <img
+                      <img 
                         src={
                           this.state.charRole === "Warrior"
                             ? warrior
@@ -394,7 +388,7 @@ class Landingpage extends Component {
                               Explore
                             </button>
                           )}
-                          <img
+                          <img 
                             alt="character"
                             src={
                               this.state.charRole === "Warrior"
@@ -419,13 +413,13 @@ class Landingpage extends Component {
               ))}
             </div>
             <div className="map-queen_location">
-              <img
+              <img 
                 src={Quen}
                 alt="queen"
                 onClick={() => this.openHerbs()}
               ></img>
             </div>
-            {/* <img src={notice}></img> */}
+            {/* <img  src={notice}></img> */}
             {this.state.showPop && (
               <div className="map-notice">
                 <h5>tutorial character for help</h5>
@@ -445,24 +439,24 @@ class Landingpage extends Component {
             <div className="battle">
               <div className="battle-header">
                 <div>
-                  <img src={Enemy1} alt="enemy1" />
+                  <img  src={Enemy1} alt="enemy1" />
                 </div>
                 <div>
-                  <img src={Enemy2} alt="enemy1" className={this.state.enemy0Defeated ? "unblur" : "blur"} />
+                  <img  src={Enemy2} alt="enemy1" className={this.state.enemy0Defeated ? "unblur" : "blur"} />
                 </div>
                 <div>
-                  <img src={Enemy3} alt="enemy1" className={this.state.enemy1Defeated ? "unblur" : "blur"}/>
+                  <img  src={Enemy3} alt="enemy1" className={this.state.enemy1Defeated ? "unblur" : "blur"}/>
                 </div>
                 <div>
-                  <img src={Enemy4} alt="enemy1" className={this.state.enemy2Defeated ? "unblur" : "blur"}/>
+                  <img  src={Enemy4} alt="enemy1" className={this.state.enemy2Defeated ? "unblur" : "blur"}/>
                 </div>
                 <div>
-                  <img src={Enemy5} alt="enemy1" className={this.state.enemy3Defeated ? "unblur" : "blur"}/>
+                  <img  src={Enemy5} alt="enemy1" className={this.state.enemy3Defeated ? "unblur" : "blur"}/>
                 </div>
               </div>
               <div className="battle-body">
               <div>
-                <img
+                <img 
                   src={this.setEnemyImg().image}
                   className="battle-main_img"
                   alt={this.setEnemyImg().name}
@@ -489,7 +483,7 @@ class Landingpage extends Component {
                   {this.state.elements?.map((item, index) => {
                     return (
                       <div key={index} className="battle-mid_img">
-                        <img
+                        <img 
                           src={elementImages[item.elementName]}
                           alt={item.elementName}
                           onClick={() =>
@@ -502,7 +496,7 @@ class Landingpage extends Component {
                 </div>
                 <div className="action">
                   {this.state.isCombact === true ? (
-                    <img
+                    <img 
                       src={combatImg}
                       className="combatImg"
                       alt="combat"
@@ -514,7 +508,7 @@ class Landingpage extends Component {
                 </div>
               </div>
               <div>
-                <img className="battle-main_img"
+                <img  className="battle-main_img"
                     src={
                       this.state.charRole === "Warrior"
                         ? WarVideo
@@ -556,7 +550,7 @@ class Landingpage extends Component {
                 className="close_btn"
                 onClick={() => this.closeRewards()}
               >
-                <img src={close} alt={close}></img>
+                <img  src={close} alt={close}></img>
               </button>
             </div>
           }
@@ -564,15 +558,15 @@ class Landingpage extends Component {
             <div className="modal-body frame text-center final_reward">
               <div className="final_reward-body">
                 <span>
-                  <img src={coin} alt="" />
+                  <img  src={coin} alt="" />
                   <p>Coins</p>
                 </span>
                 <span>
-                  <img src={crystals} alt="" />
+                  <img  src={crystals} alt="" />
                   <p>Crystals</p>
                 </span>
                 <span>
-                  <img src={coins} alt="" />
+                  <img  src={coins} alt="" />
                   <p>XP</p>
                 </span>
               </div>
@@ -593,21 +587,21 @@ class Landingpage extends Component {
           open={this.state.openHerbsModal}
           header={
             <div>
-              <h6>Tutorial</h6>
+              <h6 className="mt-3">Tutorial</h6>
               <button
                 type="button"
                 className="close_btn"
                 onClick={() => this.openHerbs()}
               >
-                <img src={close} alt={close}></img>
+                <img  src={close} alt={close}></img>
               </button>
             </div>
           }
           body={
             <div className="modal-body frame text-center hailHero">
-              <h4 className="text-light">HERBS OF THE ALCHEMIST</h4>
-              <span className="text-light">
-                AS YOU COMPLETE EACH QUEST, YOU WILL BE REWARDED WITH JOY POINTS
+              <h4 className="text-light mt-5 mb-5">HERBS OF THE ALCHEMIST</h4>
+              <span className="text-light mt-5 mb-5 fs-16">
+                AS YOU COMPLETE EACH QUEST, YOU WILL BE REWARDED WITH XP POINTS
                 AND THE MORE QUESTS YOU COMPLETE. THE MORE THE EMPEROR WILL
                 BECOME STRONGER AND MORE EQUIPPED TO TACKLE MORE DIFFICULT
                 CHALLENGES.
@@ -615,7 +609,7 @@ class Landingpage extends Component {
               <br />
               <button
                 type="button"
-                className="img_btn_home"
+                className="img_btn_home mt-5"
                 onClick={() => this.openHerbs()}
               >
                 ACCEPTED
@@ -635,7 +629,7 @@ class Landingpage extends Component {
                 className="close_btn"
                 onClick={() => this.closeVictoryModal()}
               >
-                <img src={close} alt={close}></img>
+                <img  src={close} alt={close}></img>
               </button>
             </div>
           }
@@ -663,20 +657,20 @@ class Landingpage extends Component {
           open={this.state.popUp}
           header={
             <div>
-              <h6>Tutorial</h6>
+              <h6 className="mt-3">Tutorial</h6>
               <button
                 type="button"
                 className="close_btn"
                 onClick={() => this.closePop()}
               >
-                <img src={close} alt={close}></img>
+                <img  src={close} alt={close}></img>
               </button>
             </div>
           }
           body={
             <div className="modal-body frame text-center">
-              <h5>THE PORTALS SECRET</h5>
-              <p>
+              <h5 className="mt-5">THE PORTALS SECRET</h5>
+              <p className="mt-5 mb-3">
                 AS YOU COMPLETE EACH QUEST. YOU WILL BE REWARDED WITH JOY POINTS
                 AND THE MORE QUESTS YOU COMPLETE THE MORE THE EMPORER WILL BE
                 PLEASED WITH YOU BECOME STRONGER AND MORE EQUIPPED TO TACKLE
@@ -684,7 +678,7 @@ class Landingpage extends Component {
               </p>
               <button
                 type="button"
-                className="img_btn_home"
+                className="img_btn_home mt-3"
                 onClick={this.closePop}
               >
                 Delighted
@@ -697,59 +691,3 @@ class Landingpage extends Component {
   }
 }
 export default Landingpage;
-
-{
-  /* <div className='main-rightP text-center'>
-          <div className='sqr_frame mt-4'>
-            <img className='pt-3' src={cup}></img>
-          </div>
-          <h5 className='mt-2'>Achievements</h5>
-          <div className='sqr_frame mt-4'>
-            <img className="" src={crown}></img>
-          </div>
-          <h5 className='mt-2'>Leaderboards</h5>
-        </div> */
-}
-
-{
-  /* <div className='header'>
-          <div className='header-left'>
-            Hai
-          </div>
-          <div className='header-right'>
-            Hello
-          </div>
-        </div> */
-}
-{
-  /* <div className='main-leftP'>
-          <div className='rect'>
-              <ul>
-                <li>
-                  <button className='img_btn_trans' type='button'  onClick={() => this.navigateRoute('PLAY')}>How To Play</button>
-                </li>
-                <li>
-                  <button className='img_btn_trans' type='button'onClick={() => this.navigateRoute('LEARNING')}>Learning Tavern</button>
-                </li>
-                <li>
-                  <button className='img_btn_trans' type='button' onClick={() => this.navigateRoute('ROADMAP')}>Roadmaps</button>
-                </li>
-                <li>
-                  <button className='img_btn_trans' type='button' onClick={() => this.navigateRoute('GOALS')}>Goals</button>
-                </li>
-                <li>
-                  <button className='img_btn_trans' type='button' onClick={() => this.navigateRoute('CHARECTER')}>Character</button>
-                </li>
-                <li>
-                  <button className='img_btn_trans' type='button' onClick={() => this.navigateRoute('CONTACTUS')}>Contact Us</button>
-                </li>
-              </ul>
-              <div className='social'>
-              <button type='button' className='img_btn_social'><img src={insta}></img></button>
-              <button type='button' className='img_btn_social'><img src={fb}></img></button>
-              <button type='button' className='img_btn_social'><img src={twitter}></img></button>
-              <button type='button' className='img_btn_social'><img src={Pintrest}></img></button>
-              </div>
-          </div>
-        </div> */
-}

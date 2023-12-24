@@ -6,30 +6,34 @@ body {
   background-size: cover;
 }
 
-.login {
+.login-big {
   margin: 0px auto;
   padding: 0px;
-  //  background-image: url(../../assets/images/sign_in.svg);
   background-image: url(../../assets/images/frame_with_bg.svg);
   background-repeat: no-repeat !important;
   background-position: center;
-  width: auto;
-  height: auto;
   position: relative;
-  // width:100%;
-  width: 44.6%;
-  height: 67vh;
-  padding: 10%;
+  width: 80vw;
+  height: 94vh;
   background-size: cover;
 
+  & .body {
+    position: absolute;
+    top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: inherit;
+  }
   & .header {
     font-family: OptimusPrinceps;
-    font-size: 18px;
+    font-size: 24px;
     color: #120803;
     font-weight: bold;
     text-align: center;
     position: absolute;
-    top: 13%;
+    top: 10%;
     left: 30%;
     margin: 0px auto;
     width: 40%;
@@ -39,6 +43,72 @@ body {
     display: inherit;
     text-align: center;
   }
+  & .close_btn {
+     position: absolute;
+     top: 12%;
+     right: 15%;
+     height: 60px !important;
+     width: 50px !important;
+     cursor: pointer !important;
+  
+     & img {
+      cursor: pointer;
+      width: 50px;
+     }
+   }
+}
+
+.login {
+  margin: 0px auto;
+  padding: 0px;
+  background-image: url(../../assets/images/frame_with_bg.svg);
+  background-repeat: no-repeat !important;
+  background-position: center;
+  position: relative;
+  width: 60vw;
+  height: 70vh;
+  background-size: cover;
+
+  & .body {
+    position: absolute;
+    top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: inherit;
+  }
+  
+  & .header {
+    font-family: OptimusPrinceps;
+    font-size: 18px;
+    color: #120803;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 7%;
+    left: 30%;
+    margin: 0px auto;
+    width: 40%;
+    /* align-content: end; */
+    padding: 0;
+    /* align-items: center; */
+    display: inherit;
+    text-align: center;
+  }
+  & .close_btn {
+     position: absolute;
+     top: 12%;
+     right: 15%;
+     height: 60px !important;
+     width: 50px !important;
+     cursor: pointer !important;
+
+     & img {
+      cursor: pointer;
+      width: 50px;
+     }
+   }
 
   & h5 {
     font-family: OptimusPrinceps;
@@ -50,7 +120,7 @@ body {
 
   & .form {
     &-gorup {
-      & label {
+      & .label {
         background-image: url(../images/player_name_01.svg) !important;
         background-repeat: no-repeat !important;
         text-align: center;
@@ -67,11 +137,7 @@ body {
 
     &-control {
       &-name {
-        // position: absolute;
         width: 100%;
-        // height: 61.13px;
-        // left: 40.75px;
-        // top: 86.96px;
         font-family: 'Times New Roman', Times, serif !important;
         color: $white !important;
         background: url(../images/input_box_sign_in.svg) !important;
@@ -509,7 +575,7 @@ body {
         outline: none !important;
         position: absolute;
         right: 17px;
-        top: 85px;
+        top: 75px;
 
         & img {
           width: 50px;

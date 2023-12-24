@@ -19,7 +19,7 @@ function HailHero({ hidePop }) {
                         className="close_btn"
                         onClick={hidePop}
                     >
-                        <img src={close}></img>
+                        <img alt='' src={close}></img>
                     </button>
                 </div>
             }
