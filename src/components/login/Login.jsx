@@ -2,34 +2,22 @@ import React, { Component } from "react";
 import logo from "../../assets/images/logo.svg";
 import close from "../../assets/images/close_ic.svg";
 import or from "../../assets/images/or.svg";
-import resetbtn from "../../assets/images/reset_btn.svg";
 import key from "../../assets/images/key.svg";
-import cpassword from "../../assets/images/confirm_password.svg";
-import newpassword from "../../assets/images/new_password.svg";
-import currentpassword from "../../assets/images/current_password.svg";
 import checked from "../../assets/images/checked.svg";
 import apple from "../../assets/images/sign_up_apple_btn.svg";
 import google from "../../assets/images/sign_up_google_btn.svg";
 import facebbok from "../../assets/images/sign_up_facebook_btn.svg";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-// import payer form '../../assets/images/payer_name.svg';
-import Home from "../home/DailyLogin";
-import { useHistory } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import LoginService from "../../services/LoginService";
 import jwt_decode from "jwt-decode";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import queen from '../../assets/images/queen.png';
 import warrior from '../../assets/images/char_war.png';
 import archangel from '../../assets/images/char_angel.png';
 import assassin from '../../assets/images/char_assign.png';
-import crystal from '../../assets/images/diamonds.png';
-
-import DailyLogin from "../home/DailyLogin";
 import ErrorDisplaypop from "../ErrorDisplay/ErrorDisplaypop";
 import Input from "../../commonUtils/Input";
+import { toast } from "react-toast";
 
 class Login extends Component {
   constructor(props) {
@@ -97,7 +85,7 @@ class Login extends Component {
   validationForm = () => {
     // alert(this.state.termsCheck)
     let isValid = true;
-    const emailReg = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+    const emailReg = /^\w+([\\.-]?\w+)@\w+([\\.-]?\w+)(\.\w{2,3})+$/;
     if (this.state.registerUserName.length < 5) {
       isValid = false;
       alert("Username must be more than 5 charectors length");
@@ -226,16 +214,14 @@ class Login extends Component {
   }
   loginUser() {
     if (this.state.userName && this.state.userPassword) {
-      { console.log('+++++++++++++++++++++++++++++++sra11111'); }
       let obj = {
         userName: this.state.userName,
         password: this.state.userPassword,
       };
       LoginService.loginUser(obj).then((res) => {
-        { console.log('+++++++++++++++++++++++++++++++sra222222'); }
         console.log('res', res);
         if (res) {
-          if (res.data.jwttoken && res.status == 200) {
+          if (res.data.jwttoken && res.status === 200) {
             this.setState(
               { userPassword: "", userName: "", isDailyUpdates: true },
               () => {
@@ -258,7 +244,6 @@ class Login extends Component {
             });
           }
         } else {
-          { console.log('+++++++++++++++++++++++++++++++sra'); }
           <ErrorDisplaypop />;
         }
       }).catch((err) => console.error(err));
@@ -366,7 +351,7 @@ class Login extends Component {
               </ModalFooter>
             </Modal>
           </div>
-          <img  src={logo} className="text-center"></img>
+          <img alt="" src={logo} className="text-center"></img>
         </div>
 
         <div>
@@ -406,7 +391,7 @@ class Login extends Component {
               className="close_btn"
               onClick={() => this.hideCharcterpop()}
             >
-              <img  src={close}></img>
+              <img alt="" src={close}></img>
             </button>
             <div className="modal-body  frame text-center">
               <div className="char">
@@ -415,26 +400,26 @@ class Login extends Component {
                 {this.state.heroProceed ?
                   <div>
                     <div className="profile">
-                      <img  src={this.heroSrc()} />
+                      <img alt="" src={this.heroSrc()} />
                     </div>
                   </div> :
                   <div className="d-flex flex-row align-items-center justify-content-center">
                     {/* A rchangel Modal */}
                     <div className="pl-4 pt-3 pr-4 pb-0">
                       <div className="profile">
-                        <img  src={archangel} onClick={() => this.selectHero('archangel', 2)}></img>
+                        <img  alt="" src={archangel} onClick={() => this.selectHero('archangel', 2)}></img>
                       </div>
                     </div>
 
                     <div className="pl-4 pt-3 pr-4 pb-0">
                       <div className="profile">
-                        <img  src={warrior} onClick={() => this.selectHero('warrior', 1)}></img>
+                        <img  alt="" src={warrior} onClick={() => this.selectHero('warrior', 1)}></img>
                       </div>
                     </div>
 
                     <div className="pl-4 pt-3 pr-4 pb-0">
                       <div className="profile">
-                        <img  src={assassin} onClick={() => this.selectHero('assassin', 3)}></img>
+                        <img alt=""  src={assassin} onClick={() => this.selectHero('assassin', 3)}></img>
                         {/* <h5>Assassin</h5> */}
                       </div>
                     </div>
@@ -556,7 +541,7 @@ class Login extends Component {
                 Not Register Yet ? <span className="text-green"> Register</span>
               </button>
               <div className="text-center">
-                <img  className="mb-2" src={or}></img>
+                <img  className="mb-2" src={or} alt=""></img>
               </div>
             </div>
           </div>
@@ -619,7 +604,7 @@ class Login extends Component {
               <span className="text-green"> log in</span>
             </button>
             <div className="text-center">
-              <img  className="mb-2" src={or}></img>
+              <img  alt="" className="mb-2" src={or}></img>
             </div>
           </div>
         )}
@@ -630,17 +615,17 @@ class Login extends Component {
               <ul>
                 <li>
                   <button className="btn-transparent" type="button">
-                    <img  src={apple}></img>
+                    <img alt=""  src={apple}></img>
                   </button>
                 </li>
                 <li>
                   <button className="btn-transparent" type="button">
-                    <img  src={google}></img>
+                    <img alt=""  src={google}></img>
                   </button>
                 </li>
                 <li>
                   <button className="btn-transparent" type="button">
-                    <img  src={facebbok}></img>
+                    <img alt=""  src={facebbok}></img>
                   </button>
                 </li>
               </ul>
@@ -698,7 +683,7 @@ class Login extends Component {
           <div className="login">
             <div className="header">Reset Password</div>
             <button type="button" className="close_btn">
-              <img  src={close}></img>
+              <img  alt="" src={close}></img>
             </button>
             {/* <h5 className="text-center">Turn your goals into a Role-Playing game</h5> */}
             <div className="row justify-content-md-center">

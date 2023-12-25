@@ -26,4 +26,6 @@ class LearningTravenService {
       return axios.post(BASE_URL + LEARNING_TRAVEN_URL.createBlog ,obj);
   }
 }
+
+// eslint-disable-next-line import/no-anonymous-default-export
 export default new LearningTravenService();

@@ -17,29 +17,18 @@ import blogCt3 from "../../assets/images/blog_ct3.png";
 import blogCt4 from "../../assets/images/blog_ct4.png";
 import blogNt1 from "../../assets/images/blog_nt1.png";
 import blogFire from "../../assets/images/blog_fire.png";
-import coinBox from "../../assets/images/coin_box.svg";
 import coinFrame from "../../assets/images/coinsFrame.png";
 import crystalFrame from "../../assets/images/crystalFrame.png";
 import xpFrame from "../../assets/images/xpPoints.png";
 import xp from "../../assets/images/xp.png";
 import coin from "../../assets/images/coins.png";
 import crystal from "../../assets/images/crystals.png";
-import progress from "../../assets/images/progress_small.svg";
 import blogBook from "../../assets/images/blog_book.png";
 import video from "../../assets/images/videos.svg";
 import survey from "../../assets/images/surves.svg";
 import Video_p1 from "../../assets/images/video_p1.png";
-import bluePad from "../../assets/images/blue_pad.png";
-import Video_p2 from "../../assets/images/video_p2.png";
-import Video_p3 from "../../assets/images/video_p3.png";
-import Video_p4 from "../../assets/images/video_p4.png";
-import Video_p from "../../assets/images/video_player.png";
-import Ques from "../../assets/images/Ques.svg";
-import sProfile from "../../assets/images/user_1.svg";
 import LearningTravenService from "../../services/LearningTravenService";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import close from "../../assets/images/close_ic.svg";
-import { Progress } from "reactstrap";
 import Modals from "../../commonUtils/Modals";
 import Bars from "../../commonUtils/Bars";
 
@@ -949,15 +938,6 @@ class LearningTraven extends Component {
 
                 <Carousel>
                   <Carousel.Item>
-                    {/* <img alt=''
-                    className="d-block w-100"
-                    src="https://media.geeksforgeeks.org/wp-content/uploads/20210425122739/2-300x115.png"
-                    alt="Image One"
-                  />
-                  <Carousel.Caption>
-                    <h3>Label for first slide</h3>
-                    <p>Sample Text for Image One</p>
-                  </Carousel.Caption> */}
                     <ul>
                       {this.state.blogList.map((items, index) => {
                         return (
@@ -972,174 +952,10 @@ class LearningTraven extends Component {
                           </li>
                         );
                       })}
-                      {/* <li>
-                        <img alt='' src={blogNt2}></img>
-                        <h5 className="fs-13">BLOG 2</h5>
                       
-                      </li>
-                      <li>
-                        <img alt='' src={blogNt3}></img>
-                        <h5 className="fs-13">BLOG 3</h5>
-                      
-                      </li>
-                      <li>
-                        <img alt='' src={blogNt4}></img>
-                        <h5 className="fs-13">BLOG 4</h5>
-                      
-                      </li> */}
                     </ul>
                   </Carousel.Item>
-                  {/* <Carousel.Item>
-                  <ul>
-                    <li>
-                      <img alt='' src={blog}></img>
-                      <h5>blogs</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={video}></img>
-                      <h5>videos</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={survey}></img>
-                      <h5>surveys</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={Ques}></img>
-                      <h5>questionnaires</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                  </ul>
-                </Carousel.Item> */}
-                </Carousel>
-
-                {/* 
-              <ReactBootstrapCarousel activeIndex={this.stateindex} onSelect={this.handleSelect}>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=373940"
-                    alt="First slide"
-                  />
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=Second slide&bg=282c34"
-                    alt="Second slide"
-                  />
-
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=Third slide&bg=20232a"
-                    alt="Third slide"
-                  />
-
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>
-                      Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                    </p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-              </ReactBootstrapCarousel> */}
-
-                {/* <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-
-                <div className="carousel-inner">
-                  <div className="carousel-item">
-                    <ul>
-                      <li>
-                        <img alt='' src={blog}></img>
-                        <h5>blogs</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={video}></img>
-                        <h5>videos</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={survey}></img>
-                        <h5>surveys</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={Ques}></img>
-                        <h5>questionnaires</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="carousel-item active">
-                    <ul>
-                      <li>
-                        <img alt='' src={blog}></img>
-                        <h5>bs</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={video}></img>
-                        <h5>videos</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={survey}></img>
-                        <h5>surveys</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={Ques}></img>
-                        <h5>questionnaires</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-                <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Next</span>
-                </a>
-              </div> */}
-                {/* <ul>
-                <li>
-                  <img alt='' src={blog}></img>
-                  <h5>blogs</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={video}></img>
-                  <h5>videos</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={survey}></img>
-                  <h5>surveys</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={Ques}></img>
-                  <h5>questionnaires</h5>
-                  <label>10 blogs read</label>
-                </li>
-              </ul> */}
+                </Carousel>               
               </div>
             )}
             {this.state.viewBlog && (

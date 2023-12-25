@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 function SuccessPage() {
     useEffect(() => {
         success()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const history = useHistory()

@@ -183,9 +183,9 @@ const Store = (props) => {
                             <div className="store-body">
                                 {activeField === "box" ? <div className="store-body-sub">
                                     <div className="store-body-btns">
-                                        <img  className="imageBtns" src={bag} alt={bag} />
+                                        <img   className="imageBtns" src={bag} alt={bag} />
                                         <br />
-                                        <span>Bag of Coins {"   "} 300 <img  src={coin} alt={coin} className="endImg" /> </span>
+                                        <span>Bag of Coins {"   "} 300 <img   src={coin} alt={coin} className="endImg" /> </span>
                                         <button
                                             type="button"
                                             className="img_btn_home"
@@ -199,9 +199,9 @@ const Store = (props) => {
                                     </div>
                                     <div className="store-body-btns">
                                         <span className="text-green">Popular 20% more</span>
-                                        <img  className="imageBtns" src={treasure} alt={treasure} />
+                                        <img   className="imageBtns" src={treasure} alt={treasure} />
                                         <br />
-                                        <span>Stash of Coins {"   "} 1800 <img  src={coin} alt={coin} className="endImg" /> </span>
+                                        <span>Stash of Coins {"   "} 1800 <img   src={coin} alt={coin} className="endImg" /> </span>
                                         <button
                                             type="button"
                                             className="img_btn_home"
@@ -215,9 +215,9 @@ const Store = (props) => {
                                         </button>
                                     </div>
                                     <div className="store-body-btns">
-                                        <img  className="imageBtns" src={bag} alt={bag} />
+                                        <img   className="imageBtns" src={bag} alt={bag} />
                                         <br />
-                                        <span>Bag of Crystals {"   "} 30 <img  src={crystals} alt={crystals} className="endImg" /> </span>
+                                        <span>Bag of Crystals {"   "} 30 <img   src={crystals} alt={crystals} className="endImg" /> </span>
                                         <button
                                             type="button"
                                             className="img_btn_home"
@@ -232,7 +232,7 @@ const Store = (props) => {
                                     </div>
                                     <div className="store-body-btns">
                                         <span className="text-green">More Owned 20% more</span>
-                                        <img  className="imageBtns" src={crystalTreasure} alt={crystalTreasure} />
+                                        <img   className="imageBtns" src={crystalTreasure} alt={crystalTreasure} />
                                         <br />
                                         <span>Stash of Crystals {"   "} 180 <img  src={crystals} alt={crystals} className="endImg" /> </span>
                                         <button
@@ -287,7 +287,7 @@ const Store = (props) => {
                                             <div className="store-body-sub">
                                                 <div className="store-body-merch text-center">
                                                     <p className="text-green">MORE OWNED</p>
-                                                    <img  src={coupon7} className='h-50 w-75' />
+                                                    <img alt=''  src={coupon7} className='h-50 w-75' />
                                                     <p className="text-white">
                                                         7% OFF COUPON COLLEGE PLANNING PLATFORM
                                                     </p>
@@ -295,12 +295,12 @@ const Store = (props) => {
                                                         type="button"
                                                         className="img_btn_home w-75 h-25"
                                                     >
-                                                        5000 <img  src={coin} className='h-25 w-25' />
+                                                        5000 <img alt=''  src={coin} className='h-25 w-25' />
                                                     </button>
                                                 </div>
                                                 <div className="store-body-merch text-center">
                                                     <p className="text-green">POPULAR</p>
-                                                    <img  src={coupon5} className='h-50 w-75' />
+                                                    <img alt=''  src={coupon5} className='h-50 w-75' />
                                                     <p className="text-white">
                                                         5% OFF COUPON COUNSELLING
                                                     </p>
@@ -308,12 +308,12 @@ const Store = (props) => {
                                                         type="button"
                                                         className="img_btn_home w-75 h-25"
                                                     >
-                                                        5000 <img  src={crystals} className='h-25 w-25' />
+                                                        5000 <img alt=''  src={crystals} className='h-25 w-25' />
                                                     </button>
 
                                                 </div>
                                                 <div className="store-body-merch text-center">
-                                                    <img  src={coupon10} className='h-50 w-75' />
+                                                    <img alt=''  src={coupon10} className='h-50 w-75' />
                                                     <p className="text-white">
                                                         10% OFF COUPON COLLEGE AID PLATFORM
                                                     </p>
@@ -321,12 +321,12 @@ const Store = (props) => {
                                                         type="button"
                                                         className="img_btn_home w-75 h-25"
                                                     >
-                                                        2500 <img  src={coin} className='h-25 w-25' />
+                                                        2500 <img alt=''  src={coin} className='h-25 w-25' />
                                                     </button>
 
                                                 </div>
                                                 <div className="store-body-merch text-center">
-                                                    <img  src={coupon6} className='h-50 w-75' />
+                                                    <img alt=''  src={coupon6} className='h-50 w-75' />
                                                     <p className="text-white">
                                                         6% OFF COUPON ASSESSMENT
                                                     </p>
@@ -334,7 +334,7 @@ const Store = (props) => {
                                                         type="button"
                                                         className="img_btn_home w-75 h-25"
                                                     >
-                                                        300 <img  src={crystals} className='h-25 w-25' />
+                                                        300 <img alt=''  src={crystals} className='h-25 w-25' />
                                                     </button>
                                                 </div>
                                             </div>
@@ -378,14 +378,14 @@ const Store = (props) => {
                                             <div className="store-body-sub">
                                                 <div className="store-body-merch text-center">
                                                     <p className="text-green">MORE OWNED</p>
-                                                    <img  src={collegeBook} className='h-50 w-75' />
+                                                    <img alt=''  src={collegeBook} className='h-50 w-75' />
                                                     <p className="text-white">
                                                         PLAN FOR COLLEGE (BOOK)
                                                     </p>
                                                 </div>
                                                 <div className="store-body-merch text-center">
                                                     <p className="text-green">POPULAR</p>
-                                                    <img  src={merchendise} className='h-50 w-75' />
+                                                    <img alt=''  src={merchendise} className='h-50 w-75' />
                                                     <p className="text-white">
                                                         MERCHANDISE
                                                     </p>
@@ -422,9 +422,9 @@ const Store = (props) => {
                                         </div>
                                         : fieldName === "crystlBag" ?
                                             <div className='store-checkout-child'>
-                                                <img  className="imageBtns" src={bag} alt={bag} />
+                                                <img   className="imageBtns" src={bag} alt={bag} />
                                                 <br />
-                                                <span>Bag of Crystals {"   "} 30 <img  src={crystals} alt={crystals} className="endImg" /> </span>
+                                                <span>Bag of Crystals {"   "} 30 <img   src={crystals} alt={crystals} className="endImg" /> </span>
                                                 <br />
                                                 <div className='store-checkout-child-btns'>
                                                     <button className='img_btn_home' onClick={() => redirectToCheckout()}>$2.99</button>
@@ -433,9 +433,9 @@ const Store = (props) => {
                                             </div>
                                             : fieldName === "crystlStash" ?
                                                 <div className='store-checkout-child'>
-                                                    <img  className="imageBtns" src={crystalTreasure} alt={crystalTreasure} />
+                                                    <img   className="imageBtns" src={crystalTreasure} alt={crystalTreasure} />
                                                     <br />
-                                                    <span>Stash of Crystals {"   "} 180 <img  src={crystals} alt={crystals} className="endImg" /> </span>
+                                                    <span>Stash of Crystals {"   "} 180 <img   src={crystals} alt={crystals} className="endImg" /> </span>
                                                     <br />
                                                     <div className='store-checkout-child-btns'>
                                                         <button className='img_btn_home' onClick={() => redirectToCheckout()}>$15.99</button>
@@ -443,26 +443,7 @@ const Store = (props) => {
                                                     </div>
                                                 </div>
                                                 : <></>}
-                                {/* <Elements stripe={stripePromise}>
-                                    <form className='payment-form' onSubmit={handleSubmit}>
-                                        <div className='card-element'>
-                                            <CardElement />
-                                        </div>
-                                        <button className='payment-button' type="submit" disabled={!Stripe}>Pay</button>
-                                    </form>
-                                </Elements> */}
-                                {/* <div>
-                                    <input type="number" className="form-control-name form-control" name="" placeholder='4242 4242 4242' id="" />
-
-                                </div> */}
-                                {/* <button
-                                    type="button"
-                                    className="img_btn_home"
-                                    
-                                >
-                                    Proceed
-
-                                </button> */}
+                                
                             </div>
                         </div>}
                 </div>

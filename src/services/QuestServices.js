@@ -19,8 +19,6 @@ class QuestServices {
         return axios.get(BASE_URL + TRAVELL_SERVICE_URL.travelHere + '/' + charId + '/' + placeId)
     }
 
-    // claimReward(userCharId ,achivementId) {
-    //     return axios.post(BASE_URL +ACHIVEMENT_SERVICES_URL.claimReward +'/'+userCharId +'/'+achivementId) 
-    // }
 }
+// eslint-disable-next-line import/no-anonymous-default-export
 export default new QuestServices();
