@@ -417,27 +417,17 @@ class LearningTraven extends Component {
         <div className="main-middleP">
           <div className="rect_large_content">
             {this.state.mainPageFlag && (
-              <div className="door">
+              <div className="door pt-3">
                 <img alt='' src={door} onClick={() => this.navMainPage()}></img>
                 <h5>Learning Tavern</h5>
                 <label>
                   adventurer, quench your thirst for knowledge here.
                 </label>
-                <Carousel>
+                <Carousel className="">
                   <Carousel.Item>
-                    {/* <img alt=''
-                    className="d-block w-100"
-                    src="https://media.geeksforgeeks.org/wp-content/uploads/20210425122739/2-300x115.png"
-                    alt="Image One"
-                  />
-                  <Carousel.Caption>
-                    <h3>Label for first slide</h3>
-                    <p>Sample Text for Image One</p>
-                  </Carousel.Caption> */}
                     <ul>
                       <li>
                         <img alt=''
-
                           src={blog}
                           onClick={this.navTravensBlogs}
                         ></img>
@@ -458,164 +448,10 @@ class LearningTraven extends Component {
                         <h5>surveys & questionnaires</h5>
                         <label>0 surveys taken</label>
                       </li>
-                      {/* <li>
-                        <img alt='' alt="" src={Ques}></img>
-                        <h5>questionnaires</h5>
-                        <label>0 questionnaires taken</label>
-                      </li> */}
+
                     </ul>
                   </Carousel.Item>
-                  {/* <Carousel.Item>
-                  <ul>
-                    <li>
-                      <img alt='' src={blog}></img>
-                      <h5>blogs</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={video}></img>
-                      <h5>videos</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={survey}></img>
-                      <h5>surveys</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={Ques}></img>
-                      <h5>questionnaires</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                  </ul>
-                </Carousel.Item> */}
                 </Carousel>
-
-                {/* 
-              <ReactBootstrapCarousel activeIndex={this.stateindex} onSelect={this.handleSelect}>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=373940"
-                    alt="First slide"
-                  />
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=Second slide&bg=282c34"
-                    alt="Second slide"
-                  />
-
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=Third slide&bg=20232a"
-                    alt="Third slide"
-                  />
-
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>
-                      Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                    </p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-              </ReactBootstrapCarousel> */}
-
-                {/* <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-
-                <div className="carousel-inner">
-                  <div className="carousel-item">
-                    <ul>
-                      <li>
-                        <img alt='' src={blog}></img>
-                        <h5>blogs</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={video}></img>
-                        <h5>videos</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={survey}></img>
-                        <h5>surveys</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={Ques}></img>
-                        <h5>questionnaires</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="carousel-item active">
-                    <ul>
-                      <li>
-                        <img alt='' src={blog}></img>
-                        <h5>bs</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={video}></img>
-                        <h5>videos</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={survey}></img>
-                        <h5>surveys</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={Ques}></img>
-                        <h5>questionnaires</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-                <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Next</span>
-                </a>
-              </div> */}
-                {/* <ul>
-                <li>
-                  <img alt='' src={blog}></img>
-                  <h5>blogs</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={video}></img>
-                  <h5>videos</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={survey}></img>
-                  <h5>surveys</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={Ques}></img>
-                  <h5>questionnaires</h5>
-                  <label>10 blogs read</label>
-                </li>
-              </ul> */}
               </div>
             )}
 
@@ -635,9 +471,6 @@ class LearningTraven extends Component {
               }
               body={
                 <div className="frame text-center">
-                  {/* <h4 className="">
-          
-            </h4> */}
                   <p>Goal Completed Successfully</p>
 
                   <button
@@ -715,7 +548,7 @@ class LearningTraven extends Component {
             {this.state.blogCateoryFlag && (
               <div className="door">
                 <div className="row">
-                  <div className="col-7 text-center">
+                  <div className="col-7 pt-4 text-center">
                     <img alt='' src={door} onClick={() => this.navMainPage()}></img>
                     <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
                     <h5>Learning Tavern-Blogs</h5>
@@ -737,195 +570,32 @@ class LearningTraven extends Component {
                 </div>
                 <Carousel>
                   <Carousel.Item>
-                    {/* <img alt=''
-                    className="d-block w-100"
-                    src="https://media.geeksforgeeks.org/wp-content/uploads/20210425122739/2-300x115.png"
-                    alt="Image One"
-                  />
-                  <Carousel.Caption>
-                    <h3>Label for first slide</h3>
-                    <p>Sample Text for Image One</p>
-                  </Carousel.Caption> */}
                     <ul>
                       <li>
                         <img alt='' src={blogCt1} onClick={this.navBlogs}></img>
                         <h5 className="fs-14">STRENGTH</h5>
-                        {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
                         <img alt='' src={blogCt2} onClick={this.navPlans}></img>
                         <h5 className="fs-14">PLAN</h5>
-                        {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
                         <img alt='' src={blogCt3} onClick={this.navFuture}></img>
                         <h5 className="fs-14">FUTURE</h5>
-                        {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
                         <img alt='' src={blogCt4} onClick={this.navPassion}></img>
                         <h5 className="fs-14">PASSION</h5>
-                        {/* <label>10 blogs read</label> */}
                       </li>
                     </ul>
                   </Carousel.Item>
-                  {/* <Carousel.Item>
-                  <ul>
-                    <li>
-                      <img alt='' src={blog}></img>
-                      <h5>blogs</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={video}></img>
-                      <h5>videos</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={survey}></img>
-                      <h5>surveys</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={Ques}></img>
-                      <h5>questionnaires</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                  </ul>
-                </Carousel.Item> */}
                 </Carousel>
-
-                {/* 
-              <ReactBootstrapCarousel activeIndex={this.stateindex} onSelect={this.handleSelect}>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=373940"
-                    alt="First slide"
-                  />
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=Second slide&bg=282c34"
-                    alt="Second slide"
-                  />
-
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=Third slide&bg=20232a"
-                    alt="Third slide"
-                  />
-
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>
-                      Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                    </p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-              </ReactBootstrapCarousel> */}
-
-                {/* <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-
-                <div className="carousel-inner">
-                  <div className="carousel-item">
-                    <ul>
-                      <li>
-                        <img alt='' src={blog}></img>
-                        <h5>blogs</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={video}></img>
-                        <h5>videos</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={survey}></img>
-                        <h5>surveys</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={Ques}></img>
-                        <h5>questionnaires</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="carousel-item active">
-                    <ul>
-                      <li>
-                        <img alt='' src={blog}></img>
-                        <h5>bs</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={video}></img>
-                        <h5>videos</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={survey}></img>
-                        <h5>surveys</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={Ques}></img>
-                        <h5>questionnaires</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-                <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Next</span>
-                </a>
-              </div> */}
-                {/* <ul>
-                <li>
-                  <img alt='' src={blog}></img>
-                  <h5>blogs</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={video}></img>
-                  <h5>videos</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={survey}></img>
-                  <h5>surveys</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={Ques}></img>
-                  <h5>questionnaires</h5>
-                  <label>10 blogs read</label>
-                </li>
-              </ul> */}
               </div>
             )}
             {this.state.listOfBlogs && (
               <div className="door">
                 <div className="row">
-                  <div className="col-7 text-center">
+                  <div className="col-7 pt-4 text-center">
                     <img alt='' src={door} onClick={() => this.navMainPage()}></img>
                     <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
                     <img alt='' src={blogFire}></img>
@@ -961,7 +631,7 @@ class LearningTraven extends Component {
             {this.state.viewBlog && (
               <div className="door">
                 <div className="row">
-                  <div className="col-7 text-center">
+                  <div className="col-7  pt-4 text-center">
                     <img alt='' src={door} onClick={() => this.navMainPage()}></img>
                     <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
                     <img alt='' src={blogFire}></img>
@@ -1029,7 +699,6 @@ class LearningTraven extends Component {
                       </div>
                     )}
                     <div className="d-flex">
-                      {/* <img alt='' src={progress} className="w-80p"></img><img alt='' src={coinBox} ></img> */}
                       <Bars
                         completed={this.state.min * this.state.sec}
                         maxCompleted={4 * 60}
@@ -1057,7 +726,7 @@ class LearningTraven extends Component {
             {this.state.createBlog && (
               <div className="door">
                 <div className="row">
-                  <div className="col-7 text-center">
+                  <div className="col-7 pt-4 text-center">
                     <img alt='' src={door} onClick={() => this.navMainPage()}></img>
                     <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
                     <h5 className="text-white">Learning Tavern-Blogs</h5>
@@ -1130,7 +799,7 @@ class LearningTraven extends Component {
                     <div className="col-12 mt-3">
                       <input
                         type="text"
-                        className="form-control-large form-control"
+                        className="form-control form-control-large"
                         placeholder="Keywords (15 max)"
                         value={this.state.keywords}
                         onChange={(e) => {
@@ -1141,7 +810,7 @@ class LearningTraven extends Component {
                     <div className="col-12 mt-3">
                       <input
                         type="text"
-                        className="form-control-large form-control"
+                        className="form-control form-control-large"
                         placeholder="Description"
                         value={this.state.description}
                         onChange={(e) => {
@@ -1153,7 +822,6 @@ class LearningTraven extends Component {
                 </div>
               </div>
             )}
-            {/* videos */}
             {this.state.videosCateoryFlag && (
               <div className="door">
                 <div className="row">
@@ -1181,22 +849,18 @@ class LearningTraven extends Component {
                       <li>
                         <img alt='' src={blogCt1} onClick={this.navVideos}></img>
                         <h5 className="fs-13">STRENGTH</h5>
-                        {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
                         <img alt='' src={blogCt2} onClick={this.navPlanVideos}></img>
                         <h5 className="fs-13">PLAN</h5>
-                        {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
                         <img alt='' src={blogCt3} onClick={this.navFutureVedios}></img>
                         <h5 className="fs-13">FUTURE</h5>
-                        {/* <label>10 blogs read</label> */}
                       </li>
                       <li>
                         <img alt='' src={blogCt4} onClick={this.navPassionVedio}></img>
                         <h5 className="fs-13">PASSION</h5>
-                        {/* <label>10 blogs read</label> */}
                       </li>
                     </ul>
                   </Carousel.Item>
@@ -1261,163 +925,12 @@ class LearningTraven extends Component {
                               }}
                             ></img>
                             <h5>VIDEO {ind + 1}</h5>
-                            {/* <label>10 blogs read</label> */}
                           </li>
                         );
                       })}
                     </ul>
                   </Carousel.Item>
-                  {/* <Carousel.Item>
-                  <ul>
-                    <li>
-                      <img alt='' src={blog}></img>
-                      <h5>blogs</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={video}></img>
-                      <h5>videos</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={survey}></img>
-                      <h5>surveys</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                    <li>
-                      <img alt='' src={Ques}></img>
-                      <h5>questionnaires</h5>
-                      <label>10 blogs read</label>
-                    </li>
-                  </ul>
-                </Carousel.Item> */}
                 </Carousel>
-
-                {/* 
-              <ReactBootstrapCarousel activeIndex={this.stateindex} onSelect={this.handleSelect}>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=373940"
-                    alt="First slide"
-                  />
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=Second slide&bg=282c34"
-                    alt="Second slide"
-                  />
-
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-                <ReactBootstrapCarousel.Item>
-                  <img alt=''
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=Third slide&bg=20232a"
-                    alt="Third slide"
-                  />
-
-                  <ReactBootstrapCarousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>
-                      Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                    </p>
-                  </ReactBootstrapCarousel.Caption>
-                </ReactBootstrapCarousel.Item>
-              </ReactBootstrapCarousel> */}
-
-                {/* <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-
-                <div className="carousel-inner">
-                  <div className="carousel-item">
-                    <ul>
-                      <li>
-                        <img alt='' src={blog}></img>
-                        <h5>blogs</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={video}></img>
-                        <h5>videos</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={survey}></img>
-                        <h5>surveys</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={Ques}></img>
-                        <h5>questionnaires</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="carousel-item active">
-                    <ul>
-                      <li>
-                        <img alt='' src={blog}></img>
-                        <h5>bs</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={video}></img>
-                        <h5>videos</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={survey}></img>
-                        <h5>surveys</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                      <li>
-                        <img alt='' src={Ques}></img>
-                        <h5>questionnaires</h5>
-                        <label>10 blogs read</label>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-                <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Next</span>
-                </a>
-              </div> */}
-                {/* <ul>
-                <li>
-                  <img alt='' src={blog}></img>
-                  <h5>blogs</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={video}></img>
-                  <h5>videos</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={survey}></img>
-                  <h5>surveys</h5>
-                  <label>10 blogs read</label>
-                </li>
-                <li>
-                  <img alt='' src={Ques}></img>
-                  <h5>questionnaires</h5>
-                  <label>10 blogs read</label>
-                </li>
-              </ul> */}
               </div>
             )}
             {this.state.viewVideo && (

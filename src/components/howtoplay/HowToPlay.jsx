@@ -29,7 +29,7 @@ class HowToPlay extends Component {
       <div className="main">
         <div className="main-middleP">
           <div className="rect_large_content">
-            <h3 className="">
+            <h3 className="pt-5">
               Welcome to the{" "}
               <span className="text-green">World of Mystika!</span>
             </h3>

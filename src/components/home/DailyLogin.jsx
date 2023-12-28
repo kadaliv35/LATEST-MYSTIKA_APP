@@ -54,14 +54,10 @@ class DailyLogin extends Component {
         });
         this.setState(
           {
-            // characterRewardList:res.data,
             dailyRewards: res.data.rewards.dailyRewards,
           },
           () => {
             console.log("obj", res.data);
-            // if (res.data.rewards.dailyRewards[0].rewardCollected) {
-            //   this.props.history.push("/welcomebackscreen");
-            // }
             sessionStorage.setItem("dailyLogin", JSON.stringify(obj));
             sessionStorage.setItem("totalDailyLogin", JSON.stringify(res.data));
           }
@@ -70,20 +66,6 @@ class DailyLogin extends Component {
       .catch((err) => console.error(err));
   }
 
-  // rewardCollected(day) {
-  //   // alert(day)
-  //   let obj = []
-  //   let days = []
-  //   obj = this.state.characterRewardList?.chCurrentRank?.daywiseRules
-  //   days = this.state.dailyRewards
-  //   let i = day - 1
-  //   obj.forEach((item, index) => {
-  //     if (item.dayNo === day && days[i]?.rewardCollected) {
-  //       return true
-  //     }
-  //   })
-  //   return false
-  // }
 
   navToHome() {
     this.props.history.push("/welcomebackscreen");
@@ -104,7 +86,6 @@ class DailyLogin extends Component {
           console.log(err);
         });
     }
-    // this.props.history.push("/welcomebackscreen");
   }
 
   dailyRewardStatus = (day) => {

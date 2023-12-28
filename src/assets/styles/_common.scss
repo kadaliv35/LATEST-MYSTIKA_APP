@@ -1,5 +1,4 @@
-// FONT SIZES
-// =================================
+
 $fs-10: 10px;
 $fs-11: 11px;
 $fs-12: 12px;
@@ -922,72 +921,11 @@ $cval: 5px;
 }
 
 
-// .shadow {
-//   &-top {
-//     -webkit-box-shadow: 0px -2px 1px 0px $shadow-color;
-//     -moz-box-shadow: 0px -2px 1px 0px $shadow-color;
-//     box-shadow: 0px -2px 1px 0px $shadow-color;
-//   }
-//   &-bottom {
-//     -webkit-box-shadow: 0px 1px 1px 2px $shadow-color;
-//     -moz-box-shadow: 0px 1px 1px 2px $shadow-color;
-//     box-shadow: 0px 1px 1px 2px $shadow-color;
-//   }
-//   &-all {
-//     -webkit-box-shadow: 0px 0px 15px 0px rgba(92, 92, 92, 0.5);
-//     -moz-box-shadow: 0px 0px 15px 0px rgba(92, 92, 92, 0.5);
-//     box-shadow: 0px 0px 15px 0px rgba(92, 92, 92, 0.5);
-//   }
-// }
 .w {
   &-25p {
     width: 25% !important;
   }
 }
-
-// .text {
-//   &-green {
-//     color: $green-dark !important;
-//     &-light {
-//       color: $green-light !important;
-//     }
-//   }
-//   &-red {
-//     color: $red-dark !important;
-//   }
-//   &-orange {
-//     &-light {
-//       color: $orange-light !important;
-//     }
-//   }
-//   &-yellow{
-//     color:$yellow !important;
-//   }
-//   &-primary{
-//     color:$primary-color !important;
-//   }
-//   &-red {
-//     &-medium {
-//       // color:$red-medium !important;
-//     }
-//   }
-//   &-footer{
-//     color:$footer-light-text !important;
-//   }
-//   &-white {
-//     color: $white;
-//   }
-//   &-isos{
-//     color:$isos-primary-color !important;
-//   }
-//   &-secondary{
-//     color:$secondary-color !important;
-//   }
-//   &-bold{
-//     font-weight:bold;
-//   }
-// }
-
 
 .w {
   &-100p {

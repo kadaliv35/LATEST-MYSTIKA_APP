@@ -332,6 +332,7 @@ class Landingpage extends Component {
   }
 
   render() {
+    let enemiesList = this.state.enemiesList;
     return (
       <div className="main">
         <div className="main-middleP">
@@ -442,27 +443,27 @@ class Landingpage extends Component {
                   <img  src={Enemy1} alt="enemy1" />
                 </div>
                 <div>
-                  <img  src={Enemy2} alt="enemy1" className={this.state.enemy0Defeated ? "unblur" : "blur"} />
+                  <img  src={Enemy2} alt="enemy1" className={enemiesList[0]?.defeted ? "unblur" : "blur"} />
                 </div>
                 <div>
-                  <img  src={Enemy3} alt="enemy1" className={this.state.enemy1Defeated ? "unblur" : "blur"}/>
+                  <img  src={Enemy3} alt="enemy1" className={enemiesList[1]?.defeted ? "unblur" : "blur"}/>
                 </div>
                 <div>
-                  <img  src={Enemy4} alt="enemy1" className={this.state.enemy2Defeated ? "unblur" : "blur"}/>
+                  <img  src={Enemy4} alt="enemy1" className={enemiesList[2]?.defeted ? "unblur" : "blur"}/>
                 </div>
                 <div>
-                  <img  src={Enemy5} alt="enemy1" className={this.state.enemy3Defeated ? "unblur" : "blur"}/>
+                  <img  src={Enemy5} alt="enemy1" className={enemiesList[3]?.defeted ? "unblur" : "blur"}/>
                 </div>
               </div>
               <div className="battle-body">
               <div>
                 <img 
-                  src={this.setEnemyImg().image}
+                  src={enemiesList[0]?.defeted ? Enemy2 : enemiesList[1]?.defeted ? Enemy3 : enemiesList[2]?.defeted ? Enemy4 : enemiesList[3]?.defeted ? Enemy5 : Enemy1}
                   className="battle-main_img"
-                  alt={this.setEnemyImg().name}
+                  alt={enemiesList[0]?.defeted ? enemiesList[1]?.enemy.name : enemiesList[1]?.defeted ? enemiesList[2]?.enemy.name : enemiesList[2]?.defeted ? enemiesList[3]?.enemy.name : enemiesList[3]?.defeted ? enemiesList[4]?.enemy.name : enemiesList[0]?.enemy.name}
                 />
                 <p className="enemy_name">
-                  {this.setEnemyImg().name} {"\n"}
+                  {enemiesList[0]?.defeted ? enemiesList[1]?.enemy.name : enemiesList[1]?.defeted ? enemiesList[2]?.enemy.name : enemiesList[2]?.defeted ? enemiesList[3]?.enemy.name : enemiesList[3]?.defeted ? enemiesList[4]?.enemy.name : enemiesList[0]?.enemy.name} {"\n"}
                   {this.state.enemyLife + "/" + this.state.enemyMaxLife}
                 </p>
                 <div className="joyBarxSm">

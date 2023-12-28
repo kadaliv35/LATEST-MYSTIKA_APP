@@ -1,6 +1,3 @@
-// body{
-//     background-image: url(../../assets/images/reg_bg.svg);
-// }
 .hdr_top {
     top: -76px !important;
     text-align: left !important;
@@ -17,15 +14,6 @@
 .blur {
     filter: blur(3px);
 }
-
-// .blur::after {
-//     content: "";
-//     background-color: rgba(0,0,0,0.4);
-//     height: 100px;
-//     width: 100px;
-//     z-index: 999;
-//     object-fit: contain;
-// }
 
 audio {
     display: none;
@@ -100,7 +88,6 @@ audio {
 
 
 .joyBar {
-    // background-image: url('../images/leftJoyBar.png'), url('../images/rightJoyBar.png')
     background-image: url('../images/joyBar.png');
     height: 43px;
     width: 250px;
@@ -118,7 +105,7 @@ audio {
 .joyBarSm {
     background-image: url('../images/leftJoyBar.png'), url('../images/rightJoyBar.png');
     height: 40px;
-    width: 40%;
+    width: 60%;
     margin: 20px;
     background-size: cover;
     position: relative;
@@ -126,24 +113,21 @@ audio {
     
     & .bars {
         position: absolute;
-        top: 23px;
-        left: 30px;
+        top: 25px;
+        left: 37px;
     }
     
 }
 
 .joyBarxSm {
-    // background-image: url('../images/leftJoyBar.png'), url('../images/rightJoyBar.png');
     background-image: url('../images/joyBar.png');
     height: 40px;
-    // min-height: 80px;
     width: 180px;
     object-fit: contain;
     margin: 10px 0px;
     background-size: contain;
     background-repeat: no-repeat;
     position: relative;
-    // overflow: hidden;
 
     & .bars {
         position: absolute;
@@ -153,17 +137,14 @@ audio {
 
 }
 .lifeBarSm {
-    // background-image: url('../images/leftJoyBar.png'), url('../images/rightJoyBar.png');
     background-image: url('../images/lifeBar.png');
     height: 40px;
-    // min-height: 80px;
     width: 180px;
     object-fit: contain;
     margin: 10px 0px;
     background-size: contain;
     background-repeat: no-repeat;
     position: relative;
-    // overflow: hidden;
 
     & .bars {
         position: absolute;
@@ -236,8 +217,6 @@ audio {
 
     & .header {
         width: 100%;
-        // background-color: aquamarine;
-        height: 30vh;
         background-color: transparent;
         font-family: OptimusPrinceps;
 
@@ -257,7 +236,6 @@ audio {
             & ul {
                 width: 100%;
                 padding: 0;
-                // display: flex;
 
                 & li {
                     padding-top: 5px;
@@ -311,6 +289,7 @@ audio {
         &-right {
             float: right;
             width: 82%;
+            height: 280px;
 
             & .logo {
                 position: absolute;
@@ -324,12 +303,9 @@ audio {
                 }
             }
 
-            // padding-right:2%;
             & ul {
                 padding: 0;
-                // margin: 0;
                 margin-top: 4.5%;
-                // margin-left: 16%;
 
                 & li {
                     display: inline-block;
@@ -363,7 +339,6 @@ audio {
                         text-align: center;
 
                         & img {
-                            // width: 105px;
                             display: block;
                             margin: 0px auto;
                         }
@@ -390,8 +365,8 @@ audio {
             background-image: url(../../assets/images/rect_frm_new.svg);
             background-repeat: no-repeat;
             background-size: contain;
-            width: 96.5%;
-            height: 58vh;
+            width: 280px;
+            height: 400px;
 
             & ul {
                 padding: 0;
@@ -448,7 +423,6 @@ audio {
                 }
 
                 & .logout_btn {
-                    // margin-top: 30px;
                 }
             }
 
@@ -456,8 +430,6 @@ audio {
                 text-align: center;
                 padding-left: 7%;
                 padding-right: 8%;
-                // position: absolute;
-                // bottom: 20px;
             }
         }
     }
@@ -472,9 +444,9 @@ audio {
             background-image: url(../../assets/images/map_bg.png);
             background-repeat: no-repeat;
             background-size: contain;
-            width: 90%;
+            width: 800px;
             // overflow-y: scroll;
-            height: 58vh;
+            height: 400px;
 
             &-spans {
                 display: grid;
@@ -514,9 +486,6 @@ audio {
                     position: absolute;
                     right: 17%;
                     bottom: 7%;
-                    // position: relative;
-                    // right: -88%;
-                    // bottom: -39%;
 
                     & img {
                         width: 42%;
@@ -550,13 +519,12 @@ audio {
         & .rect_large_content {
             background-image: url(../../assets/images/plain_rect.svg);
             background-repeat: no-repeat;
-            background-size: contain;
-            width: 99%;
-            height: 58vh;
+            background-size: cover;
+            width: 780px;
+            height: 400px;
             font-family: OptimusPrinceps !important;
-            padding: 3%;
-            padding-left: 5%;
-            padding-right: 8%;
+            padding: 2% 5%;
+            overflow-y: scroll;
 
             & .images {
                 display: flex;
@@ -793,46 +761,32 @@ audio {
                                 outline: none !important;
 
                                 &-small {
-                                    // position: absolute;
-                                    // width: 247.65px;
-                                    // height: 61.13px;
-                                    // left: 40.75px;
-                                    // top: 86.96px;
                                     font-family: OptimusPrinceps !important;
                                     color: $white !important;
                                     background: url(../images/goals_form.png) !important;
                                     background-repeat: no-repeat !important;
                                     background-size: contain !important;
-                                    // border-radius: 8.01499px;
                                     font-size: 13px !important;
                                     width: 100% !important;
                                     height: 3rem;
                                     background-color: transparent !important;
                                     border: 0px solid #fff !important;
-                                    // width: 100%;
-                                    // background-size: cover;
                                     outline: none !important;
+                                    background-repeat: no-repeat;
                                 }
 
                                 &-large {
-                                    // position: absolute;
-                                    // width: 247.65px;
-                                    // height: 61.13px;
-                                    // left: 40.75px;
-                                    // top: 86.96px;
                                     font-family: OptimusPrinceps !important;
                                     color: $white !important;
                                     background: url(../images/goals_text_form.png) !important;
                                     background-size: cover !important;
-                                    // border-radius: 8.01499px;
                                     font-size: 13px !important;
                                     height: 10vh;
                                     width: 100% !important;
                                     background-color: transparent !important;
                                     border: 0px solid #fff !important;
-                                    // width: 100%;
-                                    // background-size: cover;
                                     outline: none !important;
+                                    background-repeat: no-repeat;
                                 }
                             }
 
@@ -903,9 +857,11 @@ audio {
 .rect_bg_medium {
     background-image: url(../../assets/images/rect_medium.png);
     background-repeat: no-repeat;
-    // background-size: contain;
     background-size: cover;
-    height: 290px;
+    height: 230px;
+    width: 700px;
+    margin: 0 40px;
+    border-radius: 10px;
 }
 
 
@@ -913,9 +869,6 @@ audio {
     width: 100%;
     font-family: OptimusPrinceps;
     padding-top: 30px;
-    // padding-top: 19px;
-    // position: fixed;
-    // width: 40%;
 
     &-head {
         &-left {
