@@ -1,10 +1,33 @@
 @import './assets/styles/maincss';
 // @import './assets/fonts/OptimusPrinceps.ttf';
 // @import './assets/fonts/OptimusPrincepsSemiBold.ttf';
-
+@import '~react-toastify/dist/ReactToastify.css';
 @font-face {
   font-family: OptimusPrinceps;
   src: url(./assets/fonts/OptimusPrinceps.ttf) format("opentype");
+}
+
+.Toastify__toast-container {
+  z-index: 9999;
+  background-color: transparent;
+}
+
+
+.Toastify__toast-body { 
+  background-image: url('./assets/images/goals_form.png');
+  height: 45px;
+  width: 100px;
+  background-size: cover;
+}
+
+.Toastify__toast--success {
+  background: transparent;
+  color: #fff;
+}
+
+.Toastify__toast--error {
+  background: transparent;
+  color: #fff;
 }
 
 // PaymentForm.css

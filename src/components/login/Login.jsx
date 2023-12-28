@@ -17,7 +17,8 @@ import archangel from '../../assets/images/char_angel.png';
 import assassin from '../../assets/images/char_assign.png';
 import ErrorDisplaypop from "../ErrorDisplay/ErrorDisplaypop";
 import Input from "../../commonUtils/Input";
-import { toast } from "react-toast";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Login extends Component {
   constructor(props) {
@@ -83,24 +84,27 @@ class Login extends Component {
   }
 
   validationForm = () => {
-    // alert(this.state.termsCheck)
     let isValid = true;
     const emailReg = /^\w+([\\.-]?\w+)@\w+([\\.-]?\w+)(\.\w{2,3})+$/;
     if (this.state.registerUserName.length < 5) {
       isValid = false;
-      alert("Username must be more than 5 charectors length");
+      toast.error('Username must be more than 5 charectors length')
     }
-    if (this.state.registerUserPassword.length < 6 && this.state.registerUserPassword !== this.state.registerUserConfiPassword) {
+    if (this.state.registerUserPassword.length < 6) {
       isValid = false;
-      alert("Passwords are not matching");
+      toast.error('passwords must be greater than 6 digits long')
+    }
+    if (this.state.registerUserPassword !== this.state.registerUserConfiPassword) {
+      isValid = false;
+      toast.error('passwords are not matching')
     }
     if (emailReg.test(this.state.registerUserEmail) === false) {
       isValid = false;
-      alert("Email is mandatory");
+      toast.error('email is mandatory')
     }
     if (this.state.termsCheck === false) {
       isValid = false;
-      alert("Please accept the terms & conditions");
+      toast.error('please accept the terms & conditions')
     }
     return isValid;
   };
@@ -210,12 +214,12 @@ class Login extends Component {
       // if(!this.state.slectedCharacterId) {
       //   alert("charectorId not found")
       // }
-      console.log( this.state.registerUserName,
+      console.log(this.state.registerUserName,
         this.state.registerUserEmail,
         this.state.registerUserPassword,
         this.state.isValidEmail,
         this.state.isConfirmPassword,
-        this.state.slectedCharacterId )
+        this.state.slectedCharacterId)
       alert("Please Enter All Input Fields");
     }
   }
@@ -246,14 +250,18 @@ class Login extends Component {
             );
           } else {
             this.setState({ userErrorpop: true }, () => {
-
-              // <ErrorDisplaypop res={ res} />
             });
           }
         } else {
           <ErrorDisplaypop />;
         }
-      }).catch((err) => console.error(err));
+      }).catch((err) => {
+        toast.error('Unable to login')
+        console.log({ err })
+      }
+      );
+    } else {
+      toast.error('please enter valid user details')
     }
   }
 
@@ -303,8 +311,11 @@ class Login extends Component {
   };
 
   proceedHero = () => {
-    // alert(this.state.heroType)
-    this.setState({ heroProceed: !this.state.heroProceed });
+    if (this.state.slectedCharacterId === 0) {
+      toast.error('please choose your hero character')
+    } else {
+      this.setState({ heroProceed: !this.state.heroProceed });
+    }
   };
   proceedBack = () => {
     this.setState({ heroProceed: !this.state.heroProceed, heroType: '' });
@@ -385,13 +396,13 @@ class Login extends Component {
 
                     <div className="pl-4 pt-3 pr-4 pb-0">
                       <div className="profile">
-                        <img className={this.state.slectedCharacterId === 1 ? "profile-selected" : ""}  alt="" src={warrior} onClick={() => this.selectHero('warrior', 1)}></img>
+                        <img className={this.state.slectedCharacterId === 1 ? "profile-selected" : ""} alt="" src={warrior} onClick={() => this.selectHero('warrior', 1)}></img>
                       </div>
                     </div>
 
                     <div className="pl-4 pt-3 pr-4 pb-0">
                       <div className="profile">
-                        <img className={this.state.slectedCharacterId === 3 ? "profile-selected" : ""} alt=""  src={assassin} onClick={() => this.selectHero('assassin', 3)}></img>
+                        <img className={this.state.slectedCharacterId === 3 ? "profile-selected" : ""} alt="" src={assassin} onClick={() => this.selectHero('assassin', 3)}></img>
                       </div>
                     </div>
                   </div>}
@@ -450,7 +461,7 @@ class Login extends Component {
                 </div>
                 <div className="d-flex justify-content-around align-items-center">
                   <div className="check-marked">
-                    <img  src={checked} alt="check"></img>
+                    <img src={checked} alt="check"></img>
                     <span> Remember Me</span>
                   </div>
                   <button
@@ -485,7 +496,7 @@ class Login extends Component {
                 Not Register Yet ? <span className="text-green"> Register</span>
               </button>
               <div className="text-center">
-                <img  className="mb-2" src={or} alt=""></img>
+                <img className="mb-2" src={or} alt=""></img>
               </div>
             </div>
           </div>
@@ -506,7 +517,7 @@ class Login extends Component {
               <div className="">
                 <div className="d-flex justify-content-center align-items-center">
                   <Input name="player Name" type="text" update={(value) => this.setState({ registerUserName: value })} />
-                  <Input name="Email" type="email" update={(value) => this.setState({ registerUserEmail: value })}  />
+                  <Input name="Email" type="email" update={(value) => this.setState({ registerUserEmail: value })} />
                 </div>
                 <div className="d-flex justify-content-center align-items-center">
                   <Input name="Password" type="password" update={(value) => this.setState({ registerUserPassword: value })} />
@@ -548,7 +559,7 @@ class Login extends Component {
               <span className="text-green"> log in</span>
             </button>
             <div className="text-center">
-              <img  alt="" className="mb-2" src={or}></img>
+              <img alt="" className="mb-2" src={or}></img>
             </div>
           </div>
         )}
@@ -559,17 +570,17 @@ class Login extends Component {
               <ul>
                 <li>
                   <button className="btn-transparent" type="button">
-                    <img alt=""  src={apple}></img>
+                    <img alt="" src={apple}></img>
                   </button>
                 </li>
                 <li>
                   <button className="btn-transparent" type="button">
-                    <img alt=""  src={google}></img>
+                    <img alt="" src={google}></img>
                   </button>
                 </li>
                 <li>
                   <button className="btn-transparent" type="button">
-                    <img alt=""  src={facebbok}></img>
+                    <img alt="" src={facebbok}></img>
                   </button>
                 </li>
               </ul>
@@ -585,7 +596,7 @@ class Login extends Component {
             <div className="login">
               <div className="header">Forgot Password</div>
               <button type="button" className="close_btn" onClick={() => this.gotoLogin()}>
-                <img  src={close} alt="close" className="cursor-pointer"></img>
+                <img src={close} alt="close" className="cursor-pointer"></img>
               </button>
               <div className="body">
 
@@ -593,7 +604,7 @@ class Login extends Component {
                   Enter your email address
                 </h5>
                 <div className="d-flex justify-content-center flex-column align-items-center">
-                      <Input name="Email" type="text" update={(value) => this.setState({ useremail: value })} />
+                  <Input name="Email" type="text" update={(value) => this.setState({ useremail: value })} />
                   <div className="col-6 p-r-2">
                     <div className="form-group mb-3">
                     </div>
@@ -605,7 +616,7 @@ class Login extends Component {
                     </h5>
                   </div>
                   <div className="col-12 text-center">
-                    <img  className="key-img" src={key} alt="key"></img>
+                    <img className="key-img" src={key} alt="key"></img>
                   </div>
                   <div className="col-12 text-center">
                     <button
@@ -627,7 +638,7 @@ class Login extends Component {
           <div className="login">
             <div className="header">Reset Password</div>
             <button type="button" className="close_btn">
-              <img  alt="" src={close}></img>
+              <img alt="" src={close}></img>
             </button>
             {/* <h5 className="text-center">Turn your goals into a Role-Playing game</h5> */}
             <div className="row justify-content-md-center">

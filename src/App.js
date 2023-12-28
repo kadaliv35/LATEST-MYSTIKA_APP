@@ -11,12 +11,27 @@ import { Elements } from "@stripe/react-stripe-js";
 import "@stripe/stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import SuccessPage from './shared/layout/SuccessPage';
-const App = () => {
+import { ToastContainer, toast } from "react-toastify";
 
+const App = () => {
   const stripePromise = loadStripe('pk_test_51Nl8GySHVh0kvU8q8BMqkbihq86Dq2k30zAUnJJ7Qb0TanEh51HxJZByWyVudbKNK16Z9iO4GRWsSTY9eWIEVxtA00rYzVnQZZ');
 
   return (
     <Elements stripe={stripePromise}>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover
+        theme="dark"
+        closeButton={false}
+        limit={3}
+      />
       <Router>
         <Route exact path="/">
           <Login />
