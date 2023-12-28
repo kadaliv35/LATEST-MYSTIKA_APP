@@ -45,11 +45,11 @@ class Login extends Component {
       isConfirmPassword: false,
       characterList: [],
       charecterSelection: false,
-      slectedCharacterId: '',
       userErrorpop: false,
       heroType: '',
       heroProceed: false,
-      termsCheck: false
+      termsCheck: false,
+      slectedCharacterId: 0
     };
     this.goToDashBoard = this.goToDashBoard.bind(this);
     this.gotoRegister = this.gotoRegister.bind(this);
@@ -108,7 +108,6 @@ class Login extends Component {
   getMasterCharacters() {
     LoginService.getMasterCharacters().then((res) => {
       if (res.data) {
-        // this.setState({characterList :res.data})
         res.data.forEach((ele, index) => {
           const obj = {
             id: ele.characterId,
@@ -177,9 +176,8 @@ class Login extends Component {
       this.state.registerUserName &&
       this.state.registerUserEmail &&
       this.state.registerUserPassword &&
-      this.state.isValidEmail &&
-      this.state.isConfirmPassword &&
-      this.state.slectedCharacterId
+      this.state.registerUserPassword === this.state.registerUserConfiPassword &&
+      this.state.slectedCharacterId !== 0
     ) {
       let obj = {
         userName: this.state.registerUserName,
@@ -209,7 +207,16 @@ class Login extends Component {
         }
       }).catch((err) => console.error(err));
     } else {
-      toast.error("Please Enter All Input Fields");
+      // if(!this.state.slectedCharacterId) {
+      //   alert("charectorId not found")
+      // }
+      console.log( this.state.registerUserName,
+        this.state.registerUserEmail,
+        this.state.registerUserPassword,
+        this.state.isValidEmail,
+        this.state.isConfirmPassword,
+        this.state.slectedCharacterId )
+      alert("Please Enter All Input Fields");
     }
   }
   loginUser() {
@@ -265,17 +272,12 @@ class Login extends Component {
     this.setState({ isDailyUpdates: false });
   }
 
-  handleEmail = (e) => {
-    e.preventDefault();
+  handleEmail = () => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (this.state.registerUserEmail.match(emailRegex)) {
-      this.setState({
-        isValidEmail: true
-      });
+      return true
     } else {
-      this.setState({
-        isValidEmail: false
-      });
+      return false
     }
   };
 
@@ -355,35 +357,6 @@ class Login extends Component {
         </div>
 
         <div>
-          {/* <Modal isOpen={this.state.charecterSelection} size="md">
-              <ModalHeader>Select Character </ModalHeader>
-              <ModalBody>
-                <div className="row ">
-                  <div className="col text-center">
-                  <select
-                      className="form-control"
-                      placeholder="Select Colour"
-                      onChange={(e) =>{this.selectChar(e)}}
-                      value={this.state.course}
-                    >
-                      <option value="" disabled>
-                        Select
-                      </option>
-                      {this.state.characterList.map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.value}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              </ModalBody>
-              <ModalFooter>
-               
-                  Confirm
-                </button>
-              </ModalFooter>
-            </Modal> */}
           <Modal isOpen={this.state.charecterSelection}>
             <div className="modal-header text-black-sec">Character</div>
             <button
@@ -395,8 +368,8 @@ class Login extends Component {
             </button>
             <div className="modal-body  frame text-center">
               <div className="char">
-                <h3 className="text-success mt-3">CHOOSE YOUR HERO</h3>
-                <h6 className="font-weight-light fs-20 mt-5">Role-play with one of these iconic legends. You can always unlock new character and switch.</h6>
+                <h3 className="text-success mt-5">CHOOSE YOUR HERO</h3>
+                <h6 className="font-weight-light fs-20 mt-2">Role-play with one of these iconic legends. You can always unlock new character and switch.</h6>
                 {this.state.heroProceed ?
                   <div>
                     <div className="profile">
@@ -404,53 +377,24 @@ class Login extends Component {
                     </div>
                   </div> :
                   <div className="d-flex flex-row align-items-center justify-content-center">
-                    {/* A rchangel Modal */}
-                    <div className="pl-4 pt-3 pr-4 pb-0">
+                    <div className="pl-4 pt-1 pr-4 pb-0">
                       <div className="profile">
-                        <img  alt="" src={archangel} onClick={() => this.selectHero('archangel', 2)}></img>
+                        <img className={this.state.slectedCharacterId === 2 ? "profile-selected" : ""} alt="" src={archangel} onClick={() => this.selectHero('archangel', 2)}></img>
                       </div>
                     </div>
 
                     <div className="pl-4 pt-3 pr-4 pb-0">
                       <div className="profile">
-                        <img  alt="" src={warrior} onClick={() => this.selectHero('warrior', 1)}></img>
+                        <img className={this.state.slectedCharacterId === 1 ? "profile-selected" : ""}  alt="" src={warrior} onClick={() => this.selectHero('warrior', 1)}></img>
                       </div>
                     </div>
 
                     <div className="pl-4 pt-3 pr-4 pb-0">
                       <div className="profile">
-                        <img alt=""  src={assassin} onClick={() => this.selectHero('assassin', 3)}></img>
-                        {/* <h5>Assassin</h5> */}
+                        <img className={this.state.slectedCharacterId === 3 ? "profile-selected" : ""} alt=""  src={assassin} onClick={() => this.selectHero('assassin', 3)}></img>
                       </div>
                     </div>
                   </div>}
-
-
-                {/* <div className="col text-center">
-                  <select
-                    className="form-control"
-                    placeholder="Select Colour"
-                    onChange={(e) => { this.selectChar(e) }}
-                    value={this.state.course}
-                  >
-                    <option value="" disabled>
-                      Select
-                    </option>
-                    {this.state.characterList.map((item) => (
-                      <option key={item.id} value={item.id}>
-                        {item.value}
-                      </option>
-                    ))}
-                  </select>
-                </div> */}
-
-
-                {/* <button
-                  className="btn btn-bdr active fs-12"
-                  onClick={this.hideCharcterpop}
-                >
-                  Cancel
-                </button> */}
                 <div className="row w-100">
                   {this.state.heroProceed ?
                     <div className="m-a pt-3 pl-5">
@@ -562,7 +506,7 @@ class Login extends Component {
               <div className="">
                 <div className="d-flex justify-content-center align-items-center">
                   <Input name="player Name" type="text" update={(value) => this.setState({ registerUserName: value })} />
-                  <Input name="Email" type="text" update={(value) => this.setState({ registerUserEmail: value })} />
+                  <Input name="Email" type="email" update={(value) => this.setState({ registerUserEmail: value })}  />
                 </div>
                 <div className="d-flex justify-content-center align-items-center">
                   <Input name="Password" type="password" update={(value) => this.setState({ registerUserPassword: value })} />

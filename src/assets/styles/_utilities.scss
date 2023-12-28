@@ -981,7 +981,11 @@ body {
     // height: 278px;
     & .profile {
         & img {
-            width: 150px;
+            width: 100px;
+        }
+
+        &-selected {
+            border-bottom: 2px solid green;
         }
 
         & h5 {
