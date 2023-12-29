@@ -1,6 +1,5 @@
 import React from 'react';
 import close from "../../assets/images/close_ic.svg";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import coins from "../../assets/images/coins_new.svg";
 import coin from "../../assets/images/coin_1.svg";
 import crystal from "../../assets/images/crystals.png";
@@ -45,11 +44,10 @@ function TreasureQuest
                       <br />
                       <span><img  className='treasureImg' src={coin} alt='coin' /> {"10 coins"}</span>
                       <span><img  className='treasureImg' src={crystal} alt='crystal' /> {"10 crystals"}</span>
-                      <div className='treasureBtm mt-5'>
+                      <div className='treasureBtm mt-3'>
                         <img  src={queen} alt='queen' />
                         <button
                           type="button"
-                          // className="img_btn_home"
                           className={
                             item.enable
                               ? "img_btn"

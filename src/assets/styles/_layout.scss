@@ -1085,12 +1085,12 @@ audio {
 }
 
 .treasureBtm {
-    position: relative;
-
+    display: flex;
+    justify-content: space-between;     
+    align-items: center;
+    width: 500px;
+    
     & img {
-        position: absolute;
-        bottom: 0;
-        left: 0;
         height: 80px;
         width: 80px;
     }
