@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { toast } from 'react-toastify'
 
 function SuccessPage() {
     useEffect(() => {
@@ -14,7 +15,7 @@ function SuccessPage() {
             console.log({ res })
             history.push("/landingpage")
         }).catch((err) => {
-            console.error({ err })
+            toast.error(err.response.message)
             history.push("/landingpage")
         })
     }

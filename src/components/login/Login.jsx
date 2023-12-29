@@ -256,8 +256,7 @@ class Login extends Component {
           <ErrorDisplaypop />;
         }
       }).catch((err) => {
-        toast.error('Unable to login')
-        console.log({ err })
+        toast.error(err.response.data)
       }
       );
     } else {
