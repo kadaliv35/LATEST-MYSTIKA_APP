@@ -43,6 +43,7 @@ import archangel from "../../assets/images/char_archangel.png";
 import assassin from "../../assets/images/char_assassin.png";
 import lifebuy from "../../assets/images/red.png";
 import dsblifebuy from "../../assets/images/gray.png";
+import BountyServices from "../../services/BountyServices";
 
 class Layout extends Component {
   constructor(props) {
@@ -84,6 +85,7 @@ class Layout extends Component {
       lifeBuy: false,
       userRankOrder: 0,
       openCredits: false,
+      heroLife: 0,
     };
     this.navigateRoute = this.navigateRoute.bind(this);
     this.goToAchievements = this.goToAchievements.bind(this);
@@ -112,9 +114,10 @@ class Layout extends Component {
     this.navigationButtons(endPath);
     let i = rewards?.userCharacterList?.findIndex((x) => x.active === true);
     const user = JSON.parse(sessionStorage.getItem("user"));
-    // console.log(user["sub"])
     let username = user["sub"];
-    this.setState({ userName: username });
+    this.setState({ userName: username }, () => {
+      this.getBounty(this.state.userName)
+    });
 
     // alert(audio)
     let rankOrder = rewards?.userCharacterList[i].chCurrentRank?.rankOrder;
@@ -128,6 +131,7 @@ class Layout extends Component {
         toDayQuest: rewards?.todaysQuests,
         rankname: userRank,
         chAttributes: data?.chAttributes,
+        heroLife: data.chAttributes?.currentLife,
         xpPoints: rewards?.userCharacterList[i].xpPoints,
         xpPointsTotal: rewards?.userCharacterList[i].finalXpPoints,
         userCharacterList: rewards?.userCharacterList,
@@ -170,6 +174,31 @@ class Layout extends Component {
     ) {
       this.setState({ lifeBuy: true });
     }
+  }
+
+  getBounty(userName) {
+    let obj = [];
+    BountyServices.getbounty(userName ? userName : this.state.userName)
+      .then((res) => {
+        res.data.userCharacterList.forEach((ele) => {
+          if (ele.active === true) {
+            this.setState({ characterRewardList: ele }, () => {
+              obj = ele;
+            });
+          }
+        });
+        this.setState(
+          {
+            dailyRewards: res.data.rewards.dailyRewards,
+          },
+          () => {
+            console.log("obj", res.data);
+            sessionStorage.setItem("dailyLogin", JSON.stringify(obj));
+            sessionStorage.setItem("totalDailyLogin", JSON.stringify(res.data));
+          }
+        );
+      })
+      .catch((err) => console.error(err));
   }
 
   claimTreasureQuest(TcId) {
@@ -247,7 +276,6 @@ class Layout extends Component {
   navigateRoute(value) {
     if (value === "PLAY") {
       this.props.history.push("/howtoplay");
-      // window.location.reload();
     } else if (value === "LEARNING") {
       this.props.history.push("/learningtraven");
     } else if (value === "ROADMAP") {
@@ -439,8 +467,8 @@ class Layout extends Component {
                         <div className="lifeBar">
                           <ProgressBar
                             completed={
-                              this.state.chAttributes?.currentLife
-                                ? this.state.chAttributes?.currentLife
+                              this.state.heroLife
+                                ? this.state.heroLife
                                 : 0
                             }
                             maxCompleted={this.state.chAttributes?.maxLife}
@@ -453,7 +481,7 @@ class Layout extends Component {
                           />
                         </div>
                         <h5 className="fs-14 mt-2">
-                          {parseInt(this.state.chAttributes?.currentLife) +
+                          {parseInt(this.state.heroLife) +
                             "/" +
                             this.state.chAttributes?.maxLife}
                         </h5>
@@ -794,7 +822,7 @@ class Layout extends Component {
                 <Route
                   path="/landingpage"
                   exact={true}
-                  component={Landingpage}
+                  render={(props) => <Landingpage {...props} heroLife={(value) => this.setState({heroLife: value})} />}
                 />
                 <Route path="/howtoplay" exact={true} component={HowToPlay} />
                 <Route

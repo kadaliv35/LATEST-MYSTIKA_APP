@@ -202,8 +202,8 @@ class Landingpage extends Component {
           heroLife: res.data.heroCurrentLife,
           heroMaxLife: res.data.heroMaxLife,
           isClashAvailable: true
-          // isCombact: false,
         });
+      this.props.heroLife(res.data.heroCurrentLife)
         this.userEnemy(this.state.characterId);
       })
       .catch((err) => {
