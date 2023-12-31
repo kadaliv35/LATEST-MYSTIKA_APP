@@ -7,9 +7,7 @@
     }
 }
 
-.unblur {
-
-}
+.unblur {}
 
 .blur {
     filter: blur(3px);
@@ -94,7 +92,7 @@ audio {
     background-size: cover;
     position: relative;
     overflow: hidden;
-    
+
     & .bars {
         position: absolute;
         top: 20px;
@@ -110,13 +108,13 @@ audio {
     background-size: cover;
     position: relative;
     overflow: visible;
-    
+
     & .bars {
         position: absolute;
         top: 25px;
         left: 37px;
     }
-    
+
 }
 
 .joyBarxSm {
@@ -136,6 +134,7 @@ audio {
     }
 
 }
+
 .lifeBarSm {
     background-image: url('../images/lifeBar.png');
     height: 40px;
@@ -422,8 +421,7 @@ audio {
 
                 }
 
-                & .logout_btn {
-                }
+                & .logout_btn {}
             }
 
             & .social {
@@ -524,7 +522,6 @@ audio {
             height: 400px;
             font-family: OptimusPrinceps !important;
             padding: 2% 5%;
-            overflow-y: scroll;
 
             & .images {
                 display: flex;
@@ -801,6 +798,37 @@ audio {
                 }
             }
         }
+
+        & .rect_large_content_scroll {
+            overflow-y: scroll;
+            height: 200px;
+            display: grid !important;
+            place-items: center;
+            grid-template-columns: repeat(3, 1fr);
+
+            & li {
+                height: 200px !important;
+                width: 100% !important;
+                margin: 20px 0;
+            }
+
+            & .reading {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                width: inherit;
+
+                &-image {
+                    max-width: 15%;
+                    margin: 50px 2.5%;
+                }
+
+                &-text {
+                    width: 75%;
+                    margin: 20px 2.5%;
+                }
+            }
+        }
     }
 
     &-rightP {
@@ -869,6 +897,7 @@ audio {
     width: 100%;
     font-family: OptimusPrinceps;
     padding-top: 30px;
+    height: 80px;
 
     &-head {
         &-left {
@@ -895,7 +924,6 @@ audio {
 }
 
 .achiev {
-    // margin-top: 5%;
     width: 100%;
     font-family: OptimusPrinceps;
     padding-top: 30px;
@@ -933,7 +961,6 @@ audio {
         & img {
             width: 50px;
             vertical-align: middle;
-            /* text-align: center; */
             position: absolute;
             left: 21%;
             top: 90px;
@@ -949,10 +976,11 @@ audio {
             background-repeat: no-repeat;
             background-size: 100%, 100%;
             text-align: center;
-            height: 320px;
-            width: 440px;
+            height: 300px;
+            width: 480px;
             text-align: center;
-            padding-top: 5px;
+            padding: 25px 0;
+            margin-bottom: 20px;
 
 
             & .bar {
@@ -1086,10 +1114,10 @@ audio {
 
 .treasureBtm {
     display: flex;
-    justify-content: space-between;     
+    justify-content: space-between;
     align-items: center;
     width: 500px;
-    
+
     & img {
         height: 80px;
         width: 80px;

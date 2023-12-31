@@ -146,7 +146,7 @@ class Charecter extends Component {
                         ""
                       ) : (
                         <div className="profile">
-                          <img alt=''
+                          <img
                             src={archangel}
                             alt=""
                             onClick={() => this.selectHero("archangel", 2)}
@@ -157,7 +157,7 @@ class Charecter extends Component {
                         ""
                       ) : (
                         <div className="profile">
-                          <img alt=''
+                          <img
                             src={assassin}
                             alt=""
                             onClick={() => this.selectHero("assassin", 1)}
@@ -170,7 +170,6 @@ class Charecter extends Component {
                         <div className="profile">
                           <img alt=''
                             src={warrior}
-                            alt=""
                             onClick={() => this.selectHero("warrior", 0)}
                           ></img>
                         </div>
@@ -219,14 +218,14 @@ class Charecter extends Component {
         <Modals
           size={"md"}
           open={this.state.showHeroModal}
-          header={<p>Character</p>}
+          header={<p className="mt-2">Character</p>}
           body={
             <div className="d-flex flex-column justify-content-center align-items-center">
               <div className="row">
                 <div className="col text-center">
-                  <img alt=''
+                  <img
                     src={this.heroImg()}
-                    className="w-30 h-25"
+                    className="w-30 h-25 mt-2"
                     alt={this.heroImg()}
                   />
                   {this.state.userCharacterList
@@ -242,7 +241,7 @@ class Charecter extends Component {
                               <h6 className="smallHeading">
                                 DO YOU WISH TO SWITCH TO{" "}
                                 {item.charecterId.characterName} FOR 500{" "}
-                                <img alt='' src={crystal} className="w-20" />{" "}
+                                <img src={crystal} className="w-20" />{" "}
                               </h6>
                               <h6 className="smallHeading">
                                 SPECIAL ABILITIES{" "}

@@ -36,9 +36,7 @@ class DailyLogin extends Component {
       {
         selectedDay: dayDetails.dayNo,
         userCharId: this.state.characterRewardList?.userCharacterId,
-      },
-      () => { }
-    );
+      });
   }
   getBounty(userName) {
     let obj = [];
@@ -46,7 +44,6 @@ class DailyLogin extends Component {
       .then((res) => {
         res.data.userCharacterList.forEach((ele) => {
           if (ele.active === true) {
-            // console.log('ele', ele)
             this.setState({ characterRewardList: ele }, () => {
               obj = ele;
             });
@@ -136,7 +133,7 @@ class DailyLogin extends Component {
             <img src={close} alt={close}></img>
           </button>
           <div className="body">
-            <div className="d-flex mt-3 justify-content-around align-items-start w-75">
+            <div className="d-flex mt-1 justify-content-around align-items-start w-75">
               <h5 className="fs-15">Streak <br /> Bounty </h5>
               <img
                 src={coinbox}
@@ -178,16 +175,15 @@ class DailyLogin extends Component {
                               ? ""
                               : this.getDayDetails(item)
                           }
-                          className={`${this.dailyRewardStatus(item.dayNo) &&
+                          className={`
+                          ${this.state.selectedDay === item.dayNo ? "day_selected" : ""}
+                          ${this.dailyRewardStatus(item.dayNo) &&
                               this.rewardCollected(item.dayNo)
-                              ? "grey_out"
+                              ? "grey_out bg_yellow"
                               : ""
-                            } 
-                          ${!this.rewardCollected(item.dayNo) &&
-                              this.dailyRewardStatus(item.dayNo)
-                              ? "bg_yellow"
-                              : ""
-                            } "dLoginImgs"`}
+                            }
+
+                          "dLoginImgs"`}
                         >
                           <h5>Day {item.dayNo}</h5>
                           <div className="row">

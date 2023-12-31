@@ -32,28 +32,29 @@ export default class Achievements extends Component {
                     open={open}
                     header={
                         <div>
-                            <h5 className="text-white font-bold">Achievements</h5>
+                            <h5 className="text-white font-bold mt-2">Achievements</h5>
                             <button
                                 type="button"
                                 className="close_btn"
                                 onClick={() => close()}
                             >
-                                <img alt='' src={closeImg} alt='close'></img>
+                                <img alt='' src={closeImg} ></img>
                             </button>
                         </div>
                     }
                     body={
-                        <div className="text-center modal-body-scroll">
+                     <div className="text-center">
                             <div className="ach">
                                 <div className="achiev-head">
                                     <div className="achiev-head-left">
-                                        <img alt='' src={achievements} alt=''></img>
+                                        <img alt='' src={achievements} ></img>
                                     </div>
                                     <div className="achiev-head-right">
-                                        <p>Track your epic progress and earn rewards for <br></br>your brave accomplishments here.</p>
+                                        <p className='text-center'>Track your epic progress and earn rewards for <br></br>your brave accomplishments here.</p>
                                     </div>
                                 </div>
                             </div>
+                            <div className='text-center modal-body-scroll'>
                             {data.map((item, index) => {
                                 return (
                                     <div className='achiev-right'>
@@ -67,15 +68,15 @@ export default class Achievements extends Component {
                                             <div className="rewards">
                                                 <div>
                                                     {item.rewardCoins && <span>
-                                                        <img alt='' src={coins} alt={coins} />
+                                                        <img src={coins} alt={coins} />
                                                         <p>{item.rewardCoins}</p>
                                                     </span>}
                                                     {item.rewardCrystals && <span>
-                                                        <img alt='' src={crystal} alt={crystal} />
+                                                        <img src={crystal} alt={crystal} />
                                                         <p>{item.rewardCrystals}</p>
                                                     </span>}
                                                     {item.rewardXpPoints && <span>
-                                                        <img alt='' src={xpoints} alt={xpoints} />
+                                                        <img src={xpoints} alt={xpoints} />
                                                         <p>{item.rewardXpPoints}</p>
                                                     </span>}
                                                 </div>
@@ -87,6 +88,7 @@ export default class Achievements extends Component {
                                     </div>
                                 )
                             })}
+                            </div>
                         </div>
                     }
 

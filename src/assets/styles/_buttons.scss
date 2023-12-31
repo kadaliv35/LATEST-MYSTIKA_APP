@@ -56,8 +56,8 @@
     font-size: 16px;
     font-weight: bold;
     color: #120803;
-    width: 160px;
-    height: 80px;
+    width: 140px;
+    height: 73px;
     border: 2px solid transparent;
     border-radius: 5px;
     cursor: pointer;
@@ -78,8 +78,8 @@
     background-size: cover;
     transition: border-color 0.3s; 
     color: white;
-    width: 160px;
     border: 0px solid #000;
+    width: 160px;
     height: 73px;
 }
 
@@ -100,7 +100,6 @@
     border: 0px solid #000;
     height: 63px;
     margin-bottom: -15px;
-    // width: 156px;
 }
 
 .img_btn_home {
@@ -151,23 +150,10 @@
     height: 52px;
     background-size: contain;
     font-size: 14px;
-    // background-size: contain;
     font-weight: 400;
     border: 0px solid #000;
     color: white;
     margin-left: 10px;
-    // width: 100%;
-
-    // &:hover {
-    //     background-image: url(../images/btn_trns_hover.svg);
-    //     color: $white;
-    //     width: 240px;
-    //     height: 60px;
-    //     -webkit-transition: right .4s, -webkit-transform 30s .2s linear;
-    //     transition: right .4s, -webkit-transform 30s .2s linear;
-    //     transition: right .4s, transform 30s .2s linear;
-    //     transition: right .4s, transform 30s .2s linear, -webkit-transform 30s .2s linear;
-    // }
 }
 
 .img_btn_social {
@@ -177,8 +163,6 @@
     border: 0px solid #fff;
 
     & img {
-        // width: 50px;
-        // height: 48px;
         width: 40px;
         height: 38px;
         margin-top: 10px;

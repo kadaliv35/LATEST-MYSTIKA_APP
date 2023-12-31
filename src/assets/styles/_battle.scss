@@ -11,13 +11,13 @@
         flex-direction: row;
         height: 100px;
         width: 100%;
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
         margin-top: 10px;
         justify-content: space-around;
 
         & img {
-            height: 100px;
-            width: 100px;
+            height: 80px;
+            width: 80px;
         }
     }
 
@@ -35,7 +35,19 @@
     }
 
     & .enemy_name {
-        width: 150px;
+        width: 200px;
+        text-align: center;
+        & b {
+            text-align: center;
+        }
+    }
+
+    & .hero_name {
+        width: 200px;
+        text-align: center;
+         & b {
+            text-align: center;
+         }
     }
 
     & .combatImg {
@@ -43,7 +55,7 @@
     }
 
     &-main_img {
-        height: 200px;
+        height: 180px;
     }
 
     &-mid_img {

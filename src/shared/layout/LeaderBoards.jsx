@@ -65,21 +65,20 @@ const LeaderBoards = ({ openPop, closePop }) => {
                 open={openPop}
                 header={
                     <div>
-                        <h5>LeaderBoards</h5>
+                        <h5 className='mt-2'>LeaderBoards</h5>
                         <button
                             type="button"
                             className="close_btn"
                             onClick={() => closePop()}
                         >
-                            <img alt='' src={close} alt={close}></img>
+                            <img src={close} alt={close}></img>
                         </button>
                     </div>
                 }
                 body={
-                    <div className="text-center modal-body-scroll">
-                        {mapLeads ?
-                            <div className='mt-5 px-3'>
-                                <p className='py-2'>GET INTO LEADERBOARDS WITH YOUR RELENTLESS EFFORT AND BE AMONG THE BEST TO EARN BONUS REWARDS!</p>
+                    <div className="text-center">
+                        <div>
+                                <p className='px-5 pt-3'>GET INTO LEADERBOARDS WITH YOUR RELENTLESS EFFORT AND BE AMONG THE BEST TO EARN BONUS REWARDS!</p>
                                 <div className="d-flex justify-content-center">
                                     <button
                                         type="button"
@@ -95,40 +94,43 @@ const LeaderBoards = ({ openPop, closePop }) => {
                                         WEEKLY
                                     </button>
                                 </div>
+                        </div>
+                        {mapLeads ?
+                            <div className='text-center modal-body-small_scroll'>
                                 <div className="frame">
                                     <div className="d-flex justify-content-center flex-column frame">
                                         <p>RESETS IN: 14:30</p>
                                         <div className="d-flex justify-content-around ml-5">
                                             <div className="d-flex">
-                                                <img alt='' src={Bronze} className="h-50" alt='bronze' />
+                                                <img src={Bronze} className="h-50" alt='bronze' />
                                                 <div>
                                                     <p>BRONZE</p>
                                                     <p>41-100</p>
-                                                    <p>20 <img alt='' src={crystals} alt='crystal' className="h-25 w-25" /> </p>
+                                                    <p>20 <img src={crystals} alt='crystal' className="h-25 w-25" /> </p>
                                                 </div>
                                             </div>
                                             <div className="d-flex">
-                                                <img alt='' src={Silver} className="h-50" alt='silver' />
+                                                <img src={Silver} className="h-50" alt='silver' />
                                                 <div>
                                                     <p>SILVER</p>
                                                     <p>21-40</p>
-                                                    <p>20 <img alt='' src={crystals} className="h-25 w-25" alt='crystals' /> </p>
+                                                    <p>20 <img src={crystals} className="h-25 w-25" alt='crystals' /> </p>
                                                 </div>
                                             </div>
                                             <div className="d-flex">
-                                                <img alt='' src={Gold} className="h-50" alt='gold' />
+                                                <img src={Gold} className="h-50" alt='gold' />
                                                 <div>
                                                     <p>GOLD</p>
                                                     <p>11-20</p>
-                                                    <p>20 <img alt='' src={crystals} className="h-25 w-25" alt='crystals' /> </p>
+                                                    <p>20 <img src={crystals} className="h-25 w-25" alt='crystals' /> </p>
                                                 </div>
                                             </div>
                                             <div className="d-flex">
-                                                <img alt='' src={Platinum} className="h-50" alt='platinum' />
+                                                <img src={Platinum} className="h-50" alt='platinum' />
                                                 <div>
                                                     <p>PLATINUM</p>
                                                     <p>01-10</p>
-                                                    <p>20 <img alt='' src={crystals} className="h-25 w-25" alt='crystals' /> </p>
+                                                    <p>20 <img src={crystals} className="h-25 w-25" alt='crystals' /> </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -172,14 +174,14 @@ const LeaderBoards = ({ openPop, closePop }) => {
                                 <p>YOUR SERVICE TO THE EMPORER IS DAILY NOTED.</p>
                                 <div className="d-flex justify-content-center mt-5">
                                     <div className="d-flex">
-                                        <img alt='' src={Silver} alt='silver' />
+                                        <img src={Silver} alt='silver' />
                                         <div>
                                             <p>SILVER</p>
                                             <p>RANK - #3</p>
                                         </div>
                                     </div>
                                     <div className="d-flex">
-                                        <img alt='' src={crystals} className="h-25 w-25" alt='crystals'></img>
+                                        <img src={crystals} className="h-25 w-25" alt='crystals'></img>
                                         <span>50</span>
                                     </div>
                                 </div>

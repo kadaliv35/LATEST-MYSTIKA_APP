@@ -379,7 +379,7 @@ class Goals extends Component {
       <div className="main">
         <div className="main-middleP">
           <div className="rect_large_content">
-            <div className="row p-l-2">
+            <div className="row p-l-2 mt-4 ml-2">
               <div className="col-3 goals-left p-r-0">
                 <img alt='' src={goal}></img>
                 <h5 className="text-green fs-20">Goals</h5>
@@ -453,7 +453,7 @@ class Goals extends Component {
                 open={this.state.cardsPopup}
                 header={
                   <div>
-                    <h5>GET A GOAL CARD</h5>
+                    <h5 className="mt-2">GET A GOAL CARD</h5>
                     <button
                       type="button"
                       className="close_btn"
@@ -464,8 +464,8 @@ class Goals extends Component {
                   </div>
                 }
                 body={
-                  <div className="text-center">
-                    <span>CONTINUE A NEW TASK WITH THIS MAGIC CARD PICK THE CARD YOU WANT TO PLAY WITH 100 <img alt='' src={coins} /> </span>
+                  <div className="text-center mt-5">
+                    <span className="px-5 text-center">CONTINUE A NEW TASK WITH THIS MAGIC CARD PICK THE CARD YOU WANT TO PLAY WITH 100 <img alt='' src={coins} /> </span>
                     <div className="d-flex justify-content-around mt-5">
                       <div>
                         <img alt='' src={speed} onClick={() => this.selectCard("speed")} />
@@ -481,10 +481,10 @@ class Goals extends Component {
                       </div>
                     </div>
                     <div className="d-flex justify-content-start mt-4">
-                      <img alt='' src={queen} />
+                      <img alt='' src={queen} className="mt-4 ml-5" />
                       <button
                         type="button"
-                        className="img_btn_home ml-5"
+                        className="img_btn_home ml-5 mx-5"
                         onClick={this.buyGoalCard}
                       >
                         Indeed
@@ -499,9 +499,10 @@ class Goals extends Component {
               />
               <Modals
                 open={this.state.decksPopup}
+                // open={true}
                 header={
                   <div>
-                    <h5>GET A GOAL DECK</h5>
+                    <h5 className="mt-2">GET A GOAL DECK</h5>
                     <button
                       type="button"
                       className="close_btn"
@@ -512,16 +513,16 @@ class Goals extends Component {
                   </div>
                 }
                 body={
-                  <div className="text-center">
+                  <div className="text-center mt-3">
                     <span>TAKE YOUR GOALS To THE NEXT LEVEL WITH A BRAND NEW GOAL DECK
                       <br />
                       DO YOU WANT TO PURCHASE THE DECK FOR 30 <img alt='' src={crystal} className="h-25" /> </span>
                     <div>
-                      <img alt='' src={decks} className="h-25 w-25" />
+                      <img alt='' src={decks} className="inner-img" />
                     </div>
 
                     <div className="d-flex justify-content-start mt-4">
-                      <img alt='' src={queen} />
+                      <img alt='' src={queen} className="mt-4 ml-5 mr-5" />
                       <button
                         type="button"
                         className="img_btn_home"
@@ -600,7 +601,6 @@ class Goals extends Component {
                   </div>
                 }
               />
-              {/* )} */}
 
               <Modals open={this.state.isBuyDeck}
                 header={
@@ -617,11 +617,6 @@ class Goals extends Component {
                 }
                 body={
                   <div className="frame text-center">
-                    {/* <h4 className="">
-          
-            </h4> */}
-                    <p></p>
-
                     <button
                       type="button"
                       className="img_btn_home"
@@ -635,17 +630,17 @@ class Goals extends Component {
               {/* )} */}
 
               {this.state.listGoalsFlag && this.state.deckList.length > 0 && (
-                <div className="col-8">
+                <div className="col-8 ml-3">
                   <div className="row">
                     <div className="col-5 p-l-0 goals-middle">
-                      <img alt='' id="lordGult" src={lordGult} alt="lrd og guilt" />
+                      <img id="lordGult" src={lordGult} alt="lrd og guilt" />
                       <label>Lord of Gult</label>
                     </div>
                     <div className="col-7 goals-right p-r-0 p-l-5">
                       {this.state.mainPageFlag === false && (
                         <div className="slider p-l-2 p-r-2">
                           <div className="form">
-                            <div className="form-group mb-0">
+                            <div className="form-group mt-2">
                               <label>Task</label>
                               <input
                                 value={this.state.goalTitle}
@@ -738,13 +733,13 @@ class Goals extends Component {
                                       : currentIndex + 1}{" "}
                                     /{this.state.deckList.length} Cards
                                   </h5>
-                                  <img alt=''
+                                  <img
                                     className="cursor m-r-2"
                                     src={left}
                                     alt="left"
                                     onClick={() => this.navGoalsFlag(currentIndex)}
                                   ></img>
-                                  <img alt=''
+                                  <img
                                     className="cursor"
                                     src={right}
                                     alt="right"

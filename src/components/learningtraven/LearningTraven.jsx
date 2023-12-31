@@ -9,6 +9,8 @@ import Carousel from "react-bootstrap/Carousel";
 
 import door from "../../assets/images/door.svg";
 import decks from "../../assets/images/decks.png";
+import surveys from "../../assets/images/surveys.png";
+import bluePad from "../../assets/images/blue_pad.png";
 import blog from "../../assets/images/blogs.svg";
 import blogNotes from "../../assets/images/notes_blog.png";
 import blogCt1 from "../../assets/images/blog_ct1.png";
@@ -17,6 +19,9 @@ import blogCt3 from "../../assets/images/blog_ct3.png";
 import blogCt4 from "../../assets/images/blog_ct4.png";
 import blogNt1 from "../../assets/images/blog_nt1.png";
 import blogFire from "../../assets/images/blog_fire.png";
+import blogEarth from "../../assets/images/blog_earth.png";
+import blogPower from "../../assets/images/blog_power.png";
+import blogWater from "../../assets/images/blog_water.png";
 import coinFrame from "../../assets/images/coinsFrame.png";
 import crystalFrame from "../../assets/images/crystalFrame.png";
 import xpFrame from "../../assets/images/xpPoints.png";
@@ -101,7 +106,7 @@ class LearningTraven extends Component {
     this.setState({ index: selectedIndex });
   }
   navTravensBlogs() {
-    this.setState({ mainPageFlag: false, blogCateoryFlag: true }, () => {
+    this.setState({ mainPageFlag: false, blogCateoryFlag: true, mainList: 'blogs' }, () => {
       LearningTravenService.getAllBlogsBasedOnCategoryID()
         .then((res) => {
           this.setState({ allBlogs: res.data }, () => {
@@ -123,7 +128,7 @@ class LearningTraven extends Component {
   }
 
   openSurveys = () => {
-    this.setState({ mainPageFlag: false, surveyCateoryFlag: true }
+    this.setState({ mainPageFlag: false, surveyCateoryFlag: true, mainList: "surveys" }
       , () => {
         this.getBlogCategoriesList();
       });
@@ -138,13 +143,31 @@ class LearningTraven extends Component {
   }
 
   navGoBack = () => {
-    this.setState({
-      mainPageFlag: false,
-      blogCateoryFlag: true,
-      listOfBlogs: false,
-      viewBlog: false,
-      createBlog: false,
-    });
+    if (this.state.mainList === "blogs") {
+      this.setState({
+        mainPageFlag: false,
+        blogCateoryFlag: true,
+        listOfBlogs: false,
+        viewBlog: false,
+        createBlog: false,
+      });
+    } else if (this.state.mainList === "videos") {
+      this.setState({
+        mainPageFlag: false,
+        videosCateoryFlag: true,
+        listOfBlogs: false,
+        viewBlog: false,
+        createBlog: false,
+      });
+    } else {
+      this.setState({
+        mainPageFlag: false,
+        surveyCateoryFlag: true,
+        listOfBlogs: false,
+        viewBlog: false,
+        createBlog: false,
+      });
+    }
   };
   navMainPage = () => {
     this.setState({
@@ -158,7 +181,7 @@ class LearningTraven extends Component {
   };
 
   navTravensVidoes() {
-    this.setState({ mainPageFlag: false, videosCateoryFlag: true }, () => {
+    this.setState({ mainPageFlag: false, videosCateoryFlag: true, mainList: "videos" }, () => {
       LearningTravenService.getAllVideos()
         .then((res) => {
           this.setState({ allVedios: res.data }, () => {
@@ -183,56 +206,33 @@ class LearningTraven extends Component {
       blogCateoryFlag: false,
       listOfBlogs: true,
       blogList: this.state.stregthBlogList,
+      listType: 'blog'
     });
-    // LearningTravenService.getAllBlogsBasedOnCategoryID().then((res) => {
-    //   this.setState({allBlogs :res.data},()=>{
-    //     this.state.allBlogs.forEach((ele) =>{
-    //       if(ele?.category?.categoryName === 'Strengths'){
-    //         this.state.stregthBlogList.push(ele);
-    //       }else if(ele?.category?.categoryName === 'Future'){
-    //           this.state.passionBlogList.push(ele);
-    //       }
-    //       else if(ele?.category?.categoryName === 'Passion'){
-    //           this.state.passionBlogList.push(ele);
-    //       }
-    //       else if(ele?.category?.categoryName === 'Plan'){
-    //         this.state.planBlogList.push(ele);
-    //     }
-    //     })
-    //   })
-
-    // });
   }
   navPlans() {
-    this.setState(
-      {
-        blogCateoryFlag: false,
-        listOfBlogs: true,
-        blogList: this.state.planBlogList,
-      },
-      () => { }
-    );
+    this.setState({
+      blogCateoryFlag: false,
+      listOfBlogs: true,
+      blogList: this.state.planBlogList,
+      listType: 'plan'
+    });
   }
   navFuture() {
-    this.setState(
-      {
-        blogCateoryFlag: false,
-        listOfBlogs: true,
-        blogList: this.state.futureBlogList,
-      },
-      () => { }
-    );
+    this.setState({
+      blogCateoryFlag: false,
+      listOfBlogs: true,
+      blogList: this.state.futureBlogList,
+      listType: 'future'
+    });
   }
 
   navPassion() {
-    this.setState(
-      {
-        blogCateoryFlag: false,
-        listOfBlogs: true,
-        blogList: this.state.passionBlogList,
-      },
-      () => { }
-    );
+    this.setState({
+      blogCateoryFlag: false,
+      listOfBlogs: true,
+      blogList: this.state.passionBlogList,
+      listType: 'passion'
+    });
   }
 
   navVideos() {
@@ -241,9 +241,6 @@ class LearningTraven extends Component {
       listOfVideos: true,
       vedioList: this.state.StrengthVedioList,
     });
-    // LearningTravenService.getAllVideos().then((res) => {
-    //   console.log(res.data);
-    // });
   }
   navPlanVideos() {
     this.setState({
@@ -429,7 +426,7 @@ class LearningTraven extends Component {
                       <li>
                         <img alt=''
                           src={blog}
-                          onClick={this.navTravensBlogs}
+                          onClick={() => this.navTravensBlogs()}
                         ></img>
                         <h5 className="mb-3">blogs</h5>
                         <label>{this.state.allBlogs.length} blogs read</label>
@@ -438,13 +435,13 @@ class LearningTraven extends Component {
                         <img alt=''
 
                           src={video}
-                          onClick={this.navTravensVidoes}
+                          onClick={() => this.navTravensVidoes()}
                         ></img>
                         <h5 className="mb-3">videos</h5>
                         <label>0 videos watched</label>
                       </li>
                       <li>
-                        <img alt='' src={survey} onClick={this.openSurveys}></img>
+                        <img alt='' src={survey} onClick={() => this.openSurveys()}></img>
                         <h5>surveys & questionnaires</h5>
                         <label>0 surveys taken</label>
                       </li>
@@ -505,7 +502,7 @@ class LearningTraven extends Component {
 
                   <div className="reward-container">
                     <div className="reward-container-sub">
-                      <img  className="rewardImg" src={coinFrame} alt="coin" />
+                      <img className="rewardImg" src={coinFrame} alt="coin" />
                       <h5>Coins</h5>
                       <span>
                         <img alt='' src={coin} />
@@ -513,7 +510,7 @@ class LearningTraven extends Component {
                       </span>
                     </div>
                     <div className="reward-container-sub">
-                      <img 
+                      <img
                         className="rewardImg"
                         src={crystalFrame}
                         alt="crystal"
@@ -525,7 +522,7 @@ class LearningTraven extends Component {
                       </span>
                     </div>
                     <div className="reward-container-sub">
-                      <img  className="rewardImg" src={xpFrame} alt="xp" />
+                      <img className="rewardImg" src={xpFrame} alt="xp" />
                       <h5>XP Points</h5>
                       <span>
                         <img alt='' src={xp} />
@@ -546,11 +543,13 @@ class LearningTraven extends Component {
             />
 
             {this.state.blogCateoryFlag && (
-              <div className="door">
+              <div className="door" key={this.state.mainList}>
                 <div className="row">
                   <div className="col-7 pt-4 text-center">
                     <img alt='' src={door} onClick={() => this.navMainPage()}></img>
-                    <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
+                    <img alt='' src={this.state.mainList === "blogs" ? decks :
+                      this.state.mainList === "videos" ? bluePad : surveys}
+                      onClick={() => this.navGoBack()}></img>
                     <h5>Learning Tavern-Blogs</h5>
                     <label className="mb-0">
                       unravel the hidden knowledge of the ancients.
@@ -572,19 +571,19 @@ class LearningTraven extends Component {
                   <Carousel.Item>
                     <ul>
                       <li>
-                        <img alt='' src={blogCt1} onClick={this.navBlogs}></img>
+                        <img alt='' src={blogCt1} onClick={() => this.navBlogs()}></img>
                         <h5 className="fs-14">STRENGTH</h5>
                       </li>
                       <li>
-                        <img alt='' src={blogCt2} onClick={this.navPlans}></img>
+                        <img alt='' src={blogCt2} onClick={() => this.navPlans()}></img>
                         <h5 className="fs-14">PLAN</h5>
                       </li>
                       <li>
-                        <img alt='' src={blogCt3} onClick={this.navFuture}></img>
+                        <img alt='' src={blogCt3} onClick={() => this.navFuture()}></img>
                         <h5 className="fs-14">FUTURE</h5>
                       </li>
                       <li>
-                        <img alt='' src={blogCt4} onClick={this.navPassion}></img>
+                        <img alt='' src={blogCt4} onClick={() => this.navPassion()}></img>
                         <h5 className="fs-14">PASSION</h5>
                       </li>
                     </ul>
@@ -593,12 +592,13 @@ class LearningTraven extends Component {
               </div>
             )}
             {this.state.listOfBlogs && (
-              <div className="door">
+              <div className="door" key={this.state.listType}>
                 <div className="row">
                   <div className="col-7 pt-4 text-center">
                     <img alt='' src={door} onClick={() => this.navMainPage()}></img>
-                    <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
-                    <img alt='' src={blogFire}></img>
+                    <img alt='' src={this.state.mainList === "blogs" ? decks :
+                      this.state.mainList === "videos" ? bluePad : surveys}
+                      onClick={() => this.navGoBack()}></img>                    <img alt='' src={this.state.listType === "blog" ? blogFire : this.state.listType === "plan" ? blogWater : this.state.listType === "future" ? blogEarth : this.state.listType === "passion" && blogPower}></img>
                     <h5 className="text-white">Learning Tavern-Blogs</h5>
                     <label>unravel the hidden knowledge of the ancients.</label>
                   </div>
@@ -608,7 +608,7 @@ class LearningTraven extends Component {
 
                 <Carousel>
                   <Carousel.Item>
-                    <ul>
+                    <ul className="rect_large_content_scroll">
                       {this.state.blogList.map((items, index) => {
                         return (
                           <li key={index}>
@@ -618,14 +618,14 @@ class LearningTraven extends Component {
                                 this.readBlog(items.blogId);
                               }}
                             ></img>
-                            <h5 className="fs-13">{items.blogTitle}</h5>
+                            <h5 className="fs-13 title_h5">{items.blogTitle}</h5>
                           </li>
                         );
                       })}
-                      
+
                     </ul>
                   </Carousel.Item>
-                </Carousel>               
+                </Carousel>
               </div>
             )}
             {this.state.viewBlog && (
@@ -633,8 +633,18 @@ class LearningTraven extends Component {
                 <div className="row">
                   <div className="col-7  pt-4 text-center">
                     <img alt='' src={door} onClick={() => this.navMainPage()}></img>
-                    <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
-                    <img alt='' src={blogFire}></img>
+                    <img alt='' src={this.state.mainList === "blogs" ? decks :
+                      this.state.mainList === "videos" ? bluePad : surveys}
+                      onClick={() => this.navGoBack()}></img>
+                    <img alt=''
+                      src={this.state.listType === "blog" ?
+                        blogFire : this.state.listType === "plan" ?
+                          blogWater : this.state.listType === "future" ?
+                            blogEarth : this.state.listType === "passion" &&
+                            blogPower} onClick={() => this.setState({
+                              listOfBlogs: true,
+                              viewBlog: false
+                            })}></img>
                     <h5 className="text-white">Learning Tavern-Blogs</h5>
                     <label>unravel the hidden knowledge of the ancients.</label>
                   </div>
@@ -706,12 +716,12 @@ class LearningTraven extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="rect_bg_medium">
-                  <div className="row p-3">
-                    <div className="col-3">
+                <div className="rect_bg_medium rect_large_content_scroll">
+                  <div className="reading">
+                    <div className="reading-image">
                       <img alt='' className="w-100" src={blogNt1}></img>
                     </div>
-                    <div className="col-9">
+                    <div className="reading-text">
                       <h5 className="text-green fs-20">
                         {this.state.selectedBlogList.blogTitle}
                       </h5>
@@ -728,7 +738,9 @@ class LearningTraven extends Component {
                 <div className="row">
                   <div className="col-7 pt-4 text-center">
                     <img alt='' src={door} onClick={() => this.navMainPage()}></img>
-                    <img alt='' src={decks} onClick={() => this.navGoBack()}></img>
+                    <img alt='' src={this.state.mainList === "blogs" ? decks :
+                      this.state.mainList === "videos" ? bluePad : surveys}
+                      onClick={() => this.navGoBack()}></img>
                     <h5 className="text-white">Learning Tavern-Blogs</h5>
                     <label>submit your own blog</label>
                   </div>
@@ -823,10 +835,13 @@ class LearningTraven extends Component {
               </div>
             )}
             {this.state.videosCateoryFlag && (
-              <div className="door">
+              <div className="door" key={this.state.mainList}>
                 <div className="row">
                   <div className="col-7 text-center">
                     <img alt='' src={door} onClick={() => this.navMainPage()}></img>
+                    <img alt='' src={this.state.mainList === "blogs" ? decks :
+                      this.state.mainList === "videos" ? bluePad : surveys}
+                      onClick={() => this.navGoBack()}></img>
                     <h5>Learning Tavern-Videos</h5>
                   </div>
                   <div className="col-5 text-right p-r-4">
@@ -868,7 +883,7 @@ class LearningTraven extends Component {
               </div>
             )}
             {this.state.surveyCateoryFlag && (
-              <div className="door">
+              <div className="door" key={this.state.mainList}>
                 <div>
                   <div className="col-7 text-center">
                     <img alt='' src={door} onClick={() => this.navMainPage()}></img>
@@ -887,7 +902,7 @@ class LearningTraven extends Component {
                 </div>
                 <Carousel>
                   <Carousel.Item>
-                    <ul>
+                    <ul className="rect_large_content_scroll">
                       {this.state.surveyList.map((item, index) => {
                         return <li>
                           <a href={index === 0 ? 'http://www.literacynet.org/mi/assessment/' :
@@ -905,8 +920,13 @@ class LearningTraven extends Component {
               </div>
             )}
             {this.state.listOfVideos && (
-              <div className="door">
+              <div className="door" key={this.state.listType}>
                 <img alt='' src={door} onClick={() => this.navMainPage()}></img>
+                <img alt='' src={this.state.mainList === "blogs" ? decks :
+                  this.state.mainList === "videos" ? bluePad : surveys}
+                  onClick={() => this.navGoBack()}></img>
+                <img alt='' src={this.state.listType === "blog" ? blogFire : this.state.listType === "plan" ? blogWater : this.state.listType === "future" ? blogEarth : this.state.listType === "passion" && blogPower}></img>
+
                 <h5>Learning Tavern-Vidoes</h5>
                 <label>
                   adventurer, quench your thirst for knowledge here.

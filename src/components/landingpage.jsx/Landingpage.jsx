@@ -8,11 +8,6 @@ import assassin from "../../assets/images/char_assassin.png";
 import Modals from "../../commonUtils/Modals";
 import Bars from "../../commonUtils/Bars";
 import MapService from "../../services/MapService";
-import Fire from "../../assets/images/fire.png";
-import Air from "../../assets/images/air.png";
-import Water from "../../assets/images/water.png";
-import Earth from "../../assets/images/earth.png";
-import Lightning from "../../assets/images/lightning.png";
 import Enemy1 from "../../assets/images/enemy1.png";
 import Enemy2 from "../../assets/images/enemy2.png";
 import Enemy3 from "../../assets/images/enemy3.png";
@@ -28,11 +23,11 @@ import crystals from "../../assets/images/crystals.png";
 import combatImg from "../../assets/images/combat.png";
 
 const elementImages = {
-  water: Water,
-  air: Air,
-  earth: Earth,
-  fire: Fire,
-  lighting: Lightning,
+  Water: require("../../assets/images/water.png"),
+  Air: require("../../assets/images/air.png"),
+  Earth: require("../../assets/images/earth.png"),
+  Fire: require("../../assets/images/fire.png"),
+  Lighting: require("../../assets/images/lightning.png"),
 };
 
 
@@ -55,6 +50,7 @@ class Landingpage extends Component {
       enemiesList: [],
       enemyLife: 100,
       enemyMaxLife: 100,
+      clashText: "Pick Your Element"
     };
     this.closePop = this.closePop.bind(this);
     this.navigateRoute = this.navigateRoute.bind(this);
@@ -113,7 +109,7 @@ class Landingpage extends Component {
   }
 
   combactClash(eleId) {
-    this.setState({ isCombact: true, combactId: eleId });
+    this.setState({ isCombact: true, combactId: eleId }, () => this.proceedClash());
   }
 
   allElements() {
@@ -159,31 +155,31 @@ class Landingpage extends Component {
           name: enemiesList[0].enemy.name,
         };
       } else if (enemiesList[0].defeted === true) {
-        this.setState({enemy0Defeated: true})
+        this.setState({ enemy0Defeated: true })
         data = {
           image: Enemy2,
           name: enemiesList[1].enemy.name,
         };
       } else if (enemiesList[1].defeted === true) {
-        this.setState({enemy1Defeated: true})
+        this.setState({ enemy1Defeated: true })
         data = {
           image: Enemy3,
           name: enemiesList[2].enemy.name,
         };
       } else if (enemiesList[2].defeted === true) {
-        this.setState({enemy2Defeated: true})
+        this.setState({ enemy2Defeated: true })
         data = {
           image: Enemy4,
           name: enemiesList[3].enemy.name,
         };
       } else if (enemiesList[3].defeted === true) {
-        this.setState({enemy3Defeated: true})
+        this.setState({ enemy3Defeated: true })
         data = {
           image: Enemy5,
           name: enemiesList[4].enemy.name,
         };
-      }else if(enemiesList[4].defeted === true){
-        this.setState({enemy4Defeated: true})
+      } else if (enemiesList[4].defeted === true) {
+        this.setState({ enemy4Defeated: true })
       }
     }
     return data;
@@ -198,7 +194,7 @@ class Landingpage extends Component {
           enemyMaxLife: res.data.enemyMaxLife,
           heroLife: res.data.heroCurrentLife,
           heroMaxLife: res.data.heroMaxLife,
-          isCombact: false,
+          // isCombact: false,
         });
         this.userEnemy(this.state.characterId);
       })
@@ -346,21 +342,20 @@ class Landingpage extends Component {
                 <span
                   key={item.orderNumber}
                   onClick={() => this.handleSpanClick(item.orderNumber)}
-                  className={`span ${
-                    item.orderNumber === this.state.activeSpan
+                  className={`span ${item.orderNumber === this.state.activeSpan
                       ? "sactive"
                       : String(item.orderNumber)
-                  }`}
+                    }`}
                 >
                   {item.orderNumber === this.state.activePlace && (
                     <div className="map-user_location">
-                      <img 
+                      <img
                         src={
                           this.state.charRole === "Warrior"
                             ? warrior
                             : this.state.charRole === "Assassin"
-                            ? assassin
-                            : archangel
+                              ? assassin
+                              : archangel
                         }
                         alt="player-charector"
                         key={item.orderNumber}
@@ -389,14 +384,14 @@ class Landingpage extends Component {
                               Explore
                             </button>
                           )}
-                          <img 
+                          <img
                             alt="character"
                             src={
                               this.state.charRole === "Warrior"
                                 ? warrior
                                 : this.state.charRole === "Assassin"
-                                ? assassin
-                                : archangel
+                                  ? assassin
+                                  : archangel
                             }
                             className="moment_img"
                             key={item.orderNumber}
@@ -414,7 +409,7 @@ class Landingpage extends Component {
               ))}
             </div>
             <div className="map-queen_location">
-              <img 
+              <img
                 src={Quen}
                 alt="queen"
                 onClick={() => this.openHerbs()}
@@ -433,110 +428,118 @@ class Landingpage extends Component {
           // open={true}
           header={
             <div>
-              <h5>Battle</h5>
+              <h5 className="mt-2">Battle</h5>
             </div>
           }
           body={
-            <div className="battle">
+            <div className="battle mt-3 mb-3">
               <div className="battle-header">
                 <div>
-                  <img  src={Enemy1} alt="enemy1" />
+                  <img src={Enemy1} alt="enemy1" />
                 </div>
                 <div>
-                  <img  src={Enemy2} alt="enemy1" className={enemiesList[0]?.defeted ? "unblur" : "blur"} />
+                  <img src={Enemy2} alt="enemy1" className={enemiesList[0]?.defeted ? "unblur" : "blur"} />
                 </div>
                 <div>
-                  <img  src={Enemy3} alt="enemy1" className={enemiesList[1]?.defeted ? "unblur" : "blur"}/>
+                  <img src={Enemy3} alt="enemy1" className={enemiesList[1]?.defeted ? "unblur" : "blur"} />
                 </div>
                 <div>
-                  <img  src={Enemy4} alt="enemy1" className={enemiesList[2]?.defeted ? "unblur" : "blur"}/>
+                  <img src={Enemy4} alt="enemy1" className={enemiesList[2]?.defeted ? "unblur" : "blur"} />
                 </div>
                 <div>
-                  <img  src={Enemy5} alt="enemy1" className={enemiesList[3]?.defeted ? "unblur" : "blur"}/>
+                  <img src={Enemy5} alt="enemy1" className={enemiesList[3]?.defeted ? "unblur" : "blur"} />
                 </div>
               </div>
               <div className="battle-body">
-              <div>
-                <img 
-                  src={enemiesList[0]?.defeted ? Enemy2 : enemiesList[1]?.defeted ? Enemy3 : enemiesList[2]?.defeted ? Enemy4 : enemiesList[3]?.defeted ? Enemy5 : Enemy1}
-                  className="battle-main_img"
-                  alt={enemiesList[0]?.defeted ? enemiesList[1]?.enemy.name : enemiesList[1]?.defeted ? enemiesList[2]?.enemy.name : enemiesList[2]?.defeted ? enemiesList[3]?.enemy.name : enemiesList[3]?.defeted ? enemiesList[4]?.enemy.name : enemiesList[0]?.enemy.name}
-                />
-                <p className="enemy_name">
-                  {enemiesList[0]?.defeted ? enemiesList[1]?.enemy.name : enemiesList[1]?.defeted ? enemiesList[2]?.enemy.name : enemiesList[2]?.defeted ? enemiesList[3]?.enemy.name : enemiesList[3]?.defeted ? enemiesList[4]?.enemy.name : enemiesList[0]?.enemy.name} {"\n"}
-                  {this.state.enemyLife + "/" + this.state.enemyMaxLife}
-                </p>
-                <div className="joyBarxSm">
-                <ProgressBar
-                  completed={this.state.enemyLife ? this.state.enemyLife : 0}
-                  maxCompleted={this.state.enemyMaxLife}
-                  isLabelVisible={false}
-                  height="8px"
-                  bgColor="#00fdfd"
-                  width="140px"
-                  className="bars"
-                  animateOnRender={true}
+                <div>
+                  <img
+                    src={enemiesList[0]?.defeted ? Enemy2 : enemiesList[1]?.defeted ? Enemy3 : enemiesList[2]?.defeted ? Enemy4 : enemiesList[3]?.defeted ? Enemy5 : Enemy1}
+                    className="battle-main_img"
+                    alt={enemiesList[0]?.defeted ? enemiesList[1]?.enemy.name : enemiesList[1]?.defeted ? enemiesList[2]?.enemy.name : enemiesList[2]?.defeted ? enemiesList[3]?.enemy.name : enemiesList[3]?.defeted ? enemiesList[4]?.enemy.name : enemiesList[0]?.enemy.name}
                   />
+                  <p className="enemy_name">
+                    {enemiesList[0]?.defeted ? enemiesList[1]?.enemy.name : enemiesList[1]?.defeted ? enemiesList[2]?.enemy.name : enemiesList[2]?.defeted ? enemiesList[3]?.enemy.name : enemiesList[3]?.defeted ? enemiesList[4]?.enemy.name : enemiesList[0]?.enemy.name} {"\n"}
+                    <b>
+                      {this.state.enemyLife + "/" + this.state.enemyMaxLife}
+                    </b>
+                  </p>
+                  <div className="joyBarxSm">
+                    <ProgressBar
+                      completed={this.state.enemyLife ? this.state.enemyLife : 0}
+                      maxCompleted={this.state.enemyMaxLife}
+                      isLabelVisible={false}
+                      height="8px"
+                      bgColor="#00fdfd"
+                      width="140px"
+                      className="bars"
+                      animateOnRender={true}
+                    />
                   </div>
-              </div>
-              <div className="battle-mid_container">
-                <div className="ation_imgs">
-                  {this.state.elements?.map((item, index) => {
-                    return (
+                </div>
+                <div className="battle-mid_container">
+                  <div className="ation_imgs">
+                    {this.state.elements?.map((item, index) => (
                       <div key={index} className="battle-mid_img">
-                        <img 
+                        <img
                           src={elementImages[item.elementName]}
                           alt={item.elementName}
-                          onClick={() =>
-                            this.combactClash(item.combatElementId)
-                          }
+                          onClick={() => this.combactClash(item.combatElementId)}
                         />
                       </div>
-                    );
-                  })}
+                    ))}
+                  </div>
+                  <div className="action">
+                    {this.state.isCombact === true ? (
+                      <img
+                        src={combatImg}
+                        className="combatImg"
+                        alt="combat"
+                        onClick={() =>
+                          setTimeout(() => {
+                            this.setState({ clashText: "Enemies Turn", isCombact: false });
+                            setTimeout(() => {
+                              this.setState({ clashText: "Pick Your Element" });
+                            }, 3000);
+                          }, 3000)
+                        }
+                      />
+                    ) : (
+                      <p>{String(this.state.clashText)}</p>
+                    )}
+                  </div>
                 </div>
-                <div className="action">
-                  {this.state.isCombact === true ? (
-                    <img 
-                      src={combatImg}
-                      className="combatImg"
-                      alt="combat"
-                      onClick={() => this.proceedClash()}
-                    />
-                  ) : (
-                    <p>{"Pick Your Element"}</p>
-                  )}
-                </div>
-              </div>
-              <div>
-                <img  className="battle-main_img"
+                <div>
+                  <img className="battle-main_img"
                     src={
                       this.state.charRole === "Warrior"
                         ? WarVideo
                         : this.state.charRole === "Assassin"
-                        ? AsinVideo
-                        : ArchVideo
+                          ? AsinVideo
+                          : ArchVideo
                     }
                     alt={this.state.charRole}
                   />
-                <p>
-                  {this.state.charRole} <br/>
-                  {parseInt(this.state.heroLife) + "/" + this.state.heroMaxLife}
-                </p>
-                <div className="lifeBarSm">
-                <ProgressBar
-                  completed={this.state.heroLife ? this.state.heroLife : 0}
-                  maxCompleted={this.state.heroMaxLife}
-                  isLabelVisible={false}
-                  height="8px"
-                  bgColor="#fd0000"
-                  width="140px"
-                  className="bars"
-                  animateOnRender={true}
-                  />
+                  <p className="hero_name">
+                    {this.state.charRole}
+                    <br />
+                    <b>
+                      {parseInt(this.state.heroLife) + "/" + this.state.heroMaxLife}
+                    </b>
+                  </p>
+                  <div className="lifeBarSm">
+                    <ProgressBar
+                      completed={this.state.heroLife ? this.state.heroLife : 0}
+                      maxCompleted={this.state.heroMaxLife}
+                      isLabelVisible={false}
+                      height="8px"
+                      bgColor="#fd0000"
+                      width="140px"
+                      className="bars"
+                      animateOnRender={true}
+                    />
                   </div>
+                </div>
               </div>
-            </div>
             </div>
           }
         />
@@ -551,7 +554,7 @@ class Landingpage extends Component {
                 className="close_btn"
                 onClick={() => this.closeRewards()}
               >
-                <img  src={close} alt={close}></img>
+                <img src={close} alt={close}></img>
               </button>
             </div>
           }
@@ -559,15 +562,15 @@ class Landingpage extends Component {
             <div className="modal-body frame text-center final_reward">
               <div className="final_reward-body">
                 <span>
-                  <img  src={coin} alt="" />
+                  <img src={coin} alt="" />
                   <p>Coins</p>
                 </span>
                 <span>
-                  <img  src={crystals} alt="" />
+                  <img src={crystals} alt="" />
                   <p>Crystals</p>
                 </span>
                 <span>
-                  <img  src={coins} alt="" />
+                  <img src={coins} alt="" />
                   <p>XP</p>
                 </span>
               </div>
@@ -594,7 +597,7 @@ class Landingpage extends Component {
                 className="close_btn"
                 onClick={() => this.openHerbs()}
               >
-                <img  src={close} alt={close}></img>
+                <img src={close} alt={close}></img>
               </button>
             </div>
           }
@@ -630,7 +633,7 @@ class Landingpage extends Component {
                 className="close_btn"
                 onClick={() => this.closeVictoryModal()}
               >
-                <img  src={close} alt={close}></img>
+                <img src={close} alt={close}></img>
               </button>
             </div>
           }
@@ -664,7 +667,7 @@ class Landingpage extends Component {
                 className="close_btn"
                 onClick={() => this.closePop()}
               >
-                <img  src={close} alt={close}></img>
+                <img src={close} alt={close}></img>
               </button>
             </div>
           }

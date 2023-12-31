@@ -138,7 +138,7 @@ const Store = (props) => {
             open={openModel}
             header={
                 <div>
-                    <h5>Store</h5>
+                    <h5 className='mt-2'>Store</h5>
                     <button
                         type="button"
                         className="close_btn"
@@ -149,7 +149,7 @@ const Store = (props) => {
                 </div>
             }
             body={
-                <div>
+                <div className='mt-5'>
                     {!selectedItem ?
                         <div className="store">
                             <div className="store-head">

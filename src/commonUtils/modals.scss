@@ -20,7 +20,6 @@
         background-color: transparent !important;
         background-image: url(../assets/images/frame_modal.svg);
         background-size: cover !important;
-        // background-clip: padding-box;
         border: 0px solid rgba(0, 0, 0, 0.2);
         border-radius: 0.3rem;
         outline: 0;
@@ -58,7 +57,13 @@
         margin-top: 3%;
 
         &-scroll {
-            height: 60vh;
+            height: 355px;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+
+        &-small_scroll {
+            height: 290px;
             overflow: hidden;
             overflow-y: auto;
         }
@@ -68,4 +73,9 @@
         border: 0px solid black;
         border-top: 0px solid black;
     }
+}
+
+.inner-img {
+    width: 150px;
+    height: 150px;
 }

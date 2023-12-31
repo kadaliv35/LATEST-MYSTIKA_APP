@@ -817,11 +817,6 @@ class Layout extends Component {
               claimTreasureQuest={this.claimTreasureQuest}
             />
           )}
-          {/* {this.state.needHelp && (
-            <HailHero
-              hidePop={this.openTutorial}
-            />
-          )} */}
           <Store
             openModel={this.state.storePopup}
             openStore={() => this.openStore()}

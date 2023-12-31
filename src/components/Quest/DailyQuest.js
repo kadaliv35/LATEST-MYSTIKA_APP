@@ -28,7 +28,7 @@ function DailyQuest({
       <Modals open={true}
         header={
           <div>
-            <h5 className="text-white">Daily Quest</h5>
+            <h5 className="text-white mt-2">Daily Quest</h5>
             <button
               type="button"
               className="close_btn"
@@ -65,7 +65,7 @@ function DailyQuest({
                     );
                   })}
                 </ul>
-                <span>
+                <span className='ml-5 pl-4'>
                   <img  className='frameImg' alt=''  src={coinFrame} />
                   <img  className='frameImg' alt=''  src={crystalFrame} />
                   <img  className='frameImg' alt=''  src={joyFrame} />
