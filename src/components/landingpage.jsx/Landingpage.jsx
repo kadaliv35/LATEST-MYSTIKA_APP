@@ -31,6 +31,7 @@ const elementImages = {
 };
 
 
+const EnemyImages = [Enemy1, Enemy2, Enemy3, Enemy4, Enemy5];
 
 class Landingpage extends Component {
   constructor(props) {
@@ -45,12 +46,14 @@ class Landingpage extends Component {
       mapPlaces: [],
       openBattle: false,
       isCombact: false,
-      combactId: undefined,
+      combactId: 0,
       showPop: true,
       enemiesList: [],
       enemyLife: 100,
       enemyMaxLife: 100,
-      clashText: "Pick Your Element"
+      clashText: "Pick Your Element",
+      isClashAvailable: false,
+      enemyName: ""
     };
     this.closePop = this.closePop.bind(this);
     this.navigateRoute = this.navigateRoute.bind(this);
@@ -87,7 +90,6 @@ class Landingpage extends Component {
         this.state.userCharacterList
           .filter((item) => item.active === true)
           .map((item) => {
-            // this.setState({item})
             return this.setState({ charRole: item.charecterId.characterName });
           });
         console.log(this.state.userCharacterList, "CharList");
@@ -108,8 +110,12 @@ class Landingpage extends Component {
     );
   }
 
+  getDefeatedEnemyImage(originalImage) {
+    return originalImage.replace(".png", "Defeated.png");
+  }
+
   combactClash(eleId) {
-    this.setState({ isCombact: true, combactId: eleId }, () => this.proceedClash());
+    this.setState({ isCombact: true, combactId: eleId });
   }
 
   allElements() {
@@ -192,8 +198,10 @@ class Landingpage extends Component {
         this.setState({
           enemyLife: res.data.enemyCurrentLife,
           enemyMaxLife: res.data.enemyMaxLife,
+          enemyName: res.data.enemyName,
           heroLife: res.data.heroCurrentLife,
           heroMaxLife: res.data.heroMaxLife,
+          isClashAvailable: true
           // isCombact: false,
         });
         this.userEnemy(this.state.characterId);
@@ -254,7 +262,7 @@ class Landingpage extends Component {
             countdownValue: 0,
             showTimer: false,
             openBattle: true,
-          });
+          }, () => this.proceedClash());
         }
       }, 1000);
     });
@@ -329,6 +337,7 @@ class Landingpage extends Component {
 
   render() {
     let enemiesList = this.state.enemiesList;
+    let enemyName = this.state.enemyName;
     return (
       <div className="main">
         <div className="main-middleP">
@@ -343,8 +352,8 @@ class Landingpage extends Component {
                   key={item.orderNumber}
                   onClick={() => this.handleSpanClick(item.orderNumber)}
                   className={`span ${item.orderNumber === this.state.activeSpan
-                      ? "sactive"
-                      : String(item.orderNumber)
+                    ? "sactive"
+                    : String(item.orderNumber)
                     }`}
                 >
                   {item.orderNumber === this.state.activePlace && (
@@ -415,7 +424,6 @@ class Landingpage extends Component {
                 onClick={() => this.openHerbs()}
               ></img>
             </div>
-            {/* <img  src={notice}></img> */}
             {this.state.showPop && (
               <div className="map-notice">
                 <h5>tutorial character for help</h5>
@@ -434,31 +442,29 @@ class Landingpage extends Component {
           body={
             <div className="battle mt-3 mb-3">
               <div className="battle-header">
-                <div>
-                  <img src={Enemy1} alt="enemy1" />
-                </div>
-                <div>
-                  <img src={Enemy2} alt="enemy1" className={enemiesList[0]?.defeted ? "unblur" : "blur"} />
-                </div>
-                <div>
-                  <img src={Enemy3} alt="enemy1" className={enemiesList[1]?.defeted ? "unblur" : "blur"} />
-                </div>
-                <div>
-                  <img src={Enemy4} alt="enemy1" className={enemiesList[2]?.defeted ? "unblur" : "blur"} />
-                </div>
-                <div>
-                  <img src={Enemy5} alt="enemy1" className={enemiesList[3]?.defeted ? "unblur" : "blur"} />
-                </div>
+                {enemiesList.map((enemy, index) => (
+                  <div key={index}>
+                    <img
+                      src={EnemyImages[index]}
+                      alt={enemy.name}
+                      className={enemy.defeted ? "unblur" : "blur"}
+                    />
+                    <p className={`"font-weight-bold" ${enemy.defeted ? "text-success" : "text-warning"}`}>
+                      {enemy.name} - {enemy.defeted ? "Defeated" : "Alive"}
+                    </p>
+                  </div>
+                ))}
               </div>
               <div className="battle-body">
                 <div>
                   <img
-                    src={enemiesList[0]?.defeted ? Enemy2 : enemiesList[1]?.defeted ? Enemy3 : enemiesList[2]?.defeted ? Enemy4 : enemiesList[3]?.defeted ? Enemy5 : Enemy1}
+                  key={enemyName}
+                    src={enemyName === "Lord of Procrastination" ? Enemy1 : enemyName === "Lord of Guilt" ? Enemy2 : enemyName === "Lord of Fear" ? Enemy3 : enemyName === "Lord of Anxiety" ? Enemy4 : enemyName === "Lord of Anguish" ? Enemy5 : Enemy1}
                     className="battle-main_img"
-                    alt={enemiesList[0]?.defeted ? enemiesList[1]?.enemy.name : enemiesList[1]?.defeted ? enemiesList[2]?.enemy.name : enemiesList[2]?.defeted ? enemiesList[3]?.enemy.name : enemiesList[3]?.defeted ? enemiesList[4]?.enemy.name : enemiesList[0]?.enemy.name}
+                    alt={enemyName !== "" ? enemyName : "Lord of Procrastination"}
                   />
                   <p className="enemy_name">
-                    {enemiesList[0]?.defeted ? enemiesList[1]?.enemy.name : enemiesList[1]?.defeted ? enemiesList[2]?.enemy.name : enemiesList[2]?.defeted ? enemiesList[3]?.enemy.name : enemiesList[3]?.defeted ? enemiesList[4]?.enemy.name : enemiesList[0]?.enemy.name} {"\n"}
+                    {enemyName !== "" ? enemyName : "Lord of Procrastination"} {"\n"}
                     <b>
                       {this.state.enemyLife + "/" + this.state.enemyMaxLife}
                     </b>
@@ -496,7 +502,9 @@ class Landingpage extends Component {
                         alt="combat"
                         onClick={() =>
                           setTimeout(() => {
-                            this.setState({ clashText: "Enemies Turn", isCombact: false });
+                            this.setState({ clashText: "Enemies Turn", isCombact: false, isClashAvailable: false }, () => {
+                              this.proceedClash();
+                            });
                             setTimeout(() => {
                               this.setState({ clashText: "Pick Your Element" });
                             }, 3000);
