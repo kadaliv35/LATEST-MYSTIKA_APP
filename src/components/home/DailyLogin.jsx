@@ -1,12 +1,11 @@
+import ProgressBar from "@ramonak/react-progress-bar";
 import React, { Component } from "react";
 import close from "../../assets/images/close_ic.svg";
-// import progress from "../../assets/images/progress_bar.svg";
 import coinbox from "../../assets/images/coin_box.svg";
 import coin from "../../assets/images/coins.png";
 import diamond from "../../assets/images/diamonds.png";
 import golden from "../../assets/images/golden-tick.svg";
 import BountyServices from "../../services/BountyServices";
-import ProgressBar from "@ramonak/react-progress-bar";
 
 class DailyLogin extends Component {
   constructor(props) {

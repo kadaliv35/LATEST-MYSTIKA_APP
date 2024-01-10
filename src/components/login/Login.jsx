@@ -17,7 +17,7 @@ import archangel from '../../assets/images/char_angel.png';
 import assassin from '../../assets/images/char_assign.png';
 import ErrorDisplaypop from "../ErrorDisplay/ErrorDisplaypop";
 import Input from "../../commonUtils/Input";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 class Login extends Component {

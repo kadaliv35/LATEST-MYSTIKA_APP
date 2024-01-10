@@ -1,17 +1,4 @@
 import React, { Component } from "react";
-// import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-// import close from '../../assets/images/close_ic.svg';
-// import Quen from '../../assets/images/queen.svg';
-// import queen from '../../assets/images/queen.png';
-import insta from "../../assets/images/instgram.svg";
-import fb from "../../assets/images/facebook.svg";
-import twitter from "../../assets/images/t.svg";
-import Pintrest from "../../assets/images/P.svg";
-import crown from "../../assets/images/crown.svg";
-import cup from "../../assets/images/gold_cup.svg";
-import sProfile from "../../assets/images/user_1.svg";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import close from "../../assets/images/close_ic.svg";
 import warrior from "../../assets/images/char_warrior.png";
 import archangel from "../../assets/images/char_archangel.png";
 import assassin from "../../assets/images/char_assassin.png";
@@ -141,7 +128,6 @@ class Charecter extends Component {
                 .map((item, index) => {
                   return (
                     <div className="images" key={index}>
-                      {/* {alert(item?.characterId?.characterName)} */}
                       {item.charecterId.characterName === "Archangel" ? (
                         ""
                       ) : (

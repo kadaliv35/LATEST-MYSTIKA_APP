@@ -1,15 +1,4 @@
 import React, { Component } from 'react';
-// import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-// import close from '../../assets/images/close_ic.svg';
-// import Quen from '../../assets/images/queen.svg';
-// import queen from '../../assets/images/queen.png';
-import insta from '../../assets/images/instgram.svg';
-import fb from '../../assets/images/facebook.svg';
-import twitter from '../../assets/images/t.svg';
-import Pintrest from '../../assets/images/P.svg';
-import crown from '../../assets/images/crown.svg';
-import cup from '../../assets/images/gold_cup.svg';
-import sProfile from '../../assets/images/user_1.svg';
 
 class RoadMaps extends Component {
   constructor(props) {

@@ -1,5 +1,5 @@
-import ProgressBar from '@ramonak/react-progress-bar'
-import React from 'react'
+import ProgressBar from '@ramonak/react-progress-bar';
+import React from 'react';
 
 const Bars = (props) => {
     const completed = props.completed

@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import close from "../../assets/images/close_ic.svg";
-import Quen from "../../assets/images/queen.svg";
+import ProgressBar from "@ramonak/react-progress-bar";
 import "bootstrap/dist/css/bootstrap.css";
-import warrior from "../../assets/images/char_warrior.png";
+import React, { Component } from "react";
 import archangel from "../../assets/images/char_archangel.png";
 import assassin from "../../assets/images/char_assassin.png";
-import Modals from "../../commonUtils/Modals";
-import Bars from "../../commonUtils/Bars";
-import MapService from "../../services/MapService";
+import warrior from "../../assets/images/char_warrior.png";
+import ArchVideo from "../../assets/images/character1.png";
+import WarVideo from "../../assets/images/character2.png";
+import AsinVideo from "../../assets/images/character3.png";
+import close from "../../assets/images/close_ic.svg";
+import coin from "../../assets/images/coin_1.svg";
+import coins from "../../assets/images/coins_new.svg";
+import combatImg from "../../assets/images/combat.png";
+import crystals from "../../assets/images/crystals.png";
 import Enemy1 from "../../assets/images/enemy1.png";
 import Enemy2 from "../../assets/images/enemy2.png";
 import Enemy3 from "../../assets/images/enemy3.png";
 import Enemy4 from "../../assets/images/enemy4.png";
 import Enemy5 from "../../assets/images/enemy5.png";
-import WarVideo from "../../assets/images/character2.png";
-import ArchVideo from "../../assets/images/character1.png";
-import AsinVideo from "../../assets/images/character3.png";
-import ProgressBar from "@ramonak/react-progress-bar";
-import coins from "../../assets/images/coins_new.svg";
-import coin from "../../assets/images/coin_1.svg";
-import crystals from "../../assets/images/crystals.png";
-import combatImg from "../../assets/images/combat.png";
+import Quen from "../../assets/images/queen.svg";
+import Bars from "../../commonUtils/Bars";
+import Modals from "../../commonUtils/Modals";
+import MapService from "../../services/MapService";
 
 const elementImages = {
   Water: require("../../assets/images/water.png"),
@@ -161,31 +161,31 @@ class Landingpage extends Component {
           name: enemiesList[0].enemy.name,
         };
       } else if (enemiesList[0].defeted === true) {
-        this.setState({ enemy0Defeated: true })
+        this.setState({ enemy0Defeated: true });
         data = {
           image: Enemy2,
           name: enemiesList[1].enemy.name,
         };
       } else if (enemiesList[1].defeted === true) {
-        this.setState({ enemy1Defeated: true })
+        this.setState({ enemy1Defeated: true });
         data = {
           image: Enemy3,
           name: enemiesList[2].enemy.name,
         };
       } else if (enemiesList[2].defeted === true) {
-        this.setState({ enemy2Defeated: true })
+        this.setState({ enemy2Defeated: true });
         data = {
           image: Enemy4,
           name: enemiesList[3].enemy.name,
         };
       } else if (enemiesList[3].defeted === true) {
-        this.setState({ enemy3Defeated: true })
+        this.setState({ enemy3Defeated: true });
         data = {
           image: Enemy5,
           name: enemiesList[4].enemy.name,
         };
       } else if (enemiesList[4].defeted === true) {
-        this.setState({ enemy4Defeated: true })
+        this.setState({ enemy4Defeated: true });
       }
     }
     return data;
@@ -203,7 +203,7 @@ class Landingpage extends Component {
           heroMaxLife: res.data.heroMaxLife,
           isClashAvailable: true
         });
-      this.props.heroLife(res.data.heroCurrentLife)
+        this.props.heroLife(res.data.heroCurrentLife);
         this.userEnemy(this.state.characterId);
       })
       .catch((err) => {
@@ -458,7 +458,7 @@ class Landingpage extends Component {
               <div className="battle-body">
                 <div>
                   <img
-                  key={enemyName}
+                    key={enemyName}
                     src={enemyName === "Lord of Procrastination" ? Enemy1 : enemyName === "Lord of Guilt" ? Enemy2 : enemyName === "Lord of Fear" ? Enemy3 : enemyName === "Lord of Anxiety" ? Enemy4 : enemyName === "Lord of Anguish" ? Enemy5 : Enemy1}
                     className="battle-main_img"
                     alt={enemyName !== "" ? enemyName : "Lord of Procrastination"}
@@ -512,7 +512,7 @@ class Landingpage extends Component {
                         }
                       />
                     ) : (
-                      <p>{String(this.state.clashText)}</p>
+                      <p className="text-center">{String(this.state.clashText)}</p>
                     )}
                   </div>
                 </div>

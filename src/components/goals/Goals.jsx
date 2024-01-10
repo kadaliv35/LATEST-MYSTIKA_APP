@@ -1,28 +1,19 @@
 import React, { Component } from "react";
-// import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-// import close from '../../assets/images/close_ic.svg';
-// import Quen from '../../assets/images/queen.svg';
-// import queen from '../../assets/images/queen.png';
-import insta from "../../assets/images/instgram.svg";
-import fb from "../../assets/images/facebook.svg";
-import twitter from "../../assets/images/t.svg";
-import goalsPF from "../../assets/images/goal_profile.png";
-import Progress from "../../assets/images/progress_small.svg";
+
 import left from "../../assets/images/left.png";
 import right from "../../assets/images/right.png";
 import close from "../../assets/images/close_ic.svg";
 import goal from "../../assets/images/goal.svg";
 import decks from "../../assets/images/decks.png";
 import GoalServices from "../../services/GoalServices";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import lordGult from '../../assets/images/LordGult.png'
-import Modals from '../../commonUtils/Modals'
-import coins from '../../assets/images/coins.png'
-import crystal from '../../assets/images/crystals.png'
-import velocity from '../../assets/images/velocity.png'
-import speed from '../../assets/images/speed.png'
-import intelligence from '../../assets/images/intelligence.png'
-import queen from '../../assets/images/queen.png'
+import lordGult from '../../assets/images/LordGult.png';
+import Modals from '../../commonUtils/Modals';
+import coins from '../../assets/images/coins.png';
+import crystal from '../../assets/images/crystals.png';
+import velocity from '../../assets/images/velocity.png';
+import speed from '../../assets/images/speed.png';
+import intelligence from '../../assets/images/intelligence.png';
+import queen from '../../assets/images/queen.png';
 
 
 class Goals extends Component {
@@ -237,7 +228,6 @@ class Goals extends Component {
   }
   formGoals(ind) {
     console.log("ind+++", ind);
-    const { currentIndex } = this.state;
     this.setState({ listGoalsFlag: true }, () => {
       const curdeckList = [...this.state.deckList];
 
