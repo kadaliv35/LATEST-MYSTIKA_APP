@@ -104,12 +104,12 @@ class Charecter extends Component {
   };
 
   heroImg = () => {
-    if (this.state.selectedHeroName === "archangel") {
-      return archangel;
-    } else if (this.state.selectedHeroName === "warrior") {
-      return warrior;
-    } else if (this.state.selectedHeroName === "assassin") {
+    if (this.state.selectedHeroId === 2) {
       return assassin;
+    } else if (this.state.selectedHeroId === 1) {
+      return archangel;
+    } else if (this.state.selectedHeroId === 0) {
+      return warrior;
     }
   };
 
@@ -121,38 +121,31 @@ class Charecter extends Component {
             <h3 className="">
               <span className="text-green">Characters</span>
             </h3>
-
             <div>
               {this.state.userCharacterList
                 .filter((item, index) => item.active === true)
                 .map((item, index) => {
                   return (
                     <div className="images" key={index}>
-                      {item.charecterId.characterName === "Archangel" ? (
-                        ""
-                      ) : (
+                      {(
                         <div className="profile">
                           <img
                             src={archangel}
                             alt=""
-                            onClick={() => this.selectHero("archangel", 2)}
+                            onClick={() => this.selectHero("archangel", 1)}
                           ></img>
                         </div>
                       )}
-                      {item.charecterId.characterName === "ASSASSIN" ? (
-                        ""
-                      ) : (
+                      {(
                         <div className="profile">
                           <img
                             src={assassin}
                             alt=""
-                            onClick={() => this.selectHero("assassin", 1)}
+                            onClick={() => this.selectHero("assassin", 2)}
                           ></img>
                         </div>
                       )}
-                      {item.charecterId.characterName === "WARRIOR" ? (
-                        ""
-                      ) : (
+                      {(
                         <div className="profile">
                           <img alt=''
                             src={warrior}
@@ -209,20 +202,20 @@ class Charecter extends Component {
             <div className="d-flex flex-column justify-content-center align-items-center">
               <div className="row">
                 <div className="col text-center">
-                  <img
-                    src={this.heroImg()}
-                    className="w-30 h-25 mt-2"
-                    alt={this.heroImg()}
-                  />
                   {this.state.userCharacterList
                     .filter(
                       (item, index) => index === this.state.selectedHeroId
-                    )
-                    .map((item, index) => {
-                      return (
-                        <div key={index}>
+                      )
+                      .map((item, index) => {
+                        return (
+                          <div key={index}>
+                          <img
+                            src={this.heroImg()}
+                            className={item.active ? "w-50 h-25 mt-2":"w-25 h-25"}
+                            alt={this.heroImg()}
+                          />
                           <h6 className="">{item.charecterId.characterName}</h6>
-                          {!item.active && (
+                          {item.active === false && (
                             <div>
                               <h6 className="smallHeading">
                                 DO YOU WISH TO SWITCH TO{" "}
@@ -266,7 +259,7 @@ class Charecter extends Component {
                               .map((item, index) => {
                                 return (
                                   <div key={index}>
-                                    {!item.active && (
+                                    {item.active === false && (
                                       <button
                                         className="img_btn_home"
                                         onClick={() =>

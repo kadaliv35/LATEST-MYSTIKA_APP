@@ -400,6 +400,12 @@ class Layout extends Component {
     }
   }
 
+  goToCharacter = () => {
+    this.navigationButtons("charecter");
+    this.props.history.push("/charecter");
+    window.location.reload();
+  }
+
   render() {
     const { buttonName } = this.state;
     return (
@@ -421,6 +427,7 @@ class Layout extends Component {
                                 ? assassin
                                 : archangel
                           }
+                          onClick={() => this.goToCharacter()}
                           alt="player-charector"
                         ></img>
                         <div className="content">
@@ -542,7 +549,7 @@ class Layout extends Component {
                         {/* <button type="button" className="img_btn_brown ml-2" >Daily Login</button> */}
                       </li>
                       <li className="progress-relative">
-                        <h5 className="fs-14 mb-0">XP Points</h5>
+                        <h5 className="fs-14 mb-0">XP</h5>
                         {/* <div className="joyBar">
                           <ProgressBar completed={50} isLabelVisible={false} height="10px" bgColor="#7FC31C" width="190px" className="bars" animateOnRender={true} />
                         </div> */}

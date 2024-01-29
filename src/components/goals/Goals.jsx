@@ -463,7 +463,7 @@ class Goals extends Component {
                       </div>
                       <div>
                         <img alt='' src={velocity} onClick={() => this.selectCard("velocity")} />
-                        <h5>Velocity</h5>
+                        <h5>Velor</h5>
                       </div>
                       <div>
                         <img alt='' src={intelligence} onClick={() => this.selectCard("intelligence")} />
@@ -649,10 +649,16 @@ class Goals extends Component {
                                 type="time"
                                 className="form-control form-control-small"
                                 placeholder="Enter Time"
+                                pattern="^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"
                                 onChange={(e) => {
                                   this.setState(
                                     { time: e.target.value },
-                                    () => { }
+                                    () => {
+                                      const regex = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+                                    if (regex.test(this.state.time) || this.state.time === '') {
+                                      this.setState({time: this.state.time});
+                                    }
+                                 }
                                   );
                                 }}
                               ></input>

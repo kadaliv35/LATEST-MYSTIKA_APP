@@ -45,8 +45,8 @@ function DailyQuest({
               COMPLETE THE FOLLOWING QUESTS WITHIN 24HRS TO RECIEVE A BOUNTY
             </h5>
             <div className="col text-center">
-              <div className="day-list">
-                <ul className='ml-5'>
+              <div className="day-list non_day">
+                <ul>
                   {toDayQuest && toDayQuest.map((item, index) => {
                     return (
                       <li key={index} className='w-100 h-100'>
@@ -65,7 +65,7 @@ function DailyQuest({
                     );
                   })}
                 </ul>
-                <span className='ml-5 pl-4'>
+                <span>
                   <img  className='frameImg' alt=''  src={coinFrame} />
                   <img  className='frameImg' alt=''  src={crystalFrame} />
                   <img  className='frameImg' alt=''  src={joyFrame} />

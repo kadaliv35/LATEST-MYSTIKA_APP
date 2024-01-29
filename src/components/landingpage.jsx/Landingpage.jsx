@@ -437,6 +437,13 @@ class Landingpage extends Component {
           header={
             <div>
               <h5 className="mt-2">Battle</h5>
+              <button
+                type="button"
+                className="close_btn"
+                onClick={() => this.closePop()}
+              >
+                <img src={close} alt={close}></img>
+              </button>
             </div>
           }
           body={
@@ -669,7 +676,7 @@ class Landingpage extends Component {
           open={this.state.popUp}
           header={
             <div>
-              <h6 className="mt-3">Tutorial</h6>
+              <h6 className="mt-3">Quest</h6>
               <button
                 type="button"
                 className="close_btn"

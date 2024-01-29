@@ -928,6 +928,18 @@ body {
     }
 }
 
+.non_day {
+    width: 100%;
+    margin: 0;
+    & ul {
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-y: hidden;
+    }
+
+}
+
 
 
 .blur_bg {
